@@ -17,10 +17,9 @@
     --text-light: #e5e7eb; /* Off-white for main text */
     --primary-light: #60a5fa; /* Lighter blue for primary elements */
     --secondary-light: #9ca3af; /* Light gray for secondary text */
-    --card-bg-light: #1f2937f9; /* Darker gray for card backgrounds */
+    --card-bg-light: #1f2937; /* Darker gray for card backgrounds */
     --border-light: #374151; /* Darker gray for borders */
     --link-hover-light: #3b82f6; /* Blue for link hovers */
-    /* New background gradient colors for dark mode */
     --gradient-start-dark: rgba(0, 0, 0, 0.8); /* Semi-transparent black */
     --gradient-end-dark: rgba(17, 24, 39, 0.8); /* Semi-transparent dark charcoal */
 }
@@ -30,20 +29,37 @@ body {
     color: var(--text-light);
     transition: color 0.3s ease;
     scroll-behavior: smooth;
-    /* Gradient on top, then the image */
     background-image: radial-gradient(at top left, var(--gradient-start-light), var(--gradient-end-light)), url('programming-background-with-person-working-with-codes-computer.jpg');
-    background-size: cover, cover; /* cover for both */
-    background-position: center, center; /* center for both */
-    background-attachment: fixed, fixed; /* Keep both fixed */
+    background-size: cover, cover;
+    background-position: center, center;
+    background-attachment: fixed, fixed;
     background-repeat: no-repeat, no-repeat;
-    background-blend-mode: overlay, normal; /* Blend gradient over image to create light/dark effect */
-    background-color: var(--bg-light); /* Fallback */
+    background-blend-mode: overlay, normal;
+    background-color: var(--bg-light);
     transition: background-image 0.3s ease, background-color 0.3s ease;
 }
 
+/* ✅ Corrigé : body.dark (et non .dark body) */
 .dark body {
     background-image: radial-gradient(at top left, var(--gradient-start-dark), var(--gradient-end-dark)), url('abstract-black-lines-geometric-background_677411-2748.avif');
-    background-color: var(--bg-light); /* Fallback for dark mode */
+    background-color: var(--bg-light);
+}
+
+/* ✅ Image différente sur téléphone (écran < 768px) */
+@media (max-width: 768px) {
+  body {
+    background-image: radial-gradient(at top left, var(--gradient-start-light), var(--gradient-end-light)), url('mobile-image.jpg'); /* ✅ image mobile claire */
+    background-size: cover, cover;
+    background-position: center, center;
+    background-attachment: scroll, scroll;
+  }
+
+  .dark body {
+    background-image: radial-gradient(at top left, var(--gradient-start-dark), var(--gradient-end-dark)), url('mobile-dark.jpg'); /* ✅ image mobile sombre */
+    background-size: cover, cover;
+    background-position: center, center;
+    background-attachment: scroll, scroll;
+  }
 }
 
 /* Apply dynamic colors using Tailwind's arbitrary values */
