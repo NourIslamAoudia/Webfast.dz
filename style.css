@@ -154,23 +154,27 @@ body {
 /* FAQ Accordion Styling */
 .accordion-header {
     cursor: pointer;
-    padding: 1rem;
-    border-bottom: 1px solid var(--border-light);
+    user-select: none;
     transition: background-color 0.3s ease;
 }
+
 .accordion-header:hover {
-    background-color: var(--border-light);
+    background-color: var(--border-light, rgba(0, 0, 0, 0.05));
 }
+
 .accordion-content {
-    padding: 0 1rem;
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+    transition: max-height 0.4s ease-out;
+    padding: 0;
 }
 
 .accordion-item.active .accordion-content {
-    max-height: 200px;
+    transition: max-height 0.4s ease-in;
+}
+
+.accordion-content p {
     padding: 1rem;
-    transition: max-height 0.3s ease-in, padding 0.3s ease-in;
+    margin: 0;
 }
 

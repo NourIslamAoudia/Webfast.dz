@@ -123,35 +123,55 @@ contactForm.addEventListener('submit', function(event) {
     }
 });
 
-// JavaScript pour l'accordéon FAQ
-const accordionHeaders = document.querySelectorAll('.accordion-header');
+/// JavaScript pour l'accordéon FAQ
+document.addEventListener('DOMContentLoaded', function() {
+    const accordionHeaders = document.querySelectorAll('.accordion-header');
 
-accordionHeaders.forEach(header => {
-    header.addEventListener('click', () => {
-        const accordionItem = header.closest('.accordion-item');
-        const accordionContent = header.nextElementSibling;
-        const chevronIcon = header.querySelector('.fa-chevron-down');
+    accordionHeaders.forEach(header => {
+        header.addEventListener('click', () => {
+            const accordionItem = header.closest('.accordion-item');
+            const accordionContent = header.nextElementSibling;
+            const chevronIcon = header.querySelector('.fa-chevron-down');
+            const isActive = accordionItem.classList.contains('active');
 
-        // Fermer tous les autres éléments
-        document.querySelectorAll('.accordion-item').forEach(item => {
-            if (item !== accordionItem) {
-                item.classList.remove('active');
-                item.querySelector('.accordion-content').style.maxHeight = '0';
-                item.querySelector('.fa-chevron-down').style.transform = 'rotate(0deg)';
+            // Fermer tous les autres accordéons ouverts
+            accordionHeaders.forEach(otherHeader => {
+                if (otherHeader !== header) {
+                    const otherItem = otherHeader.closest('.accordion-item');
+                    const otherContent = otherHeader.nextElementSibling;
+                    const otherChevron = otherHeader.querySelector('.fa-chevron-down');
+                    
+                    if (otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                        otherContent.style.maxHeight = '0';
+                        otherChevron.style.transform = 'rotate(0deg)';
+                    }
+                }
+            });
+
+            // Basculer l'accordéon actuel
+            if (!isActive) {
+                // Ouvrir
+                accordionItem.classList.add('active');
+                
+                // Calculer la hauteur réelle
+                accordionContent.style.maxHeight = 'none';
+                const fullHeight = accordionContent.scrollHeight;
+                accordionContent.style.maxHeight = '0';
+                
+                // Forcer le reflow et appliquer la hauteur
+                requestAnimationFrame(() => {
+                    accordionContent.style.maxHeight = fullHeight + 'px';
+                });
+                
+                chevronIcon.style.transform = 'rotate(180deg)';
+            } else {
+                // Fermer
+                accordionItem.classList.remove('active');
+                accordionContent.style.maxHeight = '0';
+                chevronIcon.style.transform = 'rotate(0deg)';
             }
         });
-
-        // Toggle l'élément actuel
-        const isActive = accordionItem.classList.contains('active');
-        if (!isActive) {
-            accordionItem.classList.add('active');
-            accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
-            chevronIcon.style.transform = 'rotate(180deg)';
-        } else {
-            accordionItem.classList.remove('active');
-            accordionContent.style.maxHeight = '0';
-            chevronIcon.style.transform = 'rotate(0deg)';
-        }
     });
 });
 
