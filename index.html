@@ -12,191 +12,33 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts: Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome for Icons -->
+    <!-- Font Awesome for Icons (corrected integrity attribute) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- AOS Animate On Scroll Library -->
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-    <style>
-        /* Base styles using CSS variables for theme switching */
-        :root {
-            --bg-light: #f3f4f6; /* Soft light gray for general background */
-            --text-light: #1f2937fb; /* Dark gray for main text */
-            --primary-light: #1d4ed8; /* Deeper blue for primary elements */
-            --secondary-light: #4b5563; /* Medium gray for secondary text */
-            --card-bg-light: #ffffff; /* White for card backgrounds */
-            --border-light: #e5e7eb; /* Light gray for borders */
-            --link-hover-light: #2563eb; /* Blue for link hovers */
-            /* New background gradient colors for light mode */
-            --gradient-start-light: rgba(13, 16, 34, 0.949); /* Semi-transparent white */
-            --gradient-end-light: rgba(22, 29, 43, 0.708); /* Semi-transparent light gray */
-        }
-
-        .dark {
-            --bg-light: #111827; /* Dark charcoal for general background */
-            --text-light: #e5e7eb; /* Off-white for main text */
-            --primary-light: #60a5fa; /* Lighter blue for primary elements */
-            --secondary-light: #9ca3af; /* Light gray for secondary text */
-            --card-bg-light: #1f2937f9; /* Darker gray for card backgrounds */
-            --border-light: #374151; /* Darker gray for borders */
-            --link-hover-light: #3b82f6; /* Blue for link hovers */
-            /* New background gradient colors for dark mode */
-            --gradient-start-dark: rgba(0, 0, 0, 0.8); /* Semi-transparent black */
-            --gradient-end-dark: rgba(17, 24, 39, 0.8); /* Semi-transparent dark charcoal */
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            color: var(--text-light);
-            transition: color 0.3s ease;
-            scroll-behavior: smooth;
-            /* Gradient on top, then the image */
-            background-image: radial-gradient(at top left, var(--gradient-start-light), var(--gradient-end-light)), url('programming-background-with-person-working-with-codes-computer.jpg');
-            background-size: cover, cover; /* cover for both */
-            background-position: center, center; /* center for both */
-            background-attachment: fixed, fixed; /* Keep both fixed */
-            background-repeat: no-repeat, no-repeat;
-            background-blend-mode: overlay, normal; /* Blend gradient over image to create light/dark effect */
-            background-color: var(--bg-light); /* Fallback */
-            transition: background-image 0.3s ease, background-color 0.3s ease;
-        }
-
-        .dark body {
-            background-image: radial-gradient(at top left, var(--gradient-start-dark), var(--gradient-end-dark)), url('abstract-black-lines-geometric-background_677411-2748.avif');
-            background-color: var(--bg-light); /* Fallback for dark mode */
-        }
-
-        /* Apply dynamic colors using Tailwind's arbitrary values */
-        /* Removed bg-skin-base from body, as it's now handled by background-image */
-        .text-skin-base { color: var(--text-light); }
-        .text-skin-primary { color: var(--primary-light); }
-        .text-skin-secondary { color: var(--secondary-light); }
-        .bg-skin-card { background-color: var(--card-bg-light); }
-        .border-skin-base { border-color: var(--border-light); }
-        .hover\:text-skin-link-hover:hover { color: var(--link-hover-light); }
-        .btn-primary {
-            background-color: var(--primary-light);
-            color: var(--card-bg-light); /* White text on primary button */
-        }
-        .btn-primary:hover {
-            opacity: 0.9;
-        }
-
-        /* Hamburger menu styling */
-        .hamburger-menu {
-            display: none; /* Hidden by default on larger screens */
-        }
-
-        @media (max-width: 767px) {
-            .hamburger-menu {
-                display: block;
-            }
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 4rem; /* Below header */
-                left: 0;
-                width: 100%;
-                background-color: var(--bg-light); /* Use current bg for mobile menu */
-                border-bottom: 1px solid var(--border-light);
-                padding: 1rem 0;
-                z-index: 1000;
-            }
-            .nav-links.active {
-                display: flex;
-            }
-            .nav-links a {
-                padding: 0.75rem 1.5rem;
-                text-align: center;
-                border-bottom: 1px solid var(--border-light);
-            }
-            .nav-links a:last-child {
-                border-bottom: none;
-            }
-        }
-
-        /* Header Transparency Effect */
-        #main-header {
-            background-color: transparent;
-            transition: all 0.3s ease;
-        }
-
-        #main-header.scrolled-header {
-            background-color: var(--card-bg-light);
-        }
-
-        /* Adjust nav links for transparent header */
-        .nav-links a, #theme-toggle, #hamburger-button {
-            color: white;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Change color when header becomes solid */
-        #main-header.scrolled-header .nav-links a,
-        #main-header.scrolled-header #theme-toggle,
-        #main-header.scrolled-header #hamburger-button {
-            color: var(--text-light);
-            text-shadow: none;
-        }
-
-        /* Logo color adjustment */
-        #main-header .text-skin-primary {
-            color: white;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-        }
-
-        #main-header.scrolled-header .text-skin-primary {
-            color: var(--primary-light);
-            text-shadow: none;
-        }
-        /* Sticky Header Effect */
-        .scrolled-header {
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            background-color: var(--card-bg-light);
-        }
-
-        /* FAQ Accordion Styling */
-        .accordion-header {
-            cursor: pointer;
-            padding: 1rem;
-            border-bottom: 1px solid var(--border-light);
-            transition: background-color 0.3s ease;
-        }
-        .accordion-header:hover {
-            background-color: var(--border-light);
-        }
-        .accordion-content {
-            padding: 1rem;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
-        }
-        .accordion-item.active .accordion-content {
-            max-height: 200px; /* Adjust based on expected content height */
-            padding: 1rem;
-        }
-    </style>
+    <!-- Lien vers le fichier CSS externe -->
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="text-skin-base"> <!-- Removed bg-skin-base class here as background is handled by CSS -->
-    <!-- Header -->
-    <header class="bg-skin-card shadow-sm fixed w-full z-50 transition-all duration-300" id="main-header">
+<body class="text-skin-base">
+    <!-- En-tête -->
+    <header class="shadow-sm fixed w-full z-50 transition-all duration-300" id="main-header">
         <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
             <a href="#" class="text-2xl font-bold text-skin-primary rounded-md">WebFast DZ</a>
             <div class="hidden md:flex items-center space-x-6 nav-links">
-                <a href="#hero" class="text-skin-base hover:text-skin-primary font-medium transition-colors duration-300 rounded-md">Accueil</a>
-                <a href="#services" class="text-skin-base hover:text-skin-primary font-medium transition-colors duration-300 rounded-md">Services</a>
-                <a href="#portfolio" class="text-skin-base hover:text-skin-primary font-medium transition-colors duration-300 rounded-md">Portfolio</a>
-                <a href="#testimonials" class="text-skin-base hover:text-skin-primary font-medium transition-colors duration-300 rounded-md">Témoignages</a>
-                <a href="#about" class="text-skin-base hover:text-skin-primary font-medium transition-colors duration-300 rounded-md">À Propos</a>
-                <a href="#faq" class="text-skin-base hover:text-skin-primary font-medium transition-colors duration-300 rounded-md">FAQ</a>
-                <a href="#contact" class="text-skin-base hover:text-skin-primary font-medium transition-colors duration-300 rounded-md">Contact</a>
+                <a href="#hero" class="hover:text-skin-primary font-medium transition-colors duration-300 rounded-md">Accueil</a>
+                <a href="#services" class="hover:text-skin-primary font-medium transition-colors duration-300 rounded-md">Services</a>
+                <a href="#portfolio" class="hover:text-skin-primary font-medium transition-colors duration-300 rounded-md">Portfolio</a>
+                <a href="#testimonials" class="hover:text-skin-primary font-medium transition-colors duration-300 rounded-md">Témoignages</a>
+                <a href="#about" class="hover:text-skin-primary font-medium transition-colors duration-300 rounded-md">À Propos</a>
+                <a href="#faq" class="hover:text-skin-primary font-medium transition-colors duration-300 rounded-md">FAQ</a>
+                <a href="#contact" class="hover:text-skin-primary font-medium transition-colors duration-300 rounded-md">Contact</a>
             </div>
             <div class="flex items-center space-x-4">
-                <!-- Dark Mode Toggle Button -->
+                <!-- Bouton de bascule du mode clair/sombre -->
                 <button id="theme-toggle" class="p-2 rounded-full text-skin-base hover:bg-skin-base transition-colors duration-300">
                     <i class="fas fa-moon text-xl" id="theme-icon"></i>
                 </button>
-                <!-- Hamburger Menu for Mobile -->
+                <!-- Bouton du menu hamburger pour mobile -->
                 <button id="hamburger-button" class="hamburger-menu p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-skin-primary">
                     <i class="fas fa-bars text-xl"></i>
                 </button>
@@ -205,54 +47,53 @@
     </header>
 
     <main>
-        <!-- Hero Section avec fondu transparent propre -->
-<section id="hero" class="relative h-screen flex items-center justify-center text-center px-4 overflow-hidden">
-    <!-- Conteneur de l'image avec double effet -->
-    <div class="absolute inset-0">
-    <!-- Image de fond -->
-    <img src="1338694.png" alt="Background" class="w-full h-full object-cover object-center">
-    
-    <!-- Overlay modifié pour transition vers transparent -->
-    <div class="absolute inset-0"
-         style="background: linear-gradient(to bottom,
-                  rgba(0, 0, 0, 0.59) 0%,
-                  rgba(0,0,0,0.4) 50%,
-                  rgba(0, 0, 0, 0.2) 80%,
-                  rgba(0, 0, 0, 0) 100%);"></div>
-</div>
-    
-    <!-- Contenu -->
-    <div class="relative z-10 text-white max-w-4xl mx-auto p-6 bg-black bg-opacity-45 rounded-lg shadow-xl">
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-4 leading-tight">
-            Votre Vision Digitale, Notre Expertise Code
-        </h1>
-        <p class="text-lg sm:text-xl mb-8 font-light">
-            Spécialisés dans la création de sites statiques optimisés, plateformes WordPress sur mesure, et stratégies SEO performantes pour maximiser votre impact en ligne.
-        </p>
-        <a href="#portfolio" class="inline-block bg-blue-600 hover:bg-blue-700 py-3 px-8 rounded-full text-lg font-semibold transition-all duration-300 shadow-lg">
-            Découvrez Nos Projets
-        </a>
-    </div>
-</section>
+        <!-- Section Hero avec fondu transparent propre -->
+        <section id="hero" class="relative h-screen flex items-center justify-center text-center px-4 overflow-hidden">
+            <!-- Conteneur de l'image avec double effet -->
+            <div class="absolute inset-0">
+                <!-- Image de fond du hero (remplacez par votre image professionnelle) -->
+                <img src="1338694.png" alt="Image de fond Hero" class="w-full h-full object-cover object-center">
+                <!-- Overlay pour la transition vers transparent -->
+                <div class="absolute inset-0"
+                     style="background: linear-gradient(to bottom,
+                              rgba(0, 0, 0, 0.59) 0%,
+                              rgba(0,0,0,0.4) 50%,
+                              rgba(0, 0, 0, 0.2) 80%,
+                              rgba(0, 0, 0, 0) 100%);"></div>
+            </div>
+            
+            <!-- Contenu du hero -->
+            <div class="relative z-10 text-white max-w-4xl mx-auto p-6 bg-black bg-opacity-45 rounded-lg shadow-xl" data-aos="fade-up" data-aos-duration="1000">
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-4 leading-tight">
+                    Votre Vision Digitale, Notre Expertise Code
+                </h1>
+                <p class="text-lg sm:text-xl mb-8 font-light">
+                    Spécialisés dans la création de sites statiques optimisés, plateformes WordPress sur mesure, et stratégies SEO performantes pour maximiser votre impact en ligne.
+                </p>
+                <a href="#portfolio" class="inline-block bg-blue-600 hover:bg-blue-700 py-3 px-8 rounded-full text-lg font-semibold transition-all duration-300 shadow-lg">
+                    Découvrez Nos Projets
+                </a>
+            </div>
+        </section>
 
-        <!-- Our Strengths Section -->
+        <!-- Section Nos Points Forts -->
         <section id="strengths" class="py-16 transition-colors duration-300">
             <div class="container mx-auto px-4">
                 <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12 text-skin-base" data-aos="fade-up" data-aos-duration="800">Nos Points Forts</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- Strength 1: Expertise Technique -->
+                    <!-- Point Fort 1: Expertise Technique -->
                     <div class="bg-skin-card p-8 rounded-lg shadow-md border border-skin-base flex flex-col items-center text-center transition-colors duration-300" data-aos="fade-up" data-aos-delay="100">
                         <i class="fas fa-code text-5xl text-skin-primary mb-4"></i>
                         <h3 class="text-xl font-semibold mb-2 text-skin-base">Expertise Technique</h3>
                         <p class="text-skin-secondary">Nous maîtrisons les dernières technologies pour des solutions web robustes et innovantes.</p>
                     </div>
-                    <!-- Strength 2: Approche Personnalisée -->
+                    <!-- Point Fort 2: Approche Personnalisée -->
                     <div class="bg-skin-card p-8 rounded-lg shadow-md border border-skin-base flex flex-col items-center text-center transition-colors duration-300" data-aos="fade-up" data-aos-delay="200">
                         <i class="fas fa-handshake text-5xl text-skin-primary mb-4"></i>
                         <h3 class="text-xl font-semibold mb-2 text-skin-base">Approche Personnalisée</h3>
                         <p class="text-skin-secondary">Chaque projet est unique et nous concevons des solutions adaptées à vos besoins spécifiques.</p>
                     </div>
-                    <!-- Strength 3: Support Dédicacé -->
+                    <!-- Point Fort 3: Support Dédicacé -->
                     <div class="bg-skin-card p-8 rounded-lg shadow-md border border-skin-base flex flex-col items-center text-center transition-colors duration-300" data-aos="fade-up" data-aos-delay="300">
                         <i class="fas fa-life-ring text-5xl text-skin-primary mb-4"></i>
                         <h3 class="text-xl font-semibold mb-2 text-skin-base">Support Dédicacé</h3>
@@ -262,12 +103,12 @@
             </div>
         </section>
 
-        <!-- Services Overview Section -->
+        <!-- Section Aperçu des Services -->
         <section class="py-16 bg-skin-card transition-colors duration-300 border-t border-skin-base">
             <div class="container mx-auto px-4">
                 <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12 text-skin-base" data-aos="fade-up" data-aos-duration="800">Nos Services</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Service 1: Static Sites -->
+                    <!-- Service 1: Sites Statiques -->
                     <a href="#static-sites" class="bg-skin-base p-6 rounded-lg shadow-md border border-skin-base flex flex-col items-center text-center hover:shadow-lg transition-all duration-300 group" data-aos="fade-up" data-aos-delay="100">
                         <i class="fas fa-rocket text-4xl text-skin-primary mb-4 group-hover:scale-110 transition-transform"></i>
                         <h3 class="text-xl font-semibold mb-2 text-skin-base group-hover:text-skin-primary">Sites Statiques</h3>
@@ -291,7 +132,7 @@
                         <h3 class="text-xl font-semibold mb-2 text-skin-base group-hover:text-skin-primary">Maintenance & Support</h3>
                         <p class="text-skin-secondary">Pérennité et sécurité de votre site.</p>
                     </a>
-                    <!-- Service 5: Hosting -->
+                    <!-- Service 5: Hébergement -->
                     <a href="#web-hosting" class="bg-skin-base p-6 rounded-lg shadow-md border border-skin-base flex flex-col items-center text-center hover:shadow-lg transition-all duration-300 group" data-aos="fade-up" data-aos-delay="500">
                         <i class="fas fa-server text-4xl text-skin-primary mb-4 group-hover:scale-110 transition-transform"></i>
                         <h3 class="text-xl font-semibold mb-2 text-skin-base group-hover:text-skin-primary">Hébergement Web</h3>
@@ -301,12 +142,12 @@
             </div>
         </section>
 
-        <!-- Detailed Services Section -->
+        <!-- Section Services Détaillés -->
         <section id="services" class="py-16 transition-colors duration-300">
             <div class="container mx-auto px-4">
                 <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12 text-skin-base" data-aos="fade-up" data-aos-duration="800">Services Détaillés</h2>
 
-                <!-- Static Sites Section -->
+                <!-- Section Sites Statiques -->
                 <div id="static-sites" class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-16 p-8 bg-skin-card rounded-lg shadow-md border border-skin-base transition-colors duration-300" data-aos="fade-up">
                     <div class="md:order-2">
                         <img src="static.jpg" alt="Illustration de site statique rapide" class="rounded-lg shadow-lg w-full h-auto object-cover">
@@ -331,7 +172,7 @@
                     </div>
                 </div>
 
-                <!-- WordPress Sites Section -->
+                <!-- Section Sites WordPress -->
                 <div id="wordpress-sites" class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-16 p-8 bg-skin-card rounded-lg shadow-md border border-skin-base transition-colors duration-300" data-aos="fade-up">
                     <div class="md:order-1">
                         <img src="20240524092608.jpg" alt="Illustration de site WordPress flexible" class="rounded-lg shadow-lg w-full h-auto object-cover">
@@ -353,7 +194,7 @@
                     </div>
                 </div>
 
-                <!-- SEO Optimization Section -->
+                <!-- Section Optimisation SEO -->
                 <div id="seo-optimization" class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-16 p-8 bg-skin-card rounded-lg shadow-md border border-skin-base transition-colors duration-300" data-aos="fade-up">
                     <div class="md:order-2">
                         <img src="Search-Engine-Optimization.jpg" alt="Illustration d'optimisation SEO" class="rounded-lg shadow-lg w-full h-auto object-cover">
@@ -378,7 +219,7 @@
                     </div>
                 </div>
 
-                <!-- Maintenance & Support Section -->
+                <!-- Section Maintenance & Support -->
                 <div id="maintenance-support" class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-16 p-8 bg-skin-card rounded-lg shadow-md border border-skin-base transition-colors duration-300" data-aos="fade-up">
                     <div class="md:order-1">
                         <img src="360_F_216032911_ucJ5iqmB8dWrQ3xlahj9evv4D3qfqdVb.jpg" alt="Illustration d'équipe support" class="rounded-lg shadow-lg w-full h-auto object-cover">
@@ -403,7 +244,7 @@
                     </div>
                 </div>
 
-                <!-- Web Hosting Section -->
+                <!-- Section Hébergement Web -->
                 <div id="web-hosting" class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center p-8 bg-skin-card rounded-lg shadow-md border border-skin-base transition-colors duration-300" data-aos="fade-up">
                     <div class="md:order-2">
                         <img src="what-is-web-hosting-1.jpg" alt="Illustration de serveur web" class="rounded-lg shadow-lg w-full h-auto object-cover">
@@ -430,12 +271,12 @@
             </div>
         </section>
 
-        <!-- Portfolio Section -->
+        <!-- Section Portfolio -->
         <section id="portfolio" class="py-16 bg-skin-card transition-colors duration-300 border-t border-skin-base">
             <div class="container mx-auto px-4">
                 <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12 text-skin-base" data-aos="fade-up" data-aos-duration="800">Notre Portfolio</h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Project 1 -->
+                    <!-- Projet 1 -->
                     <div class="relative bg-skin-base rounded-lg shadow-md overflow-hidden group border border-skin-base transition-colors duration-300" data-aos="fade-up" data-aos-delay="100">
                         <img src="https://placehold.co/600x400/34D399/ffffff?text=Projet+E-commerce" alt="Projet E-commerce" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
                         <div class="p-6">
@@ -444,7 +285,7 @@
                             <a href="#" class="text-skin-primary hover:underline font-medium">Voir le projet <i class="fas fa-arrow-right ml-1"></i></a>
                         </div>
                     </div>
-                    <!-- Project 2 -->
+                    <!-- Projet 2 -->
                     <div class="relative bg-skin-base rounded-lg shadow-md overflow-hidden group border border-skin-base transition-colors duration-300" data-aos="fade-up" data-aos-delay="200">
                         <img src="https://placehold.co/600x400/FACC15/ffffff?text=Site+Vitrine" alt="Site Vitrine" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
                         <div class="p-6">
@@ -453,7 +294,7 @@
                             <a href="#" class="text-skin-primary hover:underline font-medium">Voir le projet <i class="fas fa-arrow-right ml-1"></i></a>
                         </div>
                     </div>
-                    <!-- Project 3 -->
+                    <!-- Projet 3 -->
                     <div class="relative bg-skin-base rounded-lg shadow-md overflow-hidden group border border-skin-base transition-colors duration-300" data-aos="fade-up" data-aos-delay="300">
                         <img src="https://placehold.co/600x400/A78BFA/ffffff?text=Application+Web" alt="Application Web" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
                         <div class="p-6">
@@ -462,7 +303,7 @@
                             <a href="#" class="text-skin-primary hover:underline font-medium">Voir le projet <i class="fas fa-arrow-right ml-1"></i></a>
                         </div>
                     </div>
-                    <!-- Project 4 -->
+                    <!-- Projet 4 -->
                     <div class="relative bg-skin-base rounded-lg shadow-md overflow-hidden group border border-skin-base transition-colors duration-300" data-aos="fade-up" data-aos-delay="400">
                         <img src="https://placehold.co/600x400/EC4899/ffffff?text=Portfolio+Artiste" alt="Portfolio Artiste" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
                         <div class="p-6">
@@ -471,7 +312,7 @@
                             <a href="#" class="text-skin-primary hover:underline font-medium">Voir le projet <i class="fas fa-arrow-right ml-1"></i></a>
                         </div>
                     </div>
-                    <!-- Project 5 -->
+                    <!-- Projet 5 -->
                     <div class="relative bg-skin-base rounded-lg shadow-md overflow-hidden group border border-skin-base transition-colors duration-300" data-aos="fade-up" data-aos-delay="500">
                         <img src="https://placehold.co/600x400/60A5FA/ffffff?text=Blog+Entreprise" alt="Blog Entreprise" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
                         <div class="p-6">
@@ -480,7 +321,7 @@
                             <a href="#" class="text-skin-primary hover:underline font-medium">Voir le projet <i class="fas fa-arrow-right ml-1"></i></a>
                         </div>
                     </div>
-                    <!-- Project 6 -->
+                    <!-- Projet 6 -->
                     <div class="relative bg-skin-base rounded-lg shadow-md overflow-hidden group border border-skin-base transition-colors duration-300" data-aos="fade-up" data-aos-delay="600">
                         <img src="https://placehold.co/600x400/84CC16/ffffff?text=Site+Evenementiel" alt="Site Événementiel" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
                         <div class="p-6">
@@ -493,12 +334,12 @@
             </div>
         </section>
 
-        <!-- Testimonials Section -->
+        <!-- Section Témoignages -->
         <section id="testimonials" class="py-16 transition-colors duration-300 border-t border-skin-base">
             <div class="container mx-auto px-4">
                 <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12 text-skin-base" data-aos="fade-up" data-aos-duration="800">Ce que nos clients disent</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Testimonial 1 -->
+                    <!-- Témoignage 1 -->
                     <div class="bg-skin-card p-6 rounded-lg shadow-md border border-skin-base transition-colors duration-300 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
                         <p class="text-skin-secondary italic mb-4">"L'équipe a dépassé toutes nos attentes. Notre nouveau site est non seulement magnifique, mais il est aussi incroyablement performant. Un grand merci pour leur professionnalisme !"</p>
                         <div>
@@ -506,7 +347,7 @@
                             <p class="text-skin-secondary text-sm">PDG, Entreprise Alpha</p>
                         </div>
                     </div>
-                    <!-- Testimonial 2 -->
+                    <!-- Témoignage 2 -->
                     <div class="bg-skin-card p-6 rounded-lg shadow-md border border-skin-base transition-colors duration-300 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="200">
                         <p class="text-skin-secondary italic mb-4">"Le support est exceptionnel et l'approche personnalisée nous a vraiment aidés à donner vie à notre vision. Nous recommandons vivement leurs services."</p>
                         <div>
@@ -514,7 +355,7 @@
                             <p class="text-skin-secondary text-sm">Directrice Marketing, Société Beta</p>
                         </div>
                     </div>
-                    <!-- Testimonial 3 -->
+                    <!-- Témoignage 3 -->
                     <div class="bg-skin-card p-6 rounded-lg shadow-md border border-skin-base transition-colors duration-300 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="300">
                         <p class="text-skin-secondary italic mb-4">"Grâce à leur expertise SEO, notre trafic a doublé en quelques mois. L'investissement a été largement rentabilisé. Un partenaire de confiance !"</p>
                         <div>
@@ -526,12 +367,13 @@
             </div>
         </section>
 
-        <!-- About Us Section -->
+        <!-- Section À Propos de Nous -->
         <section id="about" class="py-16 bg-skin-card transition-colors duration-300 border-t border-skin-base">
             <div class="container mx-auto px-4">
                 <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12 text-skin-base" data-aos="fade-up" data-aos-duration="800">À Propos de Nous</h2>
                 <div class="flex flex-col md:flex-row items-center gap-8">
                     <div class="md:w-1/2" data-aos="fade-right" data-aos-duration="800">
+                        <!-- Image de l'esprit d'agence (remplacez par votre image professionnelle) -->
                         <img src="https://placehold.co/800x600/374151/ffffff?text=Esprit+d'Agence" alt="Esprit d'Agence" class="rounded-lg shadow-lg w-full h-auto object-cover">
                     </div>
                     <div class="md:w-1/2 text-center md:text-left" data-aos="fade-left" data-aos-duration="800">
@@ -544,12 +386,12 @@
             </div>
         </section>
 
-        <!-- FAQ Section -->
+        <!-- Section FAQ -->
         <section id="faq" class="py-16 transition-colors duration-300 border-t border-skin-base">
             <div class="container mx-auto px-4">
                 <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12 text-skin-base" data-aos="fade-up" data-aos-duration="800">Questions Fréquemment Posées</h2>
                 <div class="max-w-3xl mx-auto">
-                    <!-- FAQ Item 1 -->
+                    <!-- Élément FAQ 1 -->
                     <div class="bg-skin-card rounded-lg shadow-md border border-skin-base mb-4 overflow-hidden transition-colors duration-300 accordion-item" data-aos="fade-up" data-aos-delay="100">
                         <div class="accordion-header p-4 flex justify-between items-center text-skin-base font-semibold">
                             <span>Quels types de sites web créez-vous ?</span>
@@ -559,7 +401,7 @@
                             Nous créons une large gamme de sites web, des sites statiques ultra-rapides pour les portfolios et les landing pages, aux sites dynamiques complexes sous WordPress pour les blogs, les e-commerces et les portails d'entreprise.
                         </div>
                     </div>
-                    <!-- FAQ Item 2 -->
+                    <!-- Élément FAQ 2 -->
                     <div class="bg-skin-card rounded-lg shadow-md border border-skin-base mb-4 overflow-hidden transition-colors duration-300 accordion-item" data-aos="fade-up" data-aos-delay="200">
                         <div class="accordion-header p-4 flex justify-between items-center text-skin-base font-semibold">
                             <span>Combien coûte la création d'un site web ?</span>
@@ -569,7 +411,7 @@
                             Le coût d'un site web varie considérablement en fonction de la complexité, des fonctionnalités requises et du contenu. Nous offrons des devis personnalisés après avoir discuté de vos besoins spécifiques lors d'une consultation gratuite.
                         </div>
                     </div>
-                    <!-- FAQ Item 3 -->
+                    <!-- Élément FAQ 3 -->
                     <div class="bg-skin-card rounded-lg shadow-md border border-skin-base mb-4 overflow-hidden transition-colors duration-300 accordion-item" data-aos="fade-up" data-aos-delay="300">
                         <div class="accordion-header p-4 flex justify-between items-center text-skin-base font-semibold">
                             <span>Offrez-vous des services de maintenance et de support ?</span>
@@ -579,7 +421,7 @@
                             Oui, absolument ! Nous proposons des forfaits de maintenance complets incluant les mises à jour, les sauvegardes, la sécurité proactive et un support technique dédié pour assurer le bon fonctionnement de votre site sur le long terme.
                         </div>
                     </div>
-                    <!-- FAQ Item 4 -->
+                    <!-- Élément FAQ 4 -->
                     <div class="bg-skin-card rounded-lg shadow-md border border-skin-base mb-4 overflow-hidden transition-colors duration-300 accordion-item" data-aos="fade-up" data-aos-delay="400">
                         <div class="accordion-header p-4 flex justify-between items-center text-skin-base font-semibold">
                             <span>Combien de temps faut-il pour créer un site web ?</span>
@@ -593,12 +435,12 @@
             </div>
         </section>
 
-        <!-- Contact Section -->
+        <!-- Section Contact -->
         <section id="contact" class="py-16 bg-skin-card transition-colors duration-300 border-t border-skin-base">
             <div class="container mx-auto px-4">
                 <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12 text-skin-base" data-aos="fade-up" data-aos-duration="800">Contactez-Nous</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                    <!-- Contact Form -->
+                    <!-- Formulaire de contact -->
                     <div class="bg-skin-base p-8 rounded-lg shadow-md border border-skin-base transition-colors duration-300" data-aos="fade-right" data-aos-duration="800">
                         <h3 class="text-2xl font-semibold mb-6 text-skin-base">Envoyez-nous un message</h3>
                         <form id="contact-form">
@@ -633,7 +475,7 @@
                         </form>
                     </div>
 
-                    <!-- Contact Info & Map -->
+                    <!-- Coordonnées & Carte -->
                     <div>
                         <div class="bg-skin-base p-8 rounded-lg shadow-md border border-skin-base mb-8 transition-colors duration-300" data-aos="fade-left" data-aos-duration="800">
                             <h3 class="text-2xl font-semibold mb-6 text-skin-base">Nos Coordonnées</h3>
@@ -646,7 +488,7 @@
                                 <a href="https://instagram.com/votreagence" target="_blank" class="text-skin-secondary hover:text-skin-primary transition-colors duration-300"><i class="fab fa-instagram text-2xl"></i></a>
                             </div>
                         </div>
-                        <!-- Google Map Placeholder -->
+                        <!-- Placeholder Google Map -->
                         <div class="bg-skin-base rounded-lg shadow-md overflow-hidden border border-skin-base transition-colors duration-300" data-aos="fade-up" data-aos-delay="200">
                             <iframe
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.9916298516147!2d2.29229261567439!3d48.85837007928731!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e29623e1d6d%3A0x6b2e1f5791a8!2sTour%20Eiffel!5e0!3m2!1sfr!2sfr!4v1678901234567!5m2!1sfr!2sfr"
@@ -659,12 +501,12 @@
         </section>
     </main>
 
-    <!-- Back to Top Button -->
+    <!-- Bouton Retour en haut -->
     <button id="back-to-top" class="fixed bottom-6 right-6 btn-primary p-3 rounded-full shadow-lg hover:opacity-90 transition-opacity duration-300 hidden">
         <i class="fas fa-arrow-up text-xl"></i>
     </button>
 
-    <!-- Footer -->
+    <!-- Pied de page -->
     <footer class="bg-skin-card py-8 border-t border-skin-base transition-colors duration-300">
         <div class="container mx-auto px-4 text-center text-skin-secondary">
             <div class="flex flex-col md:flex-row justify-center items-center mb-4 space-y-2 md:space-y-0 md:space-x-6">
@@ -678,195 +520,9 @@
         </div>
     </footer>
 
-    <!-- AOS JavaScript -->
+    <!-- BON ordre -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        // Initialize AOS
-        AOS.init({
-            once: true, // Whether animation should happen only once - while scrolling down
-            duration: 800, // Values from 0 to 3000, with step 50ms
-        });
+    <script src="script.js"></script>
 
-        // JavaScript for Light/Dark Mode Toggle
-        const themeToggleBtn = document.getElementById('theme-toggle');
-        const themeIcon = document.getElementById('theme-icon');
-        const body = document.body;
-
-        // Function to apply theme
-        function applyTheme(theme) {
-            if (theme === 'dark') {
-                body.classList.add('dark');
-                themeIcon.classList.remove('fa-moon');
-                themeIcon.classList.add('fa-sun');
-            } else {
-                body.classList.remove('dark');
-                themeIcon.classList.remove('fa-sun');
-                themeIcon.classList.add('fa-moon');
-            }
-        }
-
-        // Check for saved theme preference on page load
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme) {
-            applyTheme(savedTheme);
-        } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            // If no saved theme, check system preference
-            applyTheme('dark');
-        } else {
-            // Default to light theme
-            applyTheme('light');
-        }
-
-        // Event listener for theme toggle button
-        themeToggleBtn.addEventListener('click', () => {
-            if (body.classList.contains('dark')) {
-                applyTheme('light');
-                localStorage.setItem('theme', 'light');
-            } else {
-                applyTheme('dark');
-                localStorage.setItem('theme', 'dark');
-            }
-        });
-
-        // JavaScript for Mobile Navigation Toggle
-        const hamburgerButton = document.getElementById('hamburger-button');
-        const navLinks = document.querySelector('.nav-links'); // Select the correct element for mobile nav
-        const headerNavLinks = document.querySelectorAll('header .nav-links a'); // Select all nav links inside header
-
-        hamburgerButton.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-
-        // Close mobile menu when a link is clicked
-        headerNavLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                if (navLinks.classList.contains('active')) {
-                    navLinks.classList.remove('active');
-                }
-            });
-        });
-
-        // JavaScript for Contact Form Validation
-        const contactForm = document.getElementById('contact-form');
-        const formMessage = document.getElementById('form-message');
-
-        contactForm.addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent default form submission
-
-            let isValid = true;
-            const name = document.getElementById('name');
-            const email = document.getElementById('email');
-            const subject = document.getElementById('subject');
-            const message = document.getElementById('message');
-
-            // Reset error messages
-            document.getElementById('name-error').classList.add('hidden');
-            document.getElementById('email-error').classList.add('hidden');
-            document.getElementById('subject-error').classList.add('hidden');
-            document.getElementById('message-error').classList.add('hidden');
-            formMessage.classList.add('hidden');
-
-            // Validate Name
-            if (name.value.trim() === '') {
-                document.getElementById('name-error').classList.remove('hidden');
-                isValid = false;
-            }
-
-            // Validate Email
-            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (email.value.trim() === '' || !emailPattern.test(email.value.trim())) {
-                document.getElementById('email-error').classList.remove('hidden');
-                isValid = false;
-            }
-
-            // Validate Subject
-            if (subject.value.trim() === '') {
-                document.getElementById('subject-error').classList.remove('hidden');
-                isValid = false;
-            }
-
-            // Validate Message
-            if (message.value.trim() === '') {
-                document.getElementById('message-error').classList.remove('hidden');
-                isValid = false;
-            }
-
-            if (isValid) {
-                // In a real scenario, you would send this data to a server
-                // For demonstration, we just show a success message
-                formMessage.classList.remove('hidden', 'text-red-500');
-                formMessage.classList.add('bg-green-100', 'text-green-700');
-                formMessage.textContent = 'Votre message a été envoyé avec succès ! Nous vous répondrons bientôt.';
-                contactForm.reset(); // Clear the form
-            } else {
-                formMessage.classList.remove('hidden', 'bg-green-100', 'text-green-700');
-                formMessage.classList.add('bg-red-100', 'text-red-700');
-                formMessage.textContent = 'Veuillez corriger les erreurs dans le formulaire.';
-            }
-        });
-
-        // JavaScript for FAQ Accordion
-        const accordionHeaders = document.querySelectorAll('.accordion-header');
-
-        accordionHeaders.forEach(header => {
-            header.addEventListener('click', () => {
-                const accordionItem = header.closest('.accordion-item');
-                const accordionContent = header.nextElementSibling;
-                const chevronIcon = header.querySelector('.fa-chevron-down');
-
-                // Toggle active class on the item
-                accordionItem.classList.toggle('active');
-
-                // Toggle max-height for smooth transition
-                if (accordionItem.classList.contains('active')) {
-                    accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
-                    chevronIcon.style.transform = 'rotate(180deg)';
-                } else {
-                    accordionContent.style.maxHeight = '0';
-                    chevronIcon.style.transform = 'rotate(0deg)';
-                }
-
-                // Close other open accordions
-                accordionHeaders.forEach(otherHeader => {
-                    if (otherHeader !== header) {
-                        const otherItem = otherHeader.closest('.accordion-item');
-                        if (otherItem.classList.contains('active')) {
-                            otherItem.classList.remove('active');
-                            otherHeader.nextElementSibling.style.maxHeight = '0';
-                            otherHeader.querySelector('.fa-chevron-down').style.transform = 'rotate(0deg)';
-                        }
-                    }
-                });
-            });
-        });
-
-        // JavaScript for Sticky Header Effect
-        const mainHeader = document.getElementById('main-header');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 0) {
-                mainHeader.classList.add('scrolled-header');
-            } else {
-                mainHeader.classList.remove('scrolled-header');
-            }
-        });
-
-        // JavaScript for Back to Top Button
-        const backToTopButton = document.getElementById('back-to-top');
-
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) { // Show button after scrolling 300px
-                backToTopButton.classList.remove('hidden');
-            } else {
-                backToTopButton.classList.add('hidden');
-            }
-        });
-
-        backToTopButton.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-    </script>
 </body>
 </html>

@@ -1,0 +1,158 @@
+/* Base styles using CSS variables for theme switching */
+:root {
+    --bg-light: #f3f4f6; /* Soft light gray for general background */
+    --text-light: #1f2937; /* Dark gray for main text */
+    --primary-light: #1d4ed8; /* Deeper blue for primary elements */
+    --secondary-light: #4b5563; /* Medium gray for secondary text */
+    --card-bg-light: #ffffff; /* White for card backgrounds */
+    --border-light: #e5e7eb; /* Light gray for borders */
+    --link-hover-light: #2563eb; /* Blue for link hovers */
+    /* New background gradient colors for light mode */
+    --gradient-start-light: rgba(0, 0, 0, 0.188); /* Semi-transparent white */
+    --gradient-end-light: rgba(0, 0, 0, 0.553); /* Semi-transparent light gray */
+}
+
+.dark {
+    --bg-light: #111827; /* Dark charcoal for general background */
+    --text-light: #e5e7eb; /* Off-white for main text */
+    --primary-light: #60a5fa; /* Lighter blue for primary elements */
+    --secondary-light: #9ca3af; /* Light gray for secondary text */
+    --card-bg-light: #1f2937f9; /* Darker gray for card backgrounds */
+    --border-light: #374151; /* Darker gray for borders */
+    --link-hover-light: #3b82f6; /* Blue for link hovers */
+    /* New background gradient colors for dark mode */
+    --gradient-start-dark: rgba(0, 0, 0, 0.8); /* Semi-transparent black */
+    --gradient-end-dark: rgba(17, 24, 39, 0.8); /* Semi-transparent dark charcoal */
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-light);
+    transition: color 0.3s ease;
+    scroll-behavior: smooth;
+    /* Gradient on top, then the image */
+    background-image: radial-gradient(at top left, var(--gradient-start-light), var(--gradient-end-light)), url('programming-background-with-person-working-with-codes-computer.jpg');
+    background-size: cover, cover; /* cover for both */
+    background-position: center, center; /* center for both */
+    background-attachment: fixed, fixed; /* Keep both fixed */
+    background-repeat: no-repeat, no-repeat;
+    background-blend-mode: overlay, normal; /* Blend gradient over image to create light/dark effect */
+    background-color: var(--bg-light); /* Fallback */
+    transition: background-image 0.3s ease, background-color 0.3s ease;
+}
+
+.dark body {
+    background-image: radial-gradient(at top left, var(--gradient-start-dark), var(--gradient-end-dark)), url('abstract-black-lines-geometric-background_677411-2748.avif');
+    background-color: var(--bg-light); /* Fallback for dark mode */
+}
+
+/* Apply dynamic colors using Tailwind's arbitrary values */
+.text-skin-base { color: var(--text-light); }
+.text-skin-primary { color: var(--primary-light); }
+.text-skin-secondary { color: var(--secondary-light); }
+.bg-skin-card { background-color: var(--card-bg-light); }
+.border-skin-base { border-color: var(--border-light); }
+.btn-primary {
+    background-color: var(--primary-light);
+    color: var(--card-bg-light); /* White text on primary button */
+}
+.btn-primary:hover {
+    opacity: 0.9;
+}
+
+/* Hamburger menu styling */
+.hamburger-menu {
+    display: none; /* Hidden by default on larger screens */
+}
+
+@media (max-width: 767px) {
+    .hamburger-menu {
+        display: block;
+    }
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 4rem; /* Below header */
+        left: 0;
+        width: 100%;
+        background-color: var(--bg-light); /* Use current bg for mobile menu */
+        border-bottom: 1px solid var(--border-light);
+        padding: 1rem 0;
+        z-index: 1000;
+    }
+    .nav-links.active {
+        display: flex;
+    }
+    .nav-links a {
+        padding: 0.75rem 1.5rem;
+        text-align: center;
+        border-bottom: 1px solid var(--border-light);
+    }
+    .nav-links a:last-child {
+        border-bottom: none;
+    }
+}
+
+/* Header Transparency Effect */
+#main-header {
+    background-color: transparent;
+    transition: all 0.3s ease;
+}
+
+#main-header.scrolled-header {
+    background-color: var(--card-bg-light);
+}
+
+/* Adjust nav links for transparent header */
+#main-header .nav-links a, #main-header #theme-toggle, #main-header #hamburger-button {
+    color: white;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Change color when header becomes solid */
+#main-header.scrolled-header .nav-links a,
+#main-header.scrolled-header #theme-toggle,
+#main-header.scrolled-header #hamburger-button {
+    color: var(--text-light);
+    text-shadow: none;
+}
+
+/* Logo color adjustment */
+#main-header .text-skin-primary {
+    color: white;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+#main-header.scrolled-header .text-skin-primary {
+    color: var(--primary-light);
+    text-shadow: none;
+}
+
+/* Sticky Header Effect (redundant with above, but kept for clarity) */
+.scrolled-header {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    background-color: var(--card-bg-light);
+}
+
+/* FAQ Accordion Styling */
+.accordion-header {
+    cursor: pointer;
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-light);
+    transition: background-color 0.3s ease;
+}
+.accordion-header:hover {
+    background-color: var(--border-light);
+}
+.accordion-content {
+    padding: 1rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+}
+.accordion-item.active .accordion-content {
+    max-height: 200px;
+    padding: 1rem;
+    transition: max-height 0.3s ease-in, padding 0.3s ease-in;
+}
