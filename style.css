@@ -162,13 +162,15 @@ body {
     background-color: var(--border-light);
 }
 .accordion-content {
-    padding: 1rem;
+    padding: 0 1rem;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease-out, padding 0.3s ease-out;
 }
+
 .accordion-item.active .accordion-content {
     max-height: 200px;
     padding: 1rem;
     transition: max-height 0.3s ease-in, padding 0.3s ease-in;
 }
+
