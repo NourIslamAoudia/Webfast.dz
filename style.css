@@ -212,6 +212,30 @@ body {
    GLOBAL SCROLL FIX
    ======================================== */
 
-body {
-    overflow-x: hidden;
+/* ✅ Solution pour supprimer définitivement le scroll horizontal */
+html, body {
+    overflow-x: hidden; /* Bloque le scroll horizontal */
+    width: 100%; /* Garantit que le body prend toute la largeur */
+    max-width: 100%; /* Empêche tout dépassement */
+}
+
+/* ✅ Correction pour les éléments qui pourraient causer un dépassement */
+.container {
+    width: 100%;
+    max-width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/* ✅ Correction pour les images et médias */
+img, video, iframe {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ✅ Correction spécifique pour les éléments flex/grid */
+.grid, .flex {
+    max-width: 100%;
 }
