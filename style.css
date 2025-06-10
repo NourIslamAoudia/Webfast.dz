@@ -17,7 +17,7 @@
     --text-light: #e5e7eb; /* Off-white for main text */
     --primary-light: #60a5fa; /* Lighter blue for primary elements */
     --secondary-light: #9ca3af; /* Light gray for secondary text */
-    --card-bg-light: #1f2937; /* Darker gray for card backgrounds */
+    --card-bg-light: #1f2937f7; /* Darker gray for card backgrounds */
     --border-light: #374151; /* Darker gray for borders */
     --link-hover-light: #3b82f6; /* Blue for link hovers */
     --gradient-start-dark: rgba(0, 0, 0, 0.8); /* Semi-transparent black */
