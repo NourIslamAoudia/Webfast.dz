@@ -1,8 +1,16 @@
+/* ========================================
+   INITIALIZATION & CONFIGURATION
+   ======================================== */
+
 // Initialize AOS (Animate On Scroll)
 AOS.init({
     once: true, // L'animation ne doit se produire qu'une seule fois - en défilant vers le bas
     duration: 800, // Valeurs de 0 à 3000, avec un pas de 50ms
 });
+
+/* ========================================
+   THEME MANAGEMENT (DARK/LIGHT MODE)
+   ======================================== */
 
 // JavaScript pour le basculement du mode clair/sombre
 const themeToggleBtn = document.getElementById('theme-toggle');
@@ -21,7 +29,6 @@ function applyTheme(theme) {
         themeIcon.classList.add('fa-moon');
     }
 }
-
 
 // Vérifier la préférence de thème enregistrée au chargement de la page
 const savedTheme = localStorage.getItem('theme');
@@ -46,6 +53,10 @@ themeToggleBtn.addEventListener('click', () => {
     }
 });
 
+/* ========================================
+   MOBILE NAVIGATION (HAMBURGER MENU)
+   ======================================== */
+
 // JavaScript pour le basculement de la navigation mobile (menu hamburger)
 const hamburgerButton = document.getElementById('hamburger-button');
 const navLinks = document.querySelector('.nav-links'); // Sélectionner l'élément correct pour la navigation mobile
@@ -63,6 +74,10 @@ headerNavLinks.forEach(link => {
         }
     });
 });
+
+/* ========================================
+   CONTACT FORM VALIDATION
+   ======================================== */
 
 // JavaScript pour la validation du formulaire de contact
 const contactForm = document.getElementById('contact-form');
@@ -123,6 +138,10 @@ contactForm.addEventListener('submit', function(event) {
     }
 });
 
+/* ========================================
+   FAQ ACCORDION FUNCTIONALITY
+   ======================================== */
+
 /// JavaScript pour l'accordéon FAQ
 document.addEventListener('DOMContentLoaded', function() {
     const accordionHeaders = document.querySelectorAll('.accordion-header');
@@ -175,6 +194,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+/* ========================================
+   HEADER SCROLL EFFECTS
+   ======================================== */
+
 // JavaScript pour l'effet d'en-tête collant (Sticky Header)
 const mainHeader = document.getElementById('main-header');
 window.addEventListener('scroll', () => {
@@ -184,6 +207,10 @@ window.addEventListener('scroll', () => {
         mainHeader.classList.remove('scrolled-header');
     }
 });
+
+/* ========================================
+   BACK TO TOP BUTTON
+   ======================================== */
 
 // JavaScript pour le bouton "Retour en haut"
 const backToTopButton = document.getElementById('back-to-top');
@@ -203,6 +230,9 @@ backToTopButton.addEventListener('click', () => {
     });
 });
 
+/* ========================================
+   DOCUMENT READY INITIALIZATION
+   ======================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
     const savedTheme = localStorage.getItem('theme');

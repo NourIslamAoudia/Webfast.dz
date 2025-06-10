@@ -1,3 +1,7 @@
+/* ========================================
+   CSS VARIABLES & THEME CONFIGURATION
+   ======================================== */
+
 /* Base styles using CSS variables for theme switching */
 :root {
     --bg-light: #f3f4f6; /* Soft light gray for general background */
@@ -24,6 +28,10 @@
     --gradient-end-dark: rgba(17, 24, 39, 0.8); /* Semi-transparent dark charcoal */
 }
 
+/* ========================================
+   GLOBAL BODY STYLES
+   ======================================== */
+
 body {
     font-family: 'Inter', sans-serif;
     color: var(--text-light);
@@ -45,6 +53,10 @@ body {
     background-color: var(--bg-light);
 }
 
+/* ========================================
+   MOBILE RESPONSIVE BACKGROUNDS
+   ======================================== */
+
 /* ✅ Image différente sur téléphone (écran < 768px) */
 @media (max-width: 768px) {
   body {
@@ -62,19 +74,29 @@ body {
   }
 }
 
+/* ========================================
+   UTILITY CLASSES
+   ======================================== */
+
 /* Apply dynamic colors using Tailwind's arbitrary values */
 .text-skin-base { color: var(--text-light); }
 .text-skin-primary { color: var(--primary-light); }
 .text-skin-secondary { color: var(--secondary-light); }
 .bg-skin-card { background-color: var(--card-bg-light); }
 .border-skin-base { border-color: var(--border-light); }
+
 .btn-primary {
     background-color: var(--primary-light);
     color: var(--card-bg-light); /* White text on primary button */
 }
+
 .btn-primary:hover {
     opacity: 0.9;
 }
+
+/* ========================================
+   MOBILE HAMBURGER MENU
+   ======================================== */
 
 /* Hamburger menu styling */
 .hamburger-menu {
@@ -109,6 +131,10 @@ body {
         border-bottom: none;
     }
 }
+
+/* ========================================
+   HEADER TRANSPARENCY EFFECTS
+   ======================================== */
 
 /* Header Transparency Effect */
 #main-header {
@@ -151,6 +177,10 @@ body {
     background-color: var(--card-bg-light);
 }
 
+/* ========================================
+   FAQ ACCORDION COMPONENT
+   ======================================== */
+
 /* FAQ Accordion Styling */
 .accordion-header {
     cursor: pointer;
@@ -178,3 +208,10 @@ body {
     margin: 0;
 }
 
+/* ========================================
+   GLOBAL SCROLL FIX
+   ======================================== */
+
+body {
+    overflow-x: hidden;
+}
