@@ -99,10 +99,12 @@
             
             <!-- Utility Buttons -->
             <div class="flex items-center space-x-4">
-                <!-- Theme Toggle -->
-                <button id="theme-toggle" class="p-2 rounded-full text-skin-base hover:bg-skin-base transition-all duration-300 hover:scale-110">
+                <!-- Theme Toggle masqué sur mobile -->
+                <button id="theme-toggle"
+                        class="hidden md:inline-flex p-2 rounded-full text-skin-base hover:bg-skin-base transition-all duration-300 hover:scale-110">
                     <i class="fas fa-moon text-xl" id="theme-icon"></i>
                 </button>
+
                 
                 <!-- Mobile Menu Button -->
                 <button id="hamburger-button" class="hamburger-menu p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-skin-primary transition-all duration-300">

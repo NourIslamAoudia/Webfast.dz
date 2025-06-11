@@ -362,6 +362,8 @@ img, video, iframe {
         opacity: 0;
         animation: fadeIn 0.3s ease 0.2s forwards;
     }
+
+    
 }
 
 /* ========================================
