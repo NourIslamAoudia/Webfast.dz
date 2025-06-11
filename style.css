@@ -55,21 +55,39 @@ body {
    color: var(--text-light);
    transition: color 0.3s ease;
    scroll-behavior: smooth;
-   background-image: radial-gradient(at top left, var(--gradient-start-light), var(--gradient-end-light)), url('programming-background-with-person-working-with-codes-computer.jpg');
-   background-size: cover, cover;
-   background-position: center, center;
-   background-attachment: fixed, fixed;
-   background-repeat: no-repeat, no-repeat;
-   background-blend-mode: overlay, normal;
+   position: relative;
    background-color: var(--bg-light);
-   transition: background-image 0.3s ease, background-color 0.3s ease;
+   transition: background-color 0.3s ease;
 }
 
-.dark body {
-   background-image: radial-gradient(at top left, var(--gradient-start-dark), var(--gradient-end-dark)), url('abstract-black-lines-geometric-background_677411-2748.avif');
-   background-color: var(--bg-light);
+body::before {
+   content: '';
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background-image: url('programming-background-with-person-working-with-codes-computer.jpg');
+   background-size: cover;
+   background-position: center;
+   background-attachment: fixed;
+   background-repeat: no-repeat;
+   filter: blur(3px); /* Ajustez la valeur selon vos préférences */
+   z-index: -2;
 }
 
+body::after {
+   content: '';
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background-image: radial-gradient(at top left, var(--gradient-start-light), var(--gradient-end-light));
+   background-blend-mode: overlay;
+   z-index: -1;
+   transition: background-image 0.3s ease;
+}
 /* ✅ Correction pour les éléments qui pourraient causer un dépassement */
 .container {
     width: 100%;
@@ -246,23 +264,6 @@ img, video, iframe {
 /* ========================================
    7. RESPONSIVE DESIGN
    ======================================== */
-
-/* ✅ Image différente sur téléphone (écran < 768px) */
-@media screen and (max-width: 768px) {
- body {
-   background-image: radial-gradient(at top left, var(--gradient-start-light), var(--gradient-end-light)), url('mobile-image.jpg');
-   background-size: cover;
-   background-position: center center;
-   background-repeat: no-repeat;
- }
- 
- .dark body {
-   background-image: radial-gradient(at top left, var(--gradient-start-dark), var(--gradient-end-dark)), url('mobile-dark.jpg');
-   background-size: cover;
-   background-position: center center;
-   background-repeat: no-repeat;
- }
-}
 
 @media (max-width: 767px) {
     .hamburger-menu {
