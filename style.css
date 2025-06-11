@@ -65,15 +65,17 @@ body::before {
    position: fixed;
    top: 0;
    left: 0;
-   width: 100%;
-   height: 100%;
+   width: 100vw;
+   height: 100vh;
    background-image: url('programming-background-with-person-working-with-codes-computer.jpg');
    background-size: cover;
    background-position: center;
-   background-attachment: fixed;
    background-repeat: no-repeat;
-   filter: blur(3px); /* Ajustez la valeur selon vos préférences */
+   filter: blur(3px);
    z-index: -2;
+   /* Fix pour iOS */
+   -webkit-transform: translateZ(0);
+   transform: translateZ(0);
 }
 
 body::after {
@@ -81,13 +83,29 @@ body::after {
    position: fixed;
    top: 0;
    left: 0;
-   width: 100%;
-   height: 100%;
+   width: 100vw;
+   height: 100vh;
    background-image: radial-gradient(at top left, var(--gradient-start-light), var(--gradient-end-light));
    background-blend-mode: overlay;
    z-index: -1;
    transition: background-image 0.3s ease;
+   /* Fix pour iOS */
+   -webkit-transform: translateZ(0);
+   transform: translateZ(0);
 }
+
+/* Media query spécifique pour les appareils iOS */
+@supports (-webkit-touch-callout: none) {
+   body::before {
+      position: absolute;
+      background-attachment: scroll;
+   }
+   
+   body::after {
+      position: absolute;
+   }
+}
+
 /* ✅ Correction pour les éléments qui pourraient causer un dépassement */
 .container {
     width: 100%;
