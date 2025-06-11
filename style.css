@@ -385,7 +385,6 @@ img, video, iframe {
 
 .laptop-container {
     padding: 20px;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
     border-radius: 12px;
     margin-bottom: 10px;
 }
@@ -456,6 +455,6 @@ img, video, iframe {
     }
     
     .laptop-screen {
-        max-width: 220px;
+        max-width: 300px;
     }
 }
