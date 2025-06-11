@@ -247,10 +247,42 @@ if (orderForm && formMessage) {
         }
 
         if (isValid) {
-            formMessage.classList.remove('hidden', 'text-red-500', 'bg-red-100', 'text-red-700');
-            formMessage.classList.add('bg-green-100', 'text-green-700');
-            formMessage.textContent = 'Votre commande a été envoyée avec succès ! Nous vous répondrons rapidement.';
-            orderForm.reset();
+            // Affichage du loader / désactivation du bouton si besoin
+            const endpoint = orderForm.dataset.endpoint;
+
+            // Construction de l'objet à envoyer
+            const payload = {
+                name:     fields.name.value.trim(),
+                email:    fields.email.value.trim(),
+                type:     fields.type.value,
+                budget:   fields.budget.value.trim(),
+                deadline: fields.deadline.value.trim(),
+                message:  fields.message.value.trim(),
+            };
+
+            // Envoi en POST JSON
+            fetch(endpoint, {
+                method:  'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body:    JSON.stringify(payload)
+            })
+            .then(r => r.json())
+            .then(result => {
+                if (result.status === 'success') {
+                formMessage.classList.remove('hidden', 'text-red-500', 'bg-red-100');
+                formMessage.classList.add('bg-green-100', 'text-green-700');
+                formMessage.textContent = '✅ Votre commande a été envoyée avec succès ! Nous vous répondrons rapidement.';
+                orderForm.reset();
+                } else {
+                throw new Error(result.error || 'Erreur serveur');
+                }
+            })
+            .catch(err => {
+                console.error(err);
+                formMessage.classList.remove('hidden', 'bg-green-100', 'text-green-700');
+                formMessage.classList.add('bg-red-100', 'text-red-700');
+                formMessage.textContent = '❌ Une erreur est survenue, veuillez réessayer plus tard.';
+            });
         } else {
             formMessage.classList.remove('hidden', 'bg-green-100', 'text-green-700');
             formMessage.classList.add('bg-red-100', 'text-red-700');
