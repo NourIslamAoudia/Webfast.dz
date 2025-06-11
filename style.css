@@ -63,6 +63,9 @@ body {
    background-blend-mode: overlay, normal;
    background-color: var(--bg-light);
    transition: background-image 0.3s ease, background-color 0.3s ease;
+   /* FIX iOS - Hauteur minimale pour éviter les problèmes de viewport */
+   min-height: 100vh;
+   min-height: 100dvh; /* Dynamic viewport height pour mobile */
 }
 
 .dark body {
@@ -247,13 +250,17 @@ img, video, iframe {
    7. RESPONSIVE DESIGN
    ======================================== */
 
-/* ✅ Image différente sur téléphone (écran < 768px) */
+/* ✅ Image différente sur téléphone (écran < 768px) - FIX iOS ZOOM */
 @media screen and (max-width: 768px) {
  body {
    background-image: radial-gradient(at top left, var(--gradient-start-light), var(--gradient-end-light)), url('mobile-image.jpg');
    background-size: cover;
    background-position: center center;
    background-repeat: no-repeat;
+   /* FIX pour iOS - Empêche le zoom sur les images de fond */
+   background-attachment: scroll; /* IMPORTANT: pas de 'fixed' sur mobile */
+   min-height: 100vh; /* Garantit la hauteur complète */
+   min-height: 100dvh; /* Support pour les nouveaux navigateurs */
  }
  
  .dark body {
@@ -261,6 +268,9 @@ img, video, iframe {
    background-size: cover;
    background-position: center center;
    background-repeat: no-repeat;
+   background-attachment: scroll; /* FIX iOS */
+   min-height: 100vh;
+   min-height: 100dvh;
  }
 }
 
