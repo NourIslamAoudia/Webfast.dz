@@ -276,74 +276,65 @@ if (navLinks) {
 }
 
 /* ========================================
-   CONTACT FORM VALIDATION
+   ORDER FORM VALIDATION
    ======================================== */
 
-// JavaScript pour la validation du formulaire de contact
-const contactForm = document.getElementById('contact-form');
+const orderForm = document.getElementById('order-form');
 const formMessage = document.getElementById('form-message');
 
-if (contactForm && formMessage) {
-    contactForm.addEventListener('submit', function(event) {
-        event.preventDefault(); // Empêcher la soumission du formulaire par défaut
+if (orderForm && formMessage) {
+    orderForm.addEventListener('submit', function (event) {
+        event.preventDefault();
 
         let isValid = true;
-        const name = document.getElementById('name');
-        const email = document.getElementById('email');
-        const subject = document.getElementById('subject');
-        const message = document.getElementById('message');
+
+        const fields = {
+            name: document.getElementById('name'),
+            email: document.getElementById('email'),
+            type: document.getElementById('type'),
+            budget: document.getElementById('budget'),
+            deadline: document.getElementById('deadline'),
+            message: document.getElementById('message'),
+        };
+
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
         // Réinitialiser les messages d'erreur
-        const nameError = document.getElementById('name-error');
-        const emailError = document.getElementById('email-error');
-        const subjectError = document.getElementById('subject-error');
-        const messageError = document.getElementById('message-error');
-
-        if (nameError) nameError.classList.add('hidden');
-        if (emailError) emailError.classList.add('hidden');
-        if (subjectError) subjectError.classList.add('hidden');
-        if (messageError) messageError.classList.add('hidden');
+        for (const key in fields) {
+            const errorSpan = document.getElementById(`${key}-error`);
+            if (errorSpan) errorSpan.classList.add('hidden');
+        }
         formMessage.classList.add('hidden');
 
-        // Valider le Nom
-        if (name && name.value.trim() === '') {
-            if (nameError) nameError.classList.remove('hidden');
-            isValid = false;
-        }
+        // Validation des champs
+        for (const key in fields) {
+            const input = fields[key];
+            const errorSpan = document.getElementById(`${key}-error`);
 
-        // Valider l'Email
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (email && (email.value.trim() === '' || !emailPattern.test(email.value.trim()))) {
-            if (emailError) emailError.classList.remove('hidden');
-            isValid = false;
-        }
+            if (input && input.value.trim() === '') {
+                if (errorSpan) errorSpan.classList.remove('hidden');
+                isValid = false;
+            }
 
-        // Valider le Sujet
-        if (subject && subject.value.trim() === '') {
-            if (subjectError) subjectError.classList.remove('hidden');
-            isValid = false;
-        }
-
-        // Valider le Message
-        if (message && message.value.trim() === '') {
-            if (messageError) messageError.classList.remove('hidden');
-            isValid = false;
+            if (key === 'email' && !emailPattern.test(input.value.trim())) {
+                if (errorSpan) errorSpan.classList.remove('hidden');
+                isValid = false;
+            }
         }
 
         if (isValid) {
-            // Dans un scénario réel, vous enverriez ces données à un serveur
-            // Pour la démonstration, nous affichons simplement un message de succès
             formMessage.classList.remove('hidden', 'text-red-500', 'bg-red-100', 'text-red-700');
             formMessage.classList.add('bg-green-100', 'text-green-700');
-            formMessage.textContent = 'Votre message a été envoyé avec succès ! Nous vous répondrons bientôt.';
-            contactForm.reset(); // Effacer le formulaire
+            formMessage.textContent = 'Votre commande a été envoyée avec succès ! Nous vous répondrons rapidement.';
+            orderForm.reset();
         } else {
             formMessage.classList.remove('hidden', 'bg-green-100', 'text-green-700');
             formMessage.classList.add('bg-red-100', 'text-red-700');
-            formMessage.textContent = 'Veuillez corriger les erreurs dans le formulaire.';
+            formMessage.textContent = 'Veuillez remplir tous les champs requis correctement.';
         }
     });
 }
+
 
 /* ========================================
    FAQ ACCORDION FUNCTIONALITY
