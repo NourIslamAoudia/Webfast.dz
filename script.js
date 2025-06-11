@@ -22,6 +22,8 @@ const bodyElement = document.body;
 // JavaScript pour le basculement du mode clair/sombre
 const themeToggleBtn = document.getElementById('theme-toggle');
 const themeIcon = document.getElementById('theme-icon');
+const Nos_Points_Forts = document.getElementById('Nos_Points_Forts');
+const Services_Détaillés = document.getElementById('Services_Détaillés');
 
 // Fonction pour appliquer le thème
 function applyTheme(theme) {
@@ -33,6 +35,13 @@ function applyTheme(theme) {
         bodyElement.classList.remove('dark');
         themeIcon.classList.remove('fa-sun');
         themeIcon.classList.add('fa-moon');
+        // En mode light, s'assurer que "Nos Points Forts" est visible (blanc)
+        if (Nos_Points_Forts) {
+            Nos_Points_Forts.style.color = 'white';
+        }
+        if (Services_Détaillés) {
+            Services_Détaillés.style.color = 'white';
+        }
     }
 }
 

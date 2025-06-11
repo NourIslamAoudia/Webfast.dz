@@ -19,8 +19,8 @@
     --text-light: #1f2937; /* Dark gray for main text */
     --primary-light: #1d4ed8; /* Deeper blue for primary elements */
     --secondary-light: #4b5563; /* Medium gray for secondary text */
-    --card-bg-light: #ffffff; /* White for card backgrounds */
-    --border-light: #e5e7eb; /* Light gray for borders */
+    --card-bg-light: #dededef3; /* White for card backgrounds */
+    --border-light: #c5c5c5; /* Light gray for borders */
     --link-hover-light: #2563eb; /* Blue for link hovers */
     /* New background gradient colors for light mode */
     --gradient-start-light: rgba(0, 0, 0, 0.188); /* Semi-transparent white */
