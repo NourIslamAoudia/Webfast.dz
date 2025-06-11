@@ -212,52 +212,91 @@ if (navLinks) {
    ORDER FORM VALIDATION
 ======================================== */
 
-const orderForm = document.getElementById('order-form');
+// 1. Sélection des éléments
+const orderForm   = document.getElementById('order-form');
 const formMessage = document.getElementById('form-message');
 
 if (orderForm && formMessage) {
-    orderForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-        let isValid = true;
+  orderForm.addEventListener('submit', function (e) {
+    e.preventDefault();          // stoppe l’envoi natif du formulaire
 
-        const fields = {
-            name: document.getElementById('name'),
-            email: document.getElementById('email'),
-            type: document.getElementById('type'),
-            budget: document.getElementById('budget'),
-            deadline: document.getElementById('deadline'),
-            message: document.getElementById('message'),
-        };
+    let isValid = true;
+    const fields = {
+      name:     document.getElementById('name'),
+      email:    document.getElementById('email'),
+      type:     document.getElementById('type'),
+      budget:   document.getElementById('budget'),
+      deadline: document.getElementById('deadline'),
+      message:  document.getElementById('message'),
+    };
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-        for (const key in fields) {
-            const error = document.getElementById(`${key}-error`);
-            if (error) error.classList.add('hidden');
-        }
-        formMessage.classList.add('hidden');
-
-        for (const key in fields) {
-            const field = fields[key];
-            const error = document.getElementById(`${key}-error`);
-            if (!field.value.trim() || (key === 'email' && !emailPattern.test(field.value.trim()))) {
-                if (error) error.classList.remove('hidden');
-                isValid = false;
-            }
-        }
-
-        if (isValid) {
-            formMessage.classList.remove('hidden', 'text-red-500', 'bg-red-100', 'text-red-700');
-            formMessage.classList.add('bg-green-100', 'text-green-700');
-            formMessage.textContent = 'Votre commande a été envoyée avec succès ! Nous vous répondrons rapidement.';
-            orderForm.reset();
-        } else {
-            formMessage.classList.remove('hidden', 'bg-green-100', 'text-green-700');
-            formMessage.classList.add('bg-red-100', 'text-red-700');
-            formMessage.textContent = 'Veuillez remplir tous les champs requis correctement.';
-        }
+    // 2. Masquer toutes les erreurs précédentes
+    Object.keys(fields).forEach(key => {
+      const errEl = document.getElementById(`${key}-error`);
+      if (errEl) errEl.classList.add('hidden');
     });
+    formMessage.classList.add('hidden');
+
+    // 3. Validation de chaque champ
+    Object.entries(fields).forEach(([key, field]) => {
+      const errEl = document.getElementById(`${key}-error`);
+      const val   = field.value.trim();
+      if (!val || (key === 'email' && !emailPattern.test(val))) {
+        if (errEl) errEl.classList.remove('hidden');
+        isValid = false;
+      }
+    });
+
+    if (!isValid) {
+      // Si invalid, on affiche message global
+      formMessage.textContent = 'Veuillez remplir tous les champs requis correctement.';
+      formMessage.classList
+        .remove('hidden', 'bg-green-100', 'text-green-700');
+      formMessage.classList.add('bg-red-100', 'text-red-700');
+      return;
+    }
+
+    // 4. Préparation du payload JSON
+    const payload = {
+      name:     fields.name.value.trim(),
+      email:    fields.email.value.trim(),
+      type:     fields.type.value,
+      budget:   fields.budget.value.trim(),
+      deadline: fields.deadline.value.trim(),
+      message:  fields.message.value.trim(),
+    };
+
+    // 5. Envoi via fetch() vers le proxy local
+    fetch('/api/submit', {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify(payload)
+    })
+    .then(response => response.json())
+    .then(result => {
+      if (result.status === 'success') {
+        // Succès → message vert
+        formMessage.textContent = '✅ Votre commande a été envoyée avec succès ! Nous vous répondrons rapidement.';
+        formMessage.classList
+          .remove('hidden', 'text-red-500', 'bg-red-100');
+        formMessage.classList.add('bg-green-100', 'text-green-700');
+        orderForm.reset();
+      } else {
+        throw new Error(result.error || 'Erreur serveur');
+      }
+    })
+    .catch(err => {
+      console.error('Submission error:', err);
+      // Erreur réseau ou serveur → message rouge
+      formMessage.textContent = '❌ Une erreur est survenue, veuillez réessayer plus tard.';
+      formMessage.classList
+        .remove('hidden', 'bg-green-100', 'text-green-700');
+      formMessage.classList.add('bg-red-100', 'text-red-700');
+    });
+  });
 }
+
 
 
 /* ========================================
