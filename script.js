@@ -40,6 +40,11 @@ function applyTheme(theme) {
         if (Questions_Fréquemment_Posées) Questions_Fréquemment_Posées.style.color = 'white';
     }
 }
+// Ajuster la vitesse de lecture de la vidéo
+const video = document.getElementById('demo-video');
+    if (video) {
+        video.playbackRate = 1.8; // Vitesse x1.25
+    }
 
 // Appliquer le thème au chargement
 const savedTheme = localStorage.getItem('theme');
