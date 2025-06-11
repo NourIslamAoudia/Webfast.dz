@@ -1,159 +1,120 @@
 /* ========================================
    INITIALIZATION & CONFIGURATION
-   ======================================== */
+======================================== */
 
 // Initialize AOS (Animate On Scroll)
 AOS.init({
-    once: true, // L'animation ne doit se produire qu'une seule fois - en défilant vers le bas
-    duration: 800, // Valeurs de 0 à 3000, avec un pas de 50ms
+    once: true,
+    duration: 800,
 });
+
 
 /* ========================================
    GLOBAL VARIABLES
-   ======================================== */
+======================================== */
 
-// Variables globales pour éviter les conflits
 const bodyElement = document.body;
+
 
 /* ========================================
    THEME MANAGEMENT (DARK/LIGHT MODE)
-   ======================================== */
+======================================== */
 
-// JavaScript pour le basculement du mode clair/sombre
 const themeToggleBtn = document.getElementById('theme-toggle');
 const themeIcon = document.getElementById('theme-icon');
 const Nos_Points_Forts = document.getElementById('Nos_Points_Forts');
 const Services_Détaillés = document.getElementById('Services_Détaillés');
+const Questions_Fréquemment_Posées = document.getElementById('Questions_Fréquemment_Posées');
 
-// Fonction pour appliquer le thème
+// Appliquer le thème
 function applyTheme(theme) {
     if (theme === 'dark') {
         bodyElement.classList.add('dark');
-        themeIcon.classList.remove('fa-moon');
-        themeIcon.classList.add('fa-sun');
+        themeIcon.classList.replace('fa-moon', 'fa-sun');
     } else {
         bodyElement.classList.remove('dark');
-        themeIcon.classList.remove('fa-sun');
-        themeIcon.classList.add('fa-moon');
-        // En mode light, s'assurer que "Nos Points Forts" est visible (blanc)
-        if (Nos_Points_Forts) {
-            Nos_Points_Forts.style.color = 'white';
-        }
-        if (Services_Détaillés) {
-            Services_Détaillés.style.color = 'white';
-        }
+        themeIcon.classList.replace('fa-sun', 'fa-moon');
+
+        if (Nos_Points_Forts) Nos_Points_Forts.style.color = 'white';
+        if (Services_Détaillés) Services_Détaillés.style.color = 'white';
+        if (Questions_Fréquemment_Posées) Questions_Fréquemment_Posées.style.color = 'white';
     }
 }
 
-// Vérifier la préférence de thème enregistrée au chargement de la page
+// Appliquer le thème au chargement
 const savedTheme = localStorage.getItem('theme');
-if (savedTheme) {
-    applyTheme(savedTheme);
-} else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    // S'il n'y a pas de thème enregistré, vérifier la préférence du système
-    applyTheme('dark');
-} else {
-    // Par défaut, utiliser le thème clair
-    applyTheme('light');
-}
+if (savedTheme) applyTheme(savedTheme);
+else if (window.matchMedia('(prefers-color-scheme: dark)').matches) applyTheme('dark');
+else applyTheme('light');
 
-// Écouteur d'événements pour le bouton de bascule du thème
+// Toggle theme on click
 themeToggleBtn.addEventListener('click', () => {
-    if (bodyElement.classList.contains('dark')) {
-        applyTheme('light');
-        localStorage.setItem('theme', 'light');
-    } else {
-        applyTheme('dark');
-        localStorage.setItem('theme', 'dark');
-    }
+    const isDark = bodyElement.classList.contains('dark');
+    applyTheme(isDark ? 'light' : 'dark');
+    localStorage.setItem('theme', isDark ? 'light' : 'dark');
 });
 
+
 /* ========================================
-    MOBILE NAVIGATION PROFESSIONNELLE
+   MOBILE NAVIGATION PROFESSIONNELLE
 ======================================== */
 
-// Sélection des éléments DOM
 const hamburgerButton = document.getElementById('hamburger-button');
 const navLinks = document.querySelector('.nav-links');
 const mobileOverlay = document.getElementById('mobile-overlay');
 const headerNavLinks = document.querySelectorAll('header .nav-links a');
 
-// Fonction pour ouvrir le menu mobile
 function openMobileMenu() {
     navLinks.classList.add('active');
     hamburgerButton.classList.add('active');
     if (mobileOverlay) mobileOverlay.classList.add('active');
-    bodyElement.style.overflow = 'hidden'; // Empêche le scroll du body
-    
-    // Change l'icône du hamburger
+    bodyElement.style.overflow = 'hidden';
+
     const icon = hamburgerButton.querySelector('i');
-    if (icon) {
-        icon.classList.remove('fa-bars');
-        icon.classList.add('fa-times');
-    }
+    if (icon) icon.classList.replace('fa-bars', 'fa-times');
 }
 
-// Fonction pour fermer le menu mobile
 function closeMobileMenu() {
     navLinks.classList.remove('active');
     hamburgerButton.classList.remove('active');
     if (mobileOverlay) mobileOverlay.classList.remove('active');
-    bodyElement.style.overflow = ''; // Restore le scroll du body
-    
-    // Remet l'icône du hamburger
+    bodyElement.style.overflow = '';
+
     const icon = hamburgerButton.querySelector('i');
-    if (icon) {
-        icon.classList.remove('fa-times');
-        icon.classList.add('fa-bars');
-    }
+    if (icon) icon.classList.replace('fa-times', 'fa-bars');
 }
 
-// Vérifier que les éléments existent avant d'ajouter les event listeners
+// Gestion des événements de menu
 if (hamburgerButton && navLinks) {
-    // Toggle du menu hamburger
     hamburgerButton.addEventListener('click', (e) => {
         e.stopPropagation();
-        
-        if (navLinks.classList.contains('active')) {
-            closeMobileMenu();
-        } else {
-            openMobileMenu();
-        }
+        navLinks.classList.contains('active') ? closeMobileMenu() : openMobileMenu();
     });
 
-    // Fermer le menu en cliquant sur l'overlay
-    if (mobileOverlay) {
-        mobileOverlay.addEventListener('click', closeMobileMenu);
-    }
+    if (mobileOverlay) mobileOverlay.addEventListener('click', closeMobileMenu);
 
-    // Fermer le menu en cliquant sur le bouton de fermeture (::before)
     navLinks.addEventListener('click', (e) => {
-        // Vérifier si le clic est sur la zone du bouton de fermeture
         const rect = navLinks.getBoundingClientRect();
         const clickX = e.clientX - rect.left;
         const clickY = e.clientY - rect.top;
-        
-        // Zone approximative du bouton de fermeture (top-right)
+
         if (clickX > rect.width - 60 && clickY < 60) {
             closeMobileMenu();
         }
     });
 
-    // Fermer le menu avec la touche Échap
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && navLinks.classList.contains('active')) {
             closeMobileMenu();
         }
     });
 
-    // Fermer le menu lors du redimensionnement vers desktop
     window.addEventListener('resize', () => {
         if (window.innerWidth >= 768 && navLinks.classList.contains('active')) {
             closeMobileMenu();
         }
     });
 
-    // Amélioration de l'accessibilité
     hamburgerButton.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
@@ -162,116 +123,74 @@ if (hamburgerButton && navLinks) {
     });
 }
 
-// Fermer le menu mobile lorsqu'un lien est cliqué
 headerNavLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
+    link.addEventListener('click', () => {
         if (navLinks && navLinks.classList.contains('active')) {
             closeMobileMenu();
         }
     });
-});
 
-// Smooth scroll pour les liens d'ancrage
-headerNavLinks.forEach(link => {
     link.addEventListener('click', (e) => {
         const href = link.getAttribute('href');
-        
-        // Vérifier si c'est un lien d'ancrage
         if (href && href.startsWith('#')) {
             e.preventDefault();
-            
-            const targetId = href.substring(1);
-            const targetElement = document.getElementById(targetId);
-            
+            const targetElement = document.getElementById(href.slice(1));
             if (targetElement) {
-                // Fermer le menu mobile d'abord
-                if (navLinks && navLinks.classList.contains('active')) {
+                if (navLinks.classList.contains('active')) {
                     closeMobileMenu();
-                    
-                    // Attendre que l'animation de fermeture soit terminée
                     setTimeout(() => {
-                        targetElement.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
                     }, 300);
                 } else {
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
                 }
             }
         }
     });
+
+    link.addEventListener('mouseenter', () => link.style.transform = 'translateY(-2px)');
+    link.addEventListener('mouseleave', () => link.style.transform = 'translateY(0)');
 });
 
-// Animation des liens au survol (effet de vague)
-headerNavLinks.forEach(link => {
-    link.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-2px)';
-    });
-    
-    link.addEventListener('mouseleave', function() {
-        this.style.transform = 'translateY(0)';
-    });
-});
 
-// Détection du scroll pour modifier l'apparence de la navigation
-let lastScrollTop = 0;
+// Scroll effect sur header
 const header = document.querySelector('header') || document.querySelector('nav')?.parentElement;
+let lastScrollTop = 0;
 
 if (header) {
     window.addEventListener('scroll', () => {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        
-        // Ajouter une classe pour le background blur quand on scroll
-        if (scrollTop > 100) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-        
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        scrollTop > 100 ? header.classList.add('scrolled') : header.classList.remove('scrolled');
         lastScrollTop = scrollTop;
     });
 }
 
-// Focus trap pour le menu mobile
+
+// Trap focus
 function trapFocus(element) {
-    const focusableElements = element.querySelectorAll(
-        'a[href], button, textarea, input[type="text"], input[type="radio"], input[type="checkbox"], select'
-    );
-    
-    const firstFocusableElement = focusableElements[0];
-    const lastFocusableElement = focusableElements[focusableElements.length - 1];
-    
-    if (focusableElements.length === 0) return;
-    
+    const focusable = element.querySelectorAll('a[href], button, textarea, input, select');
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+
+    if (!focusable.length) return;
+
     element.addEventListener('keydown', (e) => {
         if (e.key === 'Tab') {
-            if (e.shiftKey) {
-                if (document.activeElement === firstFocusableElement) {
-                    lastFocusableElement.focus();
-                    e.preventDefault();
-                }
-            } else {
-                if (document.activeElement === lastFocusableElement) {
-                    firstFocusableElement.focus();
-                    e.preventDefault();
-                }
+            if (e.shiftKey && document.activeElement === first) {
+                e.preventDefault(); last.focus();
+            } else if (!e.shiftKey && document.activeElement === last) {
+                e.preventDefault(); first.focus();
             }
         }
     });
 }
 
-// Appliquer le focus trap quand le menu est ouvert
 if (navLinks) {
-    const observer = new MutationObserver((mutations) => {
-        mutations.forEach((mutation) => {
-            if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+    const observer = new MutationObserver(mutations => {
+        mutations.forEach(m => {
+            if (m.type === 'attributes' && m.attributeName === 'class') {
                 if (navLinks.classList.contains('active')) {
                     trapFocus(navLinks);
-                    // Focus sur le premier lien
                     setTimeout(() => {
                         const firstLink = navLinks.querySelector('a');
                         if (firstLink) firstLink.focus();
@@ -280,21 +199,20 @@ if (navLinks) {
             }
         });
     });
-
     observer.observe(navLinks, { attributes: true });
 }
 
+
 /* ========================================
    ORDER FORM VALIDATION
-   ======================================== */
+======================================== */
 
 const orderForm = document.getElementById('order-form');
 const formMessage = document.getElementById('form-message');
 
 if (orderForm && formMessage) {
-    orderForm.addEventListener('submit', function (event) {
-        event.preventDefault();
-
+    orderForm.addEventListener('submit', function (e) {
+        e.preventDefault();
         let isValid = true;
 
         const fields = {
@@ -308,25 +226,17 @@ if (orderForm && formMessage) {
 
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-        // Réinitialiser les messages d'erreur
         for (const key in fields) {
-            const errorSpan = document.getElementById(`${key}-error`);
-            if (errorSpan) errorSpan.classList.add('hidden');
+            const error = document.getElementById(`${key}-error`);
+            if (error) error.classList.add('hidden');
         }
         formMessage.classList.add('hidden');
 
-        // Validation des champs
         for (const key in fields) {
-            const input = fields[key];
-            const errorSpan = document.getElementById(`${key}-error`);
-
-            if (input && input.value.trim() === '') {
-                if (errorSpan) errorSpan.classList.remove('hidden');
-                isValid = false;
-            }
-
-            if (key === 'email' && !emailPattern.test(input.value.trim())) {
-                if (errorSpan) errorSpan.classList.remove('hidden');
+            const field = fields[key];
+            const error = document.getElementById(`${key}-error`);
+            if (!field.value.trim() || (key === 'email' && !emailPattern.test(field.value.trim()))) {
+                if (error) error.classList.remove('hidden');
                 isValid = false;
             }
         }
@@ -347,117 +257,79 @@ if (orderForm && formMessage) {
 
 /* ========================================
    FAQ ACCORDION FUNCTIONALITY
-   ======================================== */
+======================================== */
 
-// JavaScript pour l'accordéon FAQ
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const accordionHeaders = document.querySelectorAll('.accordion-header');
 
     accordionHeaders.forEach(header => {
         header.addEventListener('click', () => {
-            const accordionItem = header.closest('.accordion-item');
-            const accordionContent = header.nextElementSibling;
-            const chevronIcon = header.querySelector('.fa-chevron-down');
-            const isActive = accordionItem.classList.contains('active');
+            const item = header.closest('.accordion-item');
+            const content = header.nextElementSibling;
+            const icon = header.querySelector('.fa-chevron-down');
+            const isActive = item.classList.contains('active');
 
-            // Fermer tous les autres accordéons ouverts
-            accordionHeaders.forEach(otherHeader => {
-                if (otherHeader !== header) {
-                    const otherItem = otherHeader.closest('.accordion-item');
-                    const otherContent = otherHeader.nextElementSibling;
-                    const otherChevron = otherHeader.querySelector('.fa-chevron-down');
-                    
-                    if (otherItem && otherItem.classList.contains('active')) {
-                        otherItem.classList.remove('active');
-                        if (otherContent) otherContent.style.maxHeight = '0';
-                        if (otherChevron) otherChevron.style.transform = 'rotate(0deg)';
-                    }
+            accordionHeaders.forEach(h => {
+                const other = h.closest('.accordion-item');
+                const otherContent = h.nextElementSibling;
+                const otherIcon = h.querySelector('.fa-chevron-down');
+                if (other !== item && other.classList.contains('active')) {
+                    other.classList.remove('active');
+                    if (otherContent) otherContent.style.maxHeight = '0';
+                    if (otherIcon) otherIcon.style.transform = 'rotate(0deg)';
                 }
             });
 
-            // Basculer l'accordéon actuel
-            if (!isActive && accordionItem && accordionContent) {
-                // Ouvrir
-                accordionItem.classList.add('active');
-                
-                // Calculer la hauteur réelle
-                accordionContent.style.maxHeight = 'none';
-                const fullHeight = accordionContent.scrollHeight;
-                accordionContent.style.maxHeight = '0';
-                
-                // Forcer le reflow et appliquer la hauteur
-                requestAnimationFrame(() => {
-                    accordionContent.style.maxHeight = fullHeight + 'px';
-                });
-                
-                if (chevronIcon) chevronIcon.style.transform = 'rotate(180deg)';
-            } else if (isActive && accordionItem && accordionContent) {
-                // Fermer
-                accordionItem.classList.remove('active');
-                accordionContent.style.maxHeight = '0';
-                if (chevronIcon) chevronIcon.style.transform = 'rotate(0deg)';
+            if (!isActive && content) {
+                item.classList.add('active');
+                content.style.maxHeight = content.scrollHeight + 'px';
+                if (icon) icon.style.transform = 'rotate(180deg)';
+            } else {
+                item.classList.remove('active');
+                content.style.maxHeight = '0';
+                if (icon) icon.style.transform = 'rotate(0deg)';
             }
         });
     });
 });
 
+
 /* ========================================
    HEADER SCROLL EFFECTS
-   ======================================== */
+======================================== */
 
-// JavaScript pour l'effet d'en-tête collant (Sticky Header)
 const mainHeader = document.getElementById('main-header');
 if (mainHeader) {
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 0) {
-            mainHeader.classList.add('scrolled-header');
-        } else {
-            mainHeader.classList.remove('scrolled-header');
-        }
+        mainHeader.classList.toggle('scrolled-header', window.scrollY > 0);
     });
 }
+
 
 /* ========================================
    BACK TO TOP BUTTON
-   ======================================== */
+======================================== */
 
-// JavaScript pour le bouton "Retour en haut"
 const backToTopButton = document.getElementById('back-to-top');
-
 if (backToTopButton) {
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) { // Afficher le bouton après avoir défilé de 300px
-            backToTopButton.classList.remove('hidden');
-        } else {
-            backToTopButton.classList.add('hidden');
-        }
+        backToTopButton.classList.toggle('hidden', window.scrollY < 300);
     });
-
     backToTopButton.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 }
 
+
 /* ========================================
    DOCUMENT READY INITIALIZATION
-   ======================================== */
+======================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Réappliquer les thèmes au chargement complet de la page
     const currentSavedTheme = localStorage.getItem('theme');
-    if (currentSavedTheme) {
-        applyTheme(currentSavedTheme);
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        applyTheme('dark');
-    } else {
-        applyTheme('light');
-    }
+    if (currentSavedTheme) applyTheme(currentSavedTheme);
+    else if (window.matchMedia('(prefers-color-scheme: dark)').matches) applyTheme('dark');
+    else applyTheme('light');
 
-    // Réinitialiser AOS si nécessaire
-    if (typeof AOS !== 'undefined') {
-        AOS.refresh();
-    }
+    if (typeof AOS !== 'undefined') AOS.refresh();
 });
