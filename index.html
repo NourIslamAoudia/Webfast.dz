@@ -22,28 +22,90 @@
 <body class="text-skin-base">
     <!-- En-tête -->
     <header class="shadow-sm fixed w-full z-50 transition-all duration-300" id="main-header">
-        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-skin-primary rounded-md">WebFast DZ</a>
-            <div class="hidden md:flex items-center space-x-6 nav-links">
-                <a href="#hero" class="hover:text-skin-primary font-medium transition-colors duration-300 rounded-md">Accueil</a>
-                <a href="#services" class="hover:text-skin-primary font-medium transition-colors duration-300 rounded-md">Services</a>
-                <a href="#portfolio" class="hover:text-skin-primary font-medium transition-colors duration-300 rounded-md">Portfolio</a>
-                <a href="#testimonials" class="hover:text-skin-primary font-medium transition-colors duration-300 rounded-md">Témoignages</a>
-                <a href="#about" class="hover:text-skin-primary font-medium transition-colors duration-300 rounded-md">À Propos</a>
-                <a href="#faq" class="hover:text-skin-primary font-medium transition-colors duration-300 rounded-md">FAQ</a>
-                <a href="#contact" class="hover:text-skin-primary font-medium transition-colors duration-300 rounded-md">Contact</a>
-            </div>
-            <div class="flex items-center space-x-4">
-                <!-- Bouton de bascule du mode clair/sombre -->
-                <button id="theme-toggle" class="p-2 rounded-full text-skin-base hover:bg-skin-base transition-colors duration-300">
-                    <i class="fas fa-moon text-xl" id="theme-icon"></i>
-                </button>
-                <!-- Bouton du menu hamburger pour mobile -->
-                <button id="hamburger-button" class="hamburger-menu p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-skin-primary">
-                    <i class="fas fa-bars text-xl"></i>
-                </button>
-            </div>
-        </nav>
+            <nav class="container mx-auto px-4 py-4 flex justify-between items-center relative">
+        <a href="#" class="text-2xl font-bold text-skin-primary rounded-md transition-transform duration-300 hover:scale-105">
+            WebFast DZ
+        </a>
+        
+        <!-- Desktop Navigation -->
+        <div class="hidden md:flex items-center space-x-6 nav-links">
+            <a href="#hero" class="hover:text-skin-primary font-medium transition-all duration-300 rounded-md px-3 py-2 relative group">
+                Accueil
+                <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-skin-primary transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <a href="#services" class="hover:text-skin-primary font-medium transition-all duration-300 rounded-md px-3 py-2 relative group">
+                Services
+                <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-skin-primary transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <a href="#portfolio" class="hover:text-skin-primary font-medium transition-all duration-300 rounded-md px-3 py-2 relative group">
+                Portfolio
+                <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-skin-primary transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <a href="#testimonials" class="hover:text-skin-primary font-medium transition-all duration-300 rounded-md px-3 py-2 relative group">
+                Témoignages
+                <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-skin-primary transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <a href="#about" class="hover:text-skin-primary font-medium transition-all duration-300 rounded-md px-3 py-2 relative group">
+                À Propos
+                <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-skin-primary transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <a href="#faq" class="hover:text-skin-primary font-medium transition-all duration-300 rounded-md px-3 py-2 relative group">
+                FAQ
+                <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-skin-primary transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <a href="#contact" class="hover:text-skin-primary font-medium transition-all duration-300 rounded-md px-3 py-2 relative group">
+                Contact
+                <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-skin-primary transition-all duration-300 group-hover:w-full"></span>
+            </a>
+        </div>
+        
+        <!-- Mobile Navigation Menu -->
+        <div class="nav-links md:hidden">
+            <a href="#hero" class="transition-all duration-300">
+                <i class="fas fa-home mr-3 text-skin-primary"></i>
+                Accueil
+            </a>
+            <a href="#services" class="transition-all duration-300">
+                <i class="fas fa-cogs mr-3 text-skin-primary"></i>
+                Services
+            </a>
+            <a href="#portfolio" class="transition-all duration-300">
+                <i class="fas fa-briefcase mr-3 text-skin-primary"></i>
+                Portfolio
+            </a>
+            <a href="#testimonials" class="transition-all duration-300">
+                <i class="fas fa-star mr-3 text-skin-primary"></i>
+                Témoignages
+            </a>
+            <a href="#about" class="transition-all duration-300">
+                <i class="fas fa-users mr-3 text-skin-primary"></i>
+                À Propos
+            </a>
+            <a href="#faq" class="transition-all duration-300">
+                <i class="fas fa-question-circle mr-3 text-skin-primary"></i>
+                FAQ
+            </a>
+            <a href="#contact" class="transition-all duration-300">
+                <i class="fas fa-envelope mr-3 text-skin-primary"></i>
+                Contact
+            </a>
+        </div>
+        
+        <div class="flex items-center space-x-4">
+            <!-- Theme toggle button -->
+            <button id="theme-toggle" class="p-2 rounded-full text-skin-base hover:bg-skin-base transition-all duration-300 hover:scale-110">
+                <i class="fas fa-moon text-xl" id="theme-icon"></i>
+            </button>
+            
+            <!-- Mobile hamburger button -->
+            <button id="hamburger-button" class="hamburger-menu p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-skin-primary transition-all duration-300">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile overlay -->
+        <div id="mobile-overlay" class="mobile-overlay"></div>
+    </nav>
     </header>
 
     <main>

@@ -1,8 +1,19 @@
 /* ========================================
-   CSS VARIABLES & THEME CONFIGURATION
+   TABLE DES MATIÈRES
+   ========================================
+   1. VARIABLES CSS & CONFIGURATION THÈME
+   2. STYLES GLOBAUX & RESET
+   3. CLASSES UTILITAIRES
+   4. NAVIGATION & HEADER
+   5. MENU HAMBURGER MOBILE
+   6. ACCORDÉON FAQ
+   7. RESPONSIVE DESIGN
    ======================================== */
 
-/* Base styles using CSS variables for theme switching */
+/* ========================================
+   1. VARIABLES CSS & CONFIGURATION THÈME
+   ======================================== */
+
 :root {
     --bg-light: #f3f4f6; /* Soft light gray for general background */
     --text-light: #1f2937; /* Dark gray for main text */
@@ -29,53 +40,59 @@
 }
 
 /* ========================================
-   GLOBAL BODY STYLES
+   2. STYLES GLOBAUX & RESET
    ======================================== */
+
+/* ✅ Solution pour supprimer définitivement le scroll horizontal */
+html, body {
+    overflow-x: hidden; /* Bloque le scroll horizontal */
+    width: 100%; /* Garantit que le body prend toute la largeur */
+    max-width: 100%; /* Empêche tout dépassement */
+}
 
 body {
-    font-family: 'Inter', sans-serif;
-    color: var(--text-light);
-    transition: color 0.3s ease;
-    scroll-behavior: smooth;
-    background-image: radial-gradient(at top left, var(--gradient-start-light), var(--gradient-end-light)), url('programming-background-with-person-working-with-codes-computer.jpg');
-    background-size: cover, cover;
-    background-position: center, center;
-    background-attachment: fixed, fixed;
-    background-repeat: no-repeat, no-repeat;
-    background-blend-mode: overlay, normal;
-    background-color: var(--bg-light);
-    transition: background-image 0.3s ease, background-color 0.3s ease;
+   font-family: 'Inter', sans-serif;
+   color: var(--text-light);
+   transition: color 0.3s ease;
+   scroll-behavior: smooth;
+   background-image: radial-gradient(at top left, var(--gradient-start-light), var(--gradient-end-light)), url('programming-background-with-person-working-with-codes-computer.jpg');
+   background-size: cover, cover;
+   background-position: center, center;
+   background-attachment: fixed, fixed;
+   background-repeat: no-repeat, no-repeat;
+   background-blend-mode: overlay, normal;
+   background-color: var(--bg-light);
+   transition: background-image 0.3s ease, background-color 0.3s ease;
 }
 
-/* ✅ Corrigé : body.dark (et non .dark body) */
 .dark body {
-    background-image: radial-gradient(at top left, var(--gradient-start-dark), var(--gradient-end-dark)), url('abstract-black-lines-geometric-background_677411-2748.avif');
-    background-color: var(--bg-light);
+   background-image: radial-gradient(at top left, var(--gradient-start-dark), var(--gradient-end-dark)), url('abstract-black-lines-geometric-background_677411-2748.avif');
+   background-color: var(--bg-light);
+}
+
+/* ✅ Correction pour les éléments qui pourraient causer un dépassement */
+.container {
+    width: 100%;
+    max-width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/* ✅ Correction pour les images et médias */
+img, video, iframe {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ✅ Correction spécifique pour les éléments flex/grid */
+.grid, .flex {
+    max-width: 100%;
 }
 
 /* ========================================
-   MOBILE RESPONSIVE BACKGROUNDS
-   ======================================== */
-
-/* ✅ Image différente sur téléphone (écran < 768px) */
-@media (max-width: 768px) {
-  body {
-    background-image: radial-gradient(at top left, var(--gradient-start-light), var(--gradient-end-light)), url('mobile-image.jpg'); /* ✅ image mobile claire */
-    background-size: cover, cover;
-    background-position: center, center;
-    background-attachment: scroll, scroll;
-  }
-
-  .dark body {
-    background-image: radial-gradient(at top left, var(--gradient-start-dark), var(--gradient-end-dark)), url('mobile-dark.jpg'); /* ✅ image mobile sombre */
-    background-size: cover, cover;
-    background-position: center, center;
-    background-attachment: scroll, scroll;
-  }
-}
-
-/* ========================================
-   UTILITY CLASSES
+   3. CLASSES UTILITAIRES
    ======================================== */
 
 /* Apply dynamic colors using Tailwind's arbitrary values */
@@ -95,45 +112,7 @@ body {
 }
 
 /* ========================================
-   MOBILE HAMBURGER MENU
-   ======================================== */
-
-/* Hamburger menu styling */
-.hamburger-menu {
-    display: none; /* Hidden by default on larger screens */
-}
-
-@media (max-width: 767px) {
-    .hamburger-menu {
-        display: block;
-    }
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 4rem; /* Below header */
-        left: 0;
-        width: 100%;
-        background-color: var(--bg-light); /* Use current bg for mobile menu */
-        border-bottom: 1px solid var(--border-light);
-        padding: 1rem 0;
-        z-index: 1000;
-    }
-    .nav-links.active {
-        display: flex;
-    }
-    .nav-links a {
-        padding: 0.75rem 1.5rem;
-        text-align: center;
-        border-bottom: 1px solid var(--border-light);
-    }
-    .nav-links a:last-child {
-        border-bottom: none;
-    }
-}
-
-/* ========================================
-   HEADER TRANSPARENCY EFFECTS
+   4. NAVIGATION & HEADER
    ======================================== */
 
 /* Header Transparency Effect */
@@ -178,7 +157,63 @@ body {
 }
 
 /* ========================================
-   FAQ ACCORDION COMPONENT
+   5. MENU HAMBURGER MOBILE - VERSION PROFESSIONNELLE
+   ======================================== */
+
+/* Hamburger menu styling */
+.hamburger-menu {
+    display: none; /* Hidden by default on larger screens */
+    position: relative;
+    z-index: 1001;
+}
+
+/* Hamburger button animation */
+.hamburger-menu i {
+    transition: transform 0.3s ease;
+}
+
+.hamburger-menu.active i {
+    transform: rotate(90deg);
+}
+
+/* Enhanced hamburger button */
+.hamburger-menu {
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.hamburger-menu:hover {
+    border-color: var(--skin-primary, #2563eb);
+    background-color: rgba(37, 99, 235, 0.05);
+}
+
+.hamburger-menu:focus {
+    outline: none;
+    kerning: 2px solid var(--skin-primary, #2563eb);
+    motion-offset: 2px;
+}
+
+/* Overlay for better UX */
+.mobile-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.mobile-overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+/* ========================================
+   6. ACCORDÉON FAQ
    ======================================== */
 
 /* FAQ Accordion Styling */
@@ -209,33 +244,121 @@ body {
 }
 
 /* ========================================
-   GLOBAL SCROLL FIX
+   7. RESPONSIVE DESIGN
    ======================================== */
 
-/* ✅ Solution pour supprimer définitivement le scroll horizontal */
-html, body {
-    overflow-x: hidden; /* Bloque le scroll horizontal */
-    width: 100%; /* Garantit que le body prend toute la largeur */
-    max-width: 100%; /* Empêche tout dépassement */
+/* ✅ Image différente sur téléphone (écran < 768px) */
+@media screen and (max-width: 768px) {
+ body {
+   background-image: radial-gradient(at top left, var(--gradient-start-light), var(--gradient-end-light)), url('mobile-image.jpg');
+   background-size: cover;
+   background-position: center center;
+   background-repeat: no-repeat;
+ }
+ 
+ .dark body {
+   background-image: radial-gradient(at top left, var(--gradient-start-dark), var(--gradient-end-dark)), url('mobile-dark.jpg');
+   background-size: cover;
+   background-position: center center;
+   background-repeat: no-repeat;
+ }
 }
 
-/* ✅ Correction pour les éléments qui pourraient causer un dépassement */
-.container {
-    width: 100%;
-    max-width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
+@media (max-width: 767px) {
+    .hamburger-menu {
+        display: block;
+    }
+    
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: fixed; /* Changed from absolute to fixed for better positioning */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh; /* Full viewport height */
+        background-color: var(--bg-light);
+        backdrop-filter: blur(10px); /* Modern glass effect */
+        border: none;
+        padding: 6rem 0 2rem 0; /* Top padding to account for header */
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-20px);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+    
+    .nav-links.active {
+        display: flex;
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+    
+    .nav-links a {
+        padding: 1.25rem 2rem;
+        text-align: left;
+        font-size: 1.1rem;
+        font-weight: 500;
+        border-bottom: 1px solid var(--border-light);
+        position: relative;
+        transition: all 0.3s ease;
+        transform: translateX(-30px);
+        opacity: 0;
+        animation: slideInLeft 0.4s ease forwards;
+    }
+    
+    /* Staggered animation for menu items */
+    .nav-links.active a:nth-child(1) { animation-delay: 0.1s; }
+    .nav-links.active a:nth-child(2) { animation-delay: 0.15s; }
+    .nav-links.active a:nth-child(3) { animation-delay: 0.2s; }
+    .nav-links.active a:nth-child(4) { animation-delay: 0.25s; }
+    .nav-links.active a:nth-child(5) { animation-delay: 0.3s; }
+    .nav-links.active a:nth-child(6) { animation-delay: 0.35s; }
+    .nav-links.active a:nth-child(7) { animation-delay: 0.4s; }
+    
+    .nav-links a:hover {
+        background-color: rgba(37, 99, 235, 0.05);
+        padding-left: 2.5rem;
+        color: var(--skin-primary, #2563eb);
+    }
+    
+    .nav-links a:last-child {
+        border-bottom: none;
+    }
+    
+    /* Close button styling */
+    .nav-links::before {
+        content: '\f00d'; /* Font Awesome close icon */
+        font-family: 'Font Awesome 6 Free';
+        font-weight: 900;
+        position: absolute;
+        top: 1.5rem;
+        right: 2rem;
+        font-size: 1.5rem;
+        color: var(--text-primary, #1f2937);
+        cursor: pointer;
+        z-index: 1002;
+        opacity: 0;
+        animation: fadeIn 0.3s ease 0.2s forwards;
+    }
 }
 
-/* ✅ Correction pour les images et médias */
-img, video, iframe {
-    max-width: 100%;
-    height: auto;
+/* ========================================
+   ANIMATIONS KEYFRAMES
+   ======================================== */
+
+/* Keyframe animations */
+@keyframes slideInLeft {
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
 
-/* ✅ Correction spécifique pour les éléments flex/grid */
-.grid, .flex {
-    max-width: 100%;
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
 }
