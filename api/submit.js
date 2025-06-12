@@ -18,7 +18,7 @@ export default async function handler(req, res) {
     console.log('Payload to send:', payload);
 
     // REMPLACEZ PAR VOTRE NOUVELLE URL APPS SCRIPT
-    const scriptUrl = 'https://script.google.com/macros/s/AKfycbyGZVEUY3CrzED9-ZKoR4EPZDf0kZQ5mUvmbbipBlVS_T-Gxzmi7mUQEjHa_Kt-V_jg/exec';
+    const scriptUrl = 'https://script.google.com/macros/s/AKfycbylQVMa6jA-SDUFnM5TrXBQjmAjd2vd1iWRj1Owbpjbku1FxWKYfnxlQx8t7syTpHpL/exec';
     
     console.log('Calling Apps Script at:', scriptUrl);
 
