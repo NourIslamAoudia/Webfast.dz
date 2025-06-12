@@ -212,36 +212,36 @@ if (navLinks) {
    ORDER FORM VALIDATION
 ======================================== */
 
-// 1. Sélection des éléments
-const orderForm   = document.getElementById('order-form');
+// script.js - Version corrigée
+const orderForm = document.getElementById('order-form');
 const formMessage = document.getElementById('form-message');
 
 if (orderForm && formMessage) {
   orderForm.addEventListener('submit', function (e) {
-    e.preventDefault();          // stoppe l’envoi natif du formulaire
+    e.preventDefault();
 
     let isValid = true;
     const fields = {
-      name:     document.getElementById('name'),
-      email:    document.getElementById('email'),
-      type:     document.getElementById('type'),
-      budget:   document.getElementById('budget'),
+      name: document.getElementById('name'),
+      email: document.getElementById('email'),
+      type: document.getElementById('type'),
+      budget: document.getElementById('budget'),
       deadline: document.getElementById('deadline'),
-      message:  document.getElementById('message'),
+      message: document.getElementById('message'),
     };
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    // 2. Masquer toutes les erreurs précédentes
+    // Masquer toutes les erreurs précédentes
     Object.keys(fields).forEach(key => {
       const errEl = document.getElementById(`${key}-error`);
       if (errEl) errEl.classList.add('hidden');
     });
     formMessage.classList.add('hidden');
 
-    // 3. Validation de chaque champ
+    // Validation de chaque champ
     Object.entries(fields).forEach(([key, field]) => {
       const errEl = document.getElementById(`${key}-error`);
-      const val   = field.value.trim();
+      const val = field.value.trim();
       if (!val || (key === 'email' && !emailPattern.test(val))) {
         if (errEl) errEl.classList.remove('hidden');
         isValid = false;
@@ -249,49 +249,79 @@ if (orderForm && formMessage) {
     });
 
     if (!isValid) {
-      // Si invalid, on affiche message global
       formMessage.textContent = 'Veuillez remplir tous les champs requis correctement.';
-      formMessage.classList
-        .remove('hidden', 'bg-green-100', 'text-green-700');
+      formMessage.classList.remove('hidden', 'bg-green-100', 'text-green-700');
       formMessage.classList.add('bg-red-100', 'text-red-700');
       return;
     }
 
-    // 4. Préparation du payload JSON
+    // Afficher message de chargement
+    formMessage.textContent = '⏳ Envoi en cours...';
+    formMessage.classList.remove('hidden', 'bg-red-100', 'text-red-700', 'bg-green-100', 'text-green-700');
+    formMessage.classList.add('bg-blue-100', 'text-blue-700');
+
+    // Préparation du payload JSON
     const payload = {
-      name:     fields.name.value.trim(),
-      email:    fields.email.value.trim(),
-      type:     fields.type.value,
-      budget:   fields.budget.value.trim(),
+      name: fields.name.value.trim(),
+      email: fields.email.value.trim(),
+      type: fields.type.value,
+      budget: fields.budget.value.trim(),
       deadline: fields.deadline.value.trim(),
-      message:  fields.message.value.trim(),
+      message: fields.message.value.trim(),
     };
 
-    // 5. Envoi via fetch() vers le proxy local
-    fetch('/api/submit', {
-      method:  'POST',
+    // Envoi via fetch
+    fetch('https://webfast-dz.vercel.app/api/submit', {
+      method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body:    JSON.stringify(payload)
+      body: JSON.stringify(payload)
     })
-    .then(response => response.json())
+    .then(async response => {
+      const contentType = response.headers.get('content-type');
+      
+      // Vérifier si la réponse est du JSON
+      if (contentType && contentType.includes('application/json')) {
+        const data = await response.json();
+        
+        if (!response.ok) {
+          throw new Error(data.error || `HTTP ${response.status}`);
+        }
+        
+        return data;
+      } else {
+        // Si ce n'est pas du JSON, lire comme texte pour debug
+        const text = await response.text();
+        console.error('Non-JSON response:', text);
+        throw new Error('Le serveur a retourné une réponse invalide');
+      }
+    })
     .then(result => {
       if (result.status === 'success') {
-        // Succès → message vert
-        formMessage.textContent = '✅ Votre commande a été envoyée avec succès ! Nous vous répondrons rapidement.';
-        formMessage.classList
-          .remove('hidden', 'text-red-500', 'bg-red-100');
+        // Succès
+        formMessage.textContent = '✅ Demande envoyée avec succès ! Nous vous contacterons bientôt.';
+        formMessage.classList.remove('bg-blue-100', 'text-blue-700', 'bg-red-100', 'text-red-700');
         formMessage.classList.add('bg-green-100', 'text-green-700');
+        
+        // Réinitialiser le formulaire
         orderForm.reset();
       } else {
-        throw new Error(result.error || 'Erreur serveur');
+        throw new Error(result.error || 'Une erreur inconnue est survenue');
       }
     })
     .catch(err => {
       console.error('Submission error:', err);
-      // Erreur réseau ou serveur → message rouge
-      formMessage.textContent = '❌ Une erreur est survenue, veuillez réessayer plus tard.';
-      formMessage.classList
-        .remove('hidden', 'bg-green-100', 'text-green-700');
+      
+      // Message d'erreur utilisateur
+      let errorMessage = '❌ Une erreur est survenue, veuillez réessayer plus tard.';
+      
+      if (err.message.includes('Failed to fetch')) {
+        errorMessage = '❌ Problème de connexion. Vérifiez votre internet et réessayez.';
+      } else if (err.message.includes('JSON')) {
+        errorMessage = '❌ Erreur de configuration du serveur. Contactez le support.';
+      }
+      
+      formMessage.textContent = errorMessage;
+      formMessage.classList.remove('hidden', 'bg-green-100', 'text-green-700', 'bg-blue-100', 'text-blue-700');
       formMessage.classList.add('bg-red-100', 'text-red-700');
     });
   });
