@@ -83,6 +83,14 @@ body::before {
     }
 }
 
+@media (max-width: 767px) {
+    body::before {
+        background-image: url('images/phone-background.png'); /* Image spécifique pour mobile */
+        background-size: contain; /* L'image est contenue sans zoom */
+        background-position: top center; /* Positionnée en haut et centrée */
+    }
+}
+
 body::after {
     content: '';
     position: fixed;

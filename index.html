@@ -200,17 +200,23 @@
         <!-- Hero Section -->
         <section id="hero" class="relative h-screen flex items-center justify-center text-center px-4 overflow-hidden">
             <div class="absolute inset-0">
-                <img src="images/hero_background.png" alt="Image de fond Hero" class="w-full h-full object-cover object-center">
+                <!-- Image pour desktop (affichee a partir de md) -->
+                <img src="images/hero_background.png" alt="Image de fond Hero" 
+                    class="hidden md:block w-full h-full object-cover object-center">
+                <!-- Image pour mobile (affichee en dessous de md) -->
+                <img src="images/hero_background_mobile.png" alt="Image de fond Hero Mobile" 
+                    class="md:hidden w-full h-full object-cover object-center">
+                
                 <div class="absolute inset-0"
-                     style="background: linear-gradient(to bottom,
-                              rgba(0, 0, 0, 0.955) 0%,
-                              rgba(0,0,0,0.4) 50%,
-                              rgba(0, 0, 0, 0.2) 80%,
-                              rgba(0, 0, 0, 0) 100%);">
+                    style="background: linear-gradient(to bottom,
+                            rgba(0, 0, 0, 0.955) 0%,
+                            rgba(0,0,0,0.4) 50%,
+                            rgba(0, 0, 0, 0.2) 80%,
+                            rgba(0, 0, 0, 0) 100%);">
                 </div>
             </div>
-            
-            <div class="relative z-10 text-white max-w-2xl mx-auto p-6 bg-black bg-opacity-50 rounded-2xl shadow-2xl shadow-blue-500/20" data-aos="fade-up" data-aos-duration="1000">
+
+            <div class="relative z-10 text-white max-w-2xl mx-auto p-6 bg-black bg-opacity-46 rounded-2xl shadow-2xl shadow-blue-500/20" data-aos="fade-up" data-aos-duration="1000">
                 <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-4 leading-tight">
                     L'Excellence Digitale au Service de Votre Marque
                 </h1>
