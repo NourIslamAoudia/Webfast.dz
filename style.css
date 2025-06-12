@@ -148,7 +148,6 @@ img, video, iframe {
    4. NAVIGATION & HEADER
    ======================================== */
 
-/* Header Transparency Effect */
 #main-header {
     background-color: transparent;
     transition: all 0.3s ease;
@@ -187,6 +186,180 @@ img, video, iframe {
 .scrolled-header {
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     background-color: var(--card-bg-light);
+}
+/* --- Mobile-Specific Styles (Transparency & Mobile Button) --- */
+@media (max-width: 767px) { /* Styles applied ONLY to screens up to 767px wide */
+
+    /* Header Transparency Effect for Mobile (Initial State) */
+    /* These styles override the desktop defaults on mobile for transparency. */
+    #main-header {
+        background-color: transparent; /* Transparent by default on mobile */
+        box-shadow: none; /* No shadow initially on mobile */
+    }
+
+    /* Adjust nav links, theme toggle, and hamburger for transparent header on mobile */
+    #main-header .nav-links a,
+    #main-header #theme-toggle,
+    #main-header #hamburger-button {
+        color: white; /* White text on transparent header */
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); /* Text shadow for contrast */
+    }
+
+    /* Logo color adjustment for transparent header on mobile */
+    #main-header .text-skin-primary {
+        color: white; /* White logo on transparent header */
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    /* When scrolled on mobile, apply solid background and original colors */
+    /* This section is ONLY active on mobile, triggered by JS adding 'scrolled-header' */
+    #main-header.scrolled-header {
+        background-color: var(--card-bg-light);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+
+    #main-header.scrolled-header .nav-links a,
+    #main-header.scrolled-header #theme-toggle,
+    #main-header.scrolled-header #hamburger-button {
+        color: var(--text-light);
+        text-shadow: none;
+    }
+
+    #main-header.scrolled-header .text-skin-primary {
+        color: var(--primary-light);
+        text-shadow: none;
+    }
+
+    /* Mobile Header Button Visibility and Sizing */
+    /* This targets the "Commander" button in the header's utility section on mobile. */
+    #main-header .items-center > a.flex {
+        display: flex !important; /* Make it visible on mobile */
+        width: 40px; /* Smaller size for mobile header */
+        height: 40px; /* Make it square */
+        border-radius: 8px; /* Slightly rounded corners */
+        padding: 0; /* Remove padding for a compact look */
+        margin-right: 12px; /* Space between button and other utility items */
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Small shadow */
+    }
+    #main-header .items-center > a.flex i {
+        margin-right: 0; /* Ensure no extra margin on icon */
+        /* Animation for the mobile header button icon */
+        animation: iconShake 0.7s infinite alternate ease-in-out; /* Apply the shake animation */
+    }
+    #main-header .items-center > a.flex span {
+        display: none; /* Always hide text in mobile header button */
+    }
+}
+
+/* Hide the mobile header button on desktop */
+@media (min-width: 768px) { /* Styles applied ONLY to screens 768px wide and up */
+    #main-header .items-center > a.flex {
+        display: none !important; /* Explicitly hide it on desktop */
+    }
+}
+
+
+/* ========================================
+   ANIMATION PULSE (for fixed right-side button)
+   ======================================== */
+
+/* Style for the fixed right-side order button */
+.fixed.top-1\/2.right-1 {
+    transition: width 0.3s ease, background-color 0.3s ease, border-radius 0.3s ease;
+    width: 50px;
+    border-radius: 50%; /* Circular button by default */
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(var(--primary-light-rgb, 96, 165, 250), 0.8); /* Semi-transparent background */
+    box-shadow: 0 0 0 0 rgba(var(--primary-light-rgb, 96, 165, 250), 0.7); /* Initial box-shadow for pulse */
+    overflow: hidden; /* Ensure content stays within bounds during hover */
+    position: fixed; /* Fixed to viewport */
+    top: 50%; /* Vertically centered */
+    right: 1rem; /* Distance from right edge */
+    transform: translateY(-50%); /* Correct vertical centering */
+    z-index: 50; /* Ensure it's on top */
+}
+
+.fixed.top-1\/2.right-1:hover {
+    width: 150px;
+    border-radius: 25px; /* Rounded corners on hover */
+    background-color: var(--primary-light); /* Full background color on hover */
+    /* animation: none; Uncomment this if you want the pulse to stop on hover */
+}
+
+.fixed.top-1\/2.right-1 .flex {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.fixed.top-1\/2.right-1 i {
+    margin-right: 0; /* No default margin */
+    font-size: 1.2em; /* Larger icon */
+    transition: margin-right 0.3s ease, transform 0.3s ease; /* Smooth transition for icon movement */
+}
+
+.fixed.top-1\/2.right-1 span {
+    display: none;
+    white-space: nowrap; /* Prevent text wrapping */
+    opacity: 0; /* Start hidden */
+    transition: opacity 0.3s ease; /* Smooth transition for text */
+}
+
+.fixed.top-1\/2.right-1:hover span {
+    display: inline;
+    opacity: 1; /* Fade in text on hover */
+    margin-left: 8px; /* Space between icon and text */
+}
+
+.fixed.top-1\/2.right-1:hover i {
+    margin-right: 8px; /* Add margin to the right of the icon on hover */
+}
+
+/* Animation of button pulse */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(var(--primary-light-rgb, 96, 165, 250), 0.7);
+    }
+    70% {
+        transform: scale(1.1);
+        box-shadow: 0 0 0 10px rgba(var(--primary-light-rgb, 96, 165, 250), 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(var(--primary-light-rgb, 96, 165, 250), 0);
+    }
+}
+
+/* Jiggle animation for the main fixed button's icon */
+@keyframes iconJiggle {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-5deg); }
+    75% { transform: rotate(5deg); }
+}
+
+/* New animation for the mobile header button icon */
+@keyframes iconShake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-3px); }
+    75% { transform: translateX(3px); }
+}
+
+.pulse {
+    --primary-light-rgb: 96, 165, 250; /* Default value */
+    animation: pulse 2s infinite;
+}
+
+/* Apply icon jiggle to the main fixed button's icon */
+.fixed.top-1\/2.right-1 i {
+    animation: iconJiggle 0.8s infinite alternate ease-in-out; /* Subtle, continuous jiggle */
+}
+
+.fixed.top-1\/2.right-1:hover i {
+    animation: iconJiggle 0.6s infinite alternate ease-in-out; /* Faster jiggle on hover */
 }
 
 /* ========================================
@@ -274,6 +447,129 @@ img, video, iframe {
 .accordion-content p {
     padding: 1rem;
     margin: 0;
+}
+
+/* =========================================    ANIMATION PULSE    ======================================== */
+
+/* Style pour le bouton de commande fixe */
+.fixed.top-1\/2.right-1 {
+    transition: width 0.3s ease, background-color 0.3s ease, border-radius 0.3s ease;
+    width: 50px;
+    border-radius: 50%; /* Bouton circulaire par défaut */
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(var(--primary-light-rgb, 96, 165, 250), 0.8); /* Couleur de fond semi-transparente */
+    box-shadow: 0 0 0 0 rgba(var(--primary-light-rgb, 96, 165, 250), 0.7); /* Initial box-shadow for pulse */
+    overflow: hidden; /* Ensure content stays within bounds during hover */
+    /* Add the original positioning for desktop and mobile consistency */
+    position: fixed; /* Already there, but good to be explicit */
+    top: 50%;
+    right: 1rem; /* Using rem for right spacing, equivalent to right-4 from Tailwind */
+    transform: translateY(-50%); /* This correctly centers it vertically */
+    z-index: 50; /* Ensure it's on top */
+}
+
+.fixed.top-1\/2.right-1:hover {
+    width: 150px;
+    border-radius: 25px; /* Bords arrondis au survol */
+    background-color: var(--primary-light); /* Couleur de fond pleine au survol */
+    /* animation: none; Uncomment this if you want the pulse to stop on hover */
+}
+
+.fixed.top-1\/2.right-1 .flex {
+    justify-content: center;
+    align-items: center; /* Ensure vertical alignment */
+    width: 100%; /* Occupy full width to center icon and text */
+}
+
+.fixed.top-1\/2.right-1 i {
+    margin-right: 0; /* Pas de marge par défaut */
+    font-size: 1.2em; /* Icône plus grande */
+    transition: margin-right 0.3s ease, transform 0.3s ease; /* Smooth transition for icon movement */
+}
+
+.fixed.top-1\/2.right-1 span {
+    display: none;
+    white-space: nowrap; /* Prevent text wrapping */
+    opacity: 0; /* Start hidden */
+    transition: opacity 0.3s ease; /* Smooth transition for text */
+}
+
+.fixed.top-1\/2.right-1:hover span {
+    display: inline;
+    opacity: 1; /* Fade in text on hover */
+    margin-left: 8px; /* Add some space between icon and text */
+}
+
+.fixed.top-1\/2.right-1:hover i {
+    margin-right: 8px; /* Add margin to the right of the icon on hover */
+}
+
+/* Animation de pulsation du bouton */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(var(--primary-light-rgb, 96, 165, 250), 0.7);
+    }
+    70% {
+        transform: scale(1.1);
+        box-shadow: 0 0 0 10px rgba(var(--primary-light-rgb, 96, 165, 250), 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(var(--primary-light-rgb, 96, 165, 250), 0);
+    }
+}
+
+/* Animation de jiggle de l'icône */
+@keyframes iconJiggle {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-5deg); }
+    75% { transform: rotate(5deg); }
+}
+
+.pulse {
+    --primary-light-rgb: 96, 165, 250; /* Valeur par défaut */
+    animation: pulse 2s infinite;
+}
+
+/* Appliquer l'animation de l'icône */
+.fixed.top-1\/2.right-1 i {
+    animation: iconJiggle 0.8s infinite alternate ease-in-out; /* Subtle, continuous jiggle */
+}
+
+.fixed.top-1\/2.right-1:hover i {
+    animation: iconJiggle 0.6s infinite alternate ease-in-out; /* Faster jiggle on hover */
+}
+
+/* Styles spécifiques pour mobile */
+@media (max-width: 768px) {
+    /* Keep the desktop positioning */
+    .fixed.top-1\/2.right-1 {
+        width: 50px; /* Keep it circular and small on mobile */
+        height: 50px;
+        border-radius: 50%;
+        /* Remove the overrides that change its position and transform */
+        /* top: auto; */
+        /* bottom: 20px; */
+        /* transform: none; */
+        /* right: 20px; - Use the general right-1/right: 1rem from above */
+    }
+
+    .fixed.top-1\/2.right-1:hover {
+        width: 50px; /* Prevent expansion on hover on mobile */
+        border-radius: 50%;
+    }
+
+    .fixed.top-1\/2.right-1 i {
+        margin-right: 0;
+    }
+
+    .fixed.top-1\/2.right-1 span {
+        display: none; /* Hide text on mobile */
+    }
 }
 
 /* ========================================

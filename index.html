@@ -112,99 +112,81 @@
 <body class="text-skin-base">
     <!-- Header Section -->
     <header class="shadow-sm fixed w-full z-50 transition-all duration-300" id="main-header">
-        <nav class="container mx-auto px-4 py-4 flex justify-between items-center relative">
-            <!-- Logo -->
-            <a href="#" class="text-2xl font-bold text-skin-primary rounded-md transition-transform duration-300 hover:scale-105">
-                WebFast DZ
+    <nav class="container mx-auto px-4 py-4 flex justify-between items-center relative">
+        <a href="#" class="text-2xl font-bold text-skin-primary rounded-md transition-transform duration-300 hover:scale-105">
+            WebFast DZ
+        </a>
+
+        <div class="hidden md:flex items-center space-x-6 nav-links">
+            <a href="#hero" class="hover:text-skin-primary font-medium transition-all duration-300 rounded-md px-3 py-2 relative group">
+                Accueil
+                <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-skin-primary transition-all duration-300 group-hover:w-full"></span>
             </a>
-            
-            <!-- Desktop Navigation -->
-            <div class="hidden md:flex items-center space-x-6 nav-links">
-                <a href="#hero" class="hover:text-skin-primary font-medium transition-all duration-300 rounded-md px-3 py-2 relative group">
-                    Accueil
-                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-skin-primary transition-all duration-300 group-hover:w-full"></span>
-                </a>
-                <a href="#services" class="hover:text-skin-primary font-medium transition-all duration-300 rounded-md px-3 py-2 relative group">
-                    Services
-                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-skin-primary transition-all duration-300 group-hover:w-full"></span>
-                </a>
-                <a href="#portfolio" class="hover:text-skin-primary font-medium transition-all duration-300 rounded-md px-3 py-2 relative group">
-                    Portfolio
-                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-skin-primary transition-all duration-300 group-hover:w-full"></span>
-                </a>
-                <a href="#faq" class="hover:text-skin-primary font-medium transition-all duration-300 rounded-md px-3 py-2 relative group">
-                    FAQ
-                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-skin-primary transition-all duration-300 group-hover:w-full"></span>
-                </a>
-                <a href="#Coordonnées" class="hover:text-skin-primary font-medium transition-all duration-300 rounded-md px-3 py-2 relative group">
-                    Contact
-                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-skin-primary transition-all duration-300 group-hover:w-full"></span>
+            <a href="#services" class="hover:text-skin-primary font-medium transition-all duration-300 rounded-md px-3 py-2 relative group">
+                Services
+                <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-skin-primary transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <a href="#portfolio" class="hover:text-skin-primary font-medium transition-all duration-300 rounded-md px-3 py-2 relative group">
+                Portfolio
+                <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-skin-primary transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <a href="#faq" class="hover:text-skin-primary font-medium transition-all duration-300 rounded-md px-3 py-2 relative group">
+                FAQ
+                <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-skin-primary transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <a href="#Coordonnées" class="hover:text-skin-primary font-medium transition-all duration-300 rounded-md px-3 py-2 relative group">
+                Contact
+                <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-skin-primary transition-all duration-300 group-hover:w-full"></span>
+            </a>
+
+            </div>
+
+        <div class="nav-links md:hidden">
+            <a href="#hero" class="transition-all duration-300">
+                <i class="fas fa-home mr-3 text-skin-primary"></i>
+                Accueil
+            </a>
+            <a href="#services" class="transition-all duration-300">
+                <i class="fas fa-cogs mr-3 text-skin-primary"></i>
+                Services
+            </a>
+            <a href="#portfolio" class="transition-all duration-300">
+                <i class="fas fa-briefcase mr-3 text-skin-primary"></i>
+                Portfolio
+            </a>
+            <a href="#faq" class="transition-all duration-300">
+                <i class="fas fa-question-circle mr-3 text-skin-primary"></i>
+                FAQ
+            </a>
+            <a href="#Coordonnées" class="transition-all duration-300">
+                <i class="fas fa-envelope mr-3 text-skin-primary"></i>
+                Contact
+            </a>
+            </div>
+
+        <div class="flex items-center space-x-4">
+            <a href="#contact"
+            class="flex items-center justify-center
+                   bg-gradient-to-r from-skin-primary to-skin-primary/80
+                   text-white font-semibold py-2 px-3 rounded-2xl
+                   shadow-md border border-white/20 backdrop-blur
+                   hover:scale-105 transition-all duration-300
+                   hidden md:hidden"> <i class="fas fa-shopping-cart text-lg"></i>
                 </a>
 
-                <!-- Order Button -->
-                <a href="#contact"
-                class="inline-flex items-center justify-center 
-                        bg-gradient-to-r from-skin-primary to-skin-primary/80 
-                        text-white font-semibold py-2 px-5 rounded-2xl 
-                        shadow-md border border-white/20 backdrop-blur 
-                        hover:scale-105 transition-all duration-300">
-                    <i class="fas fa-shopping-cart mr-2 text-lg animate-bounce"></i>
-                    Commander maintenant
-                </a>
-            </div>
-            
-            <!-- Mobile Navigation -->
-            <div class="nav-links md:hidden">
-                <a href="#hero" class="transition-all duration-300">
-                    <i class="fas fa-home mr-3 text-skin-primary"></i>
-                    Accueil
-                </a>
-                <a href="#services" class="transition-all duration-300">
-                    <i class="fas fa-cogs mr-3 text-skin-primary"></i>
-                    Services
-                </a>
-                <a href="#portfolio" class="transition-all duration-300">
-                    <i class="fas fa-briefcase mr-3 text-skin-primary"></i>
-                    Portfolio
-                </a>
-                <a href="#faq" class="transition-all duration-300">
-                    <i class="fas fa-question-circle mr-3 text-skin-primary"></i>
-                    FAQ
-                </a>
-                <a href="#Coordonnées" class="transition-all duration-300">
-                    <i class="fas fa-envelope mr-3 text-skin-primary"></i>
-                    Contact
-                </a>
-                <a href="#contact"
-                class="inline-flex items-center justify-center 
-                        bg-gradient-to-r from-skin-primary to-skin-primary/80 
-                        text-white font-semibold py-2 px-5 rounded-2xl 
-                        shadow-md border border-white/20 backdrop-blur 
-                        hover:scale-105 transition-all duration-300">
-                    <i class="fas fa-shopping-cart mr-2 text-lg animate-bounce"></i>
-                    Commander maintenant
-                </a>
-            </div>
-            
-            <!-- Utility Buttons -->
-            <div class="flex items-center space-x-4">
-                <!-- Theme Toggle masqué sur mobile -->
-                <button id="theme-toggle"
-                        class="hidden md:inline-flex p-2 rounded-full text-skin-base hover:bg-skin-base transition-all duration-300 hover:scale-110">
-                    <i class="fas fa-moon text-xl" id="theme-icon"></i>
-                </button>
+            <button id="theme-toggle"
+                    class="hidden md:inline-flex p-2 rounded-full text-skin-base hover:bg-skin-base transition-all duration-300 hover:scale-110">
+                <i class="fas fa-moon text-xl" id="theme-icon"></i>
+            </button>
 
-                
-                <!-- Mobile Menu Button -->
-                <button id="hamburger-button" class="hamburger-menu p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-skin-primary transition-all duration-300">
-                    <i class="fas fa-bars text-xl"></i>
-                </button>
-            </div>
-            
-            <!-- Mobile Overlay -->
-            <div id="mobile-overlay" class="mobile-overlay"></div>
-        </nav>
-    </header>
+            <button id="hamburger-button" class="hamburger-menu p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-skin-primary transition-all duration-300">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+
+        <div id="mobile-overlay" class="mobile-overlay"></div>
+    </nav>
+</header>
 
     <main>
         <!-- Hero Section -->
