@@ -22,7 +22,6 @@ const bodyElement = document.body;
 
 const themeToggleBtn = document.getElementById('theme-toggle');
 const themeIcon = document.getElementById('theme-icon');
-const Nos_Points_Forts = document.getElementById('Nos_Points_Forts');
 const Services_Détaillés = document.getElementById('Services_Détaillés');
 const Questions_Fréquemment_Posées = document.getElementById('Questions_Fréquemment_Posées');
 
@@ -34,8 +33,6 @@ function applyTheme(theme) {
     } else {
         bodyElement.classList.remove('dark');
         themeIcon.classList.replace('fa-sun', 'fa-moon');
-
-        if (Nos_Points_Forts) Nos_Points_Forts.style.color = 'white';
         if (Services_Détaillés) Services_Détaillés.style.color = 'white';
         if (Questions_Fréquemment_Posées) Questions_Fréquemment_Posées.style.color = 'white';
     }
