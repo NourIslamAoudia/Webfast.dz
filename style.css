@@ -61,50 +61,47 @@ body {
 }
 
 body::before {
-   content: '';
-   position: fixed;
-   top: 0;
-   left: 0;
-   width: 100vw;
-   height: 100vh;
-   background-image: url('images/programming-background.jpg');
-   background-size: cover;
-   background-position: center;
-   background-repeat: no-repeat;
-   filter: blur(3px);
-   z-index: -2;
-   /* Fix pour iOS */
-   -webkit-transform: translateZ(0);
-   transform: translateZ(0);
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('images/programming-background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(3px);
+    z-index: -2;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+
+    /* Specific fix for iOS - will make it scroll with content */
+    @supports (-webkit-overflow-scrolling: touch) { /* More specific iOS feature query */
+        background-attachment: scroll;
+        position: absolute; /* Often needed with background-attachment: scroll on iOS for pseudo-elements */
+    }
 }
 
 body::after {
-   content: '';
-   position: fixed;
-   top: 0;
-   left: 0;
-   width: 100vw;
-   height: 100vh;
-   background-image: radial-gradient(at top left, var(--gradient-start-light), var(--gradient-end-light));
-   background-blend-mode: overlay;
-   z-index: -1;
-   transition: background-image 0.3s ease;
-   /* Fix pour iOS */
-   -webkit-transform: translateZ(0);
-   transform: translateZ(0);
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: radial-gradient(at top left, var(--gradient-start-light), var(--gradient-end-light));
+    background-blend-mode: overlay;
+    z-index: -1;
+    transition: background-image 0.3s ease;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+
+    @supports (-webkit-overflow-scrolling: touch) {
+        position: absolute; /* Often needed with background-attachment: scroll on iOS for pseudo-elements */
+    }
 }
 
-/* Media query spécifique pour les appareils iOS */
-@supports (-webkit-touch-callout: none) {
-   body::before {
-      position: absolute;
-      background-attachment: scroll;
-   }
-   
-   body::after {
-      position: absolute;
-   }
-}
 
 /* ✅ Correction pour les éléments qui pourraient causer un dépassement */
 .container {
