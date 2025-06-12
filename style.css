@@ -67,7 +67,7 @@ body::before {
    left: 0;
    width: 100vw;
    height: 100vh;
-   background-image: url('programming-background.jpg');
+   background-image: url('images/programming-background.jpg');
    background-size: cover;
    background-position: center;
    background-repeat: no-repeat;
