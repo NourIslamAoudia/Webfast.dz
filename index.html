@@ -199,25 +199,12 @@
     <main>
         <!-- Hero Section -->
         <section id="hero" class="relative h-screen px-4 overflow-hidden">
-            <div class="absolute inset-0">
-                <!-- Image pour desktop (affichee a partir de md) -->
-                <img src="images/hero_background.png" alt="Image de fond Hero" 
-                    class="hidden md:block w-full h-full object-cover object-center">
-                <!-- Image pour mobile (affichee en dessous de md) -->
-                <img src="images/hero_background_mobile.png" alt="Image de fond Hero Mobile" 
-                    class="md:hidden w-full h-full object-cover object-center">
-                
-                <div class="absolute inset-0"
-                    style="background: linear-gradient(to bottom,
-                            rgba(0, 0, 0, 0.955) 0%,
-                            rgba(0,0,0,0.4) 50%,
-                            rgba(0, 0, 0, 0.2) 80%,
-                            rgba(0, 0, 0, 0) 100%);">
-                </div>
-            </div>
+            <!-- Fond animé avec particles.js -->
+            <div id="particles-js" class="absolute inset-0"></div>
+            <div class="overlay absolute inset-0"></div>
 
             <div class="relative z-10 h-full flex items-center justify-center text-center">
-                <div class="text-white max-w-2xl mx-auto p-6 bg-black bg-opacity-45 md:bg-opacity-55 rounded-2xl shadow-2xl shadow-blue-500/20 mt-5 md:mt-0" data-aos="fade-up" data-aos-duration="1000">
+                <div class="text-white max-w-2xl mx-auto p-6 bg-black bg-opacity-25 md:bg-opacity-5 rounded-2xl shadow-2xl shadow-blue-500/20 mt-5 md:mt-0" data-aos="fade-up" data-aos-duration="1000">
                     <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-4 leading-tight">
                         L'Excellence Digitale au Service de Votre Marque
                     </h1>
@@ -676,6 +663,7 @@
 
     <!-- BON ordre -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="script.js"></script>
 
 </body>

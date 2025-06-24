@@ -754,3 +754,20 @@ img, video, iframe {
         max-width: 300px;
     }
 }
+
+/* Styles pour particles.js et overlay */
+    #particles-js {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+        z-index: 0;
+    }
+    
+    .overlay {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4);
+        z-index: 1;
+    }
