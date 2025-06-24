@@ -503,3 +503,19 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('particles-js').style.background = 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)';
         }
     });
+
+/* ========================================
+    SCROLL TO NEXT SECTION
+======================================== */
+
+ function scrollToNextSection() {
+        // Trouve la section suivante après la hero section
+        const heroSection = document.getElementById('hero');
+        const nextSection = heroSection.nextElementSibling;
+        
+        if (nextSection) {
+            nextSection.scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+    }   

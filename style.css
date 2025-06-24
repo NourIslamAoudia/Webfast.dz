@@ -688,49 +688,45 @@ img, video, iframe {
 .laptop-screen {
     position: relative;
     width: 100%;
-    max-width: 280px;
+    max-width: 300px;
     margin: 0 auto;
-    transform: perspective(1000px) rotateX(20deg);
-    transition: transform 0.3s ease;
+    transform: perspective(1200px) rotateX(15deg) rotateY(0deg) rotateZ(0deg);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
+    z-index: 1;
 }
 
 .group:hover .laptop-screen {
-    transform: perspective(1000px) rotateX(10deg) scale(1.02);
+    transform: perspective(1200px) rotateX(10deg) rotateY(0deg) rotateZ(0deg) scale(1.03);
 }
 
 .laptop-frame {
     background: #2c3e50;
     border-radius: 12px 12px 0 0;
-    padding: 8px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    padding: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
 }
 
 .screen-content {
-    aspect-ratio: 16/10;
+    aspect-ratio: 16/9;
     background: #000;
     border-radius: 6px;
     overflow: hidden;
     position: relative;
+    transition: all 0.3s ease;
 }
 
-.screen-content::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(45deg, transparent 49%, rgba(255,255,255,0.1) 50%, transparent 51%);
-    pointer-events: none;
-    z-index: 1;
+.group:hover .screen-content {
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.1);
 }
 
 .laptop-base {
-    height: 8px;
+    height: 10px;
     background: linear-gradient(to bottom, #34495e, #2c3e50);
     border-radius: 0 0 20px 20px;
-    margin: 0 -10px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    margin: 0 -15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
 }
 
 .laptop-base::after {
@@ -739,19 +735,21 @@ img, video, iframe {
     bottom: -2px;
     left: 50%;
     transform: translateX(-50%);
-    width: 30px;
+    width: 40px;
     height: 4px;
     background: #7f8c8d;
     border-radius: 2px;
+    transition: all 0.3s ease;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
     .laptop-container {
         padding: 15px;
     }
     
     .laptop-screen {
-        max-width: 300px;
+        max-width: 280px;
+        transform: perspective(1000px) rotateX(10deg);
     }
 }
 
@@ -768,6 +766,6 @@ img, video, iframe {
         position: absolute;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.4);
+        background: rgba(0, 0, 0, 0.3);
         z-index: 1;
     }
