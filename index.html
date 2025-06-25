@@ -249,7 +249,7 @@
                 </div>
 
                 <!-- Strengths Grid -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
                     <!-- Strength 1 -->
                     <div class="bg-skin-card p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-skin-base flex flex-col items-center text-center group" 
                         data-aos="fade-up" data-aos-delay="100">
@@ -687,69 +687,10 @@
             <div class="container mx-auto px-4">
                 <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12 text-skin-base" data-aos="fade-up" data-aos-duration="800">Contactez-Nous</h2>
                 
-                <div class="grid grid-cols-1 gap-12 max-w-6xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto items-start">
                     
-                    <!-- Formulaire de commande de site web -->
-                    <div class="max-w-xl w-full mx-auto bg-skin-base p-8 rounded-2xl shadow-2xl shadow-blue-500/10 border border-skin-base transition-colors duration-300" data-aos="fade-right" data-aos-duration="800">
-                        <h3 class="text-3xl font-bold mb-6 text-skin-base">Commandez votre site web</h3>
-                        <p class="text-skin-muted text-base mb-6">Remplissez ce formulaire et notre équipe vous recontactera sous 24h pour établir un devis personnalisé.</p>
-
-                        <form id="order-form" 
-                            data-endpoint="/api/submit">
-                        <div class="mb-4">
-                            <label for="name" class="block text-skin-base text-sm font-medium mb-2">Nom Complet</label>
-                            <input type="text" id="name" name="name" class="w-full p-3 rounded-md bg-skin-card border border-skin-base text-skin-base focus:outline-none focus:ring-2 focus:ring-skin-primary" placeholder="Votre nom" required>
-                            <span id="name-error" class="text-red-500 text-sm hidden">Veuillez entrer votre nom complet.</span>
-                        </div>
-
-                        <div class="mb-4">
-                            <label for="email" class="block text-skin-base text-sm font-medium mb-2">Adresse Email</label>
-                            <input type="email" id="email" name="email" class="w-full p-3 rounded-md bg-skin-card border border-skin-base text-skin-base focus:outline-none focus:ring-2 focus:ring-skin-primary" placeholder="votre.email@exemple.com" required>
-                            <span id="email-error" class="text-red-500 text-sm hidden">Veuillez entrer une adresse email valide.</span>
-                        </div>
-
-                        <div class="mb-4">
-                            <label for="type" class="block text-skin-base text-sm font-medium mb-2">Type de site</label>
-                            <select id="type" name="type" class="w-full p-3 rounded-md bg-skin-card border border-skin-base text-skin-base focus:outline-none focus:ring-2 focus:ring-skin-primary" required>
-                                <option value="">Choisissez un type</option>
-                                <option value="site vitrine">Site vitrine</option>
-                                <option value="e-commerce">Site e-commerce</option>
-                                <option value="portfolio">Portfolio</option>
-                                <option value="blog">Blog</option>
-                                <option value="autre">Autre (à préciser)</option>
-                            </select>
-                            <span id="type-error" class="text-red-500 text-sm hidden">Veuillez choisir un type de site.</span>
-                        </div>
-
-                        <div class="mb-4">
-                            <label for="budget" class="block text-skin-base text-sm font-medium mb-2">Budget estimé</label>
-                            <input type="text" id="budget" name="budget" class="w-full p-3 rounded-md bg-skin-card border border-skin-base text-skin-base focus:outline-none focus:ring-2 focus:ring-skin-primary" placeholder="Ex: 100 000 DA" required>
-                            <span id="budget-error" class="text-red-500 text-sm hidden">Veuillez indiquer un budget estimé.</span>
-                        </div>
-
-                        <div class="mb-4">
-                            <label for="deadline" class="block text-skin-base text-sm font-medium mb-2">Délai souhaité</label>
-                            <input type="text" id="deadline" name="deadline" class="w-full p-3 rounded-md bg-skin-card border border-skin-base text-skin-base focus:outline-none focus:ring-2 focus:ring-skin-primary" placeholder="Ex: 2 semaines, 1 mois..." required>
-                            <span id="deadline-error" class="text-red-500 text-sm hidden">Veuillez spécifier un délai souhaité.</span>
-                        </div>
-
-                        <div class="mb-6">
-                            <label for="message" class="block text-skin-base text-sm font-medium mb-2">Détails du projet</label>
-                            <textarea id="message" name="message" rows="5" class="w-full p-3 rounded-md bg-skin-card border border-skin-base text-skin-base focus:outline-none focus:ring-2 focus:ring-skin-primary" placeholder="Parlez-nous de vos besoins, préférences, exemples de sites, fonctionnalités attendues..." required></textarea>
-                            <span id="message-error" class="text-red-500 text-sm hidden">Veuillez décrire votre projet.</span>
-                        </div>
-
-                        <button type="submit" class="btn-primary w-full py-3 px-6 rounded-md font-semibold text-lg hover:opacity-90 transition-all duration-300 shadow-lg">
-                            <i class="fas fa-paper-plane mr-2"></i> Envoyer ma commande
-                        </button>
-
-                        <div id="form-message" class="mt-4 p-3 rounded-md text-center hidden"></div>
-                    </form>
-
-                    </div>
-
-                    <!-- Coordonnées - Version compatible thème clair/sombre -->
-                    <div id="Coordonnées" class="max-w-xl w-full mx-auto bg-skin-base p-8 rounded-xl shadow-lg border border-skin-base transition-all duration-300 hover:shadow-xl" data-aos="fade-left" data-aos-duration="800">
+                    <!-- Coordonnées - À GAUCHE -->
+                    <div id="Coordonnées" class="bg-skin-base p-8 rounded-xl shadow-lg border border-skin-base transition-all duration-300 hover:shadow-xl" data-aos="fade-right" data-aos-duration="800">
                         <!-- En-tête -->
                         <div class="text-center mb-8">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto text-skin-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -797,16 +738,74 @@
                             </div>
                         </div>
 
-    <!-- Réseaux sociaux -->
-    <div class="mt-8 pt-6 border-t border-skin-base">
-        <h4 class="text-sm font-semibold text-skin-muted uppercase tracking-wider text-center">Suivez-nous</h4>
-        <div class="flex justify-center space-x-6 mt-4">
-            <a href="https://www.instagram.com/webfast.dz?igsh=MXIycXNrdnVheXQycw%3D%3D&utm_source=qr" class="text-skin-muted hover:text-skin-primary transition-colors" aria-label="Instagram">
-                <i class="fab fa-instagram text-xl"></i>
-            </a>
-        </div>
-    </div>
-</div>
+                        <!-- Réseaux sociaux -->
+                        <div class="mt-8 pt-6 border-t border-skin-base">
+                            <h4 class="text-sm font-semibold text-skin-muted uppercase tracking-wider text-center">Suivez-nous</h4>
+                            <div class="flex justify-center space-x-6 mt-4">
+                                <a href="https://www.instagram.com/webfast.dz?igsh=MXIycXNrdnVheXQycw%3D%3D&utm_source=qr" class="text-skin-muted hover:text-skin-primary transition-colors" aria-label="Instagram">
+                                    <i class="fab fa-instagram text-xl"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Formulaire de commande de site web - À DROITE -->
+                    <div class="bg-skin-base p-8 rounded-2xl shadow-2xl shadow-blue-500/10 border border-skin-base transition-colors duration-300" data-aos="fade-left" data-aos-duration="800">
+                        <h3 class="text-3xl font-bold mb-6 text-skin-base">Commandez votre site web</h3>
+                        <p class="text-skin-muted text-base mb-6">Remplissez ce formulaire et notre équipe vous recontactera sous 24h pour établir un devis personnalisé.</p>
+
+                        <form id="order-form" data-endpoint="/api/submit">
+                            <div class="mb-4">
+                                <label for="name" class="block text-skin-base text-sm font-medium mb-2">Nom Complet</label>
+                                <input type="text" id="name" name="name" class="w-full p-3 rounded-md bg-skin-card border border-skin-base text-skin-base focus:outline-none focus:ring-2 focus:ring-skin-primary" placeholder="Votre nom" required>
+                                <span id="name-error" class="text-red-500 text-sm hidden">Veuillez entrer votre nom complet.</span>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="email" class="block text-skin-base text-sm font-medium mb-2">Adresse Email</label>
+                                <input type="email" id="email" name="email" class="w-full p-3 rounded-md bg-skin-card border border-skin-base text-skin-base focus:outline-none focus:ring-2 focus:ring-skin-primary" placeholder="votre.email@exemple.com" required>
+                                <span id="email-error" class="text-red-500 text-sm hidden">Veuillez entrer une adresse email valide.</span>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="type" class="block text-skin-base text-sm font-medium mb-2">Type de site</label>
+                                <select id="type" name="type" class="w-full p-3 rounded-md bg-skin-card border border-skin-base text-skin-base focus:outline-none focus:ring-2 focus:ring-skin-primary" required>
+                                    <option value="">Choisissez un type</option>
+                                    <option value="site vitrine">Site vitrine</option>
+                                    <option value="e-commerce">Site e-commerce</option>
+                                    <option value="portfolio">Portfolio</option>
+                                    <option value="blog">Blog</option>
+                                    <option value="autre">Autre (à préciser)</option>
+                                </select>
+                                <span id="type-error" class="text-red-500 text-sm hidden">Veuillez choisir un type de site.</span>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="budget" class="block text-skin-base text-sm font-medium mb-2">Budget estimé</label>
+                                <input type="text" id="budget" name="budget" class="w-full p-3 rounded-md bg-skin-card border border-skin-base text-skin-base focus:outline-none focus:ring-2 focus:ring-skin-primary" placeholder="Ex: 100 000 DA" required>
+                                <span id="budget-error" class="text-red-500 text-sm hidden">Veuillez indiquer un budget estimé.</span>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="deadline" class="block text-skin-base text-sm font-medium mb-2">Délai souhaité</label>
+                                <input type="text" id="deadline" name="deadline" class="w-full p-3 rounded-md bg-skin-card border border-skin-base text-skin-base focus:outline-none focus:ring-2 focus:ring-skin-primary" placeholder="Ex: 2 semaines, 1 mois..." required>
+                                <span id="deadline-error" class="text-red-500 text-sm hidden">Veuillez spécifier un délai souhaité.</span>
+                            </div>
+
+                            <div class="mb-6">
+                                <label for="message" class="block text-skin-base text-sm font-medium mb-2">Détails du projet</label>
+                                <textarea id="message" name="message" rows="5" class="w-full p-3 rounded-md bg-skin-card border border-skin-base text-skin-base focus:outline-none focus:ring-2 focus:ring-skin-primary" placeholder="Parlez-nous de vos besoins, préférences, exemples de sites, fonctionnalités attendues..." required></textarea>
+                                <span id="message-error" class="text-red-500 text-sm hidden">Veuillez décrire votre projet.</span>
+                            </div>
+
+                            <button type="submit" class="btn-primary w-full py-3 px-6 rounded-md font-semibold text-lg hover:opacity-90 transition-all duration-300 shadow-lg">
+                                <i class="fas fa-paper-plane mr-2"></i> Envoyer ma commande
+                            </button>
+
+                            <div id="form-message" class="mt-4 p-3 rounded-md text-center hidden"></div>
+                        </form>
+                    </div>
+
                 </div>
             </div>
         </section>
