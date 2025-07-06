@@ -657,7 +657,15 @@ img, video, iframe {
         animation: fadeIn 0.3s ease 0.2s forwards;
     }
 
-    
+    /* Supprimer la marge gauche des liens de navigation */
+.nav-links a {
+    margin-left: 0 !important;
+}
+
+/* Pour cibler spécifiquement le lien "Services" */
+.nav-links a[href="#services"] {
+    margin-left: 0 !important;
+}
 }
 
 /* ========================================
