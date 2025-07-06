@@ -167,35 +167,35 @@
         <span class="absolute inset-0 bg-skin-primary/5 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
     </a>
 
-    <!-- Bouton Commander maintenant -->
     <a href="#contact"
-       class="inline-flex items-center justify-center
-              bg-gradient-to-r from-skin-primary to-skin-primary/90
-              hover:from-skin-primary/90 hover:to-skin-primary
-              text-white font-semibold py-3 px-6 rounded-[14px]
-              shadow-lg hover:shadow-xl
-              border-2 border-white/10
-              backdrop-blur-md
-              hover:scale-[1.03] transition-all duration-300
-              ml-4 /* Marge gauche pour séparation */
-              mt-4
-              group relative overflow-hidden">
-       
-       <!-- Animation de fond au survol -->
-       <span class="absolute inset-0 bg-gradient-to-r from-white/10 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-       
-       <!-- Icône avec animation améliorée -->
-       <i class="fas fa-shopping-cart mr-3 text-lg animate-pulse group-hover:animate-none"></i>
-       
-       <!-- Texte avec léger décalage au survol -->
-       <span class="relative transform group-hover:-translate-y-0.5 transition-transform duration-300">
-          Commander maintenant
-       </span>
-       
-       <!-- Effet de "shine" au survol -->
-       <span class="absolute inset-0 overflow-hidden">
-          <span class="absolute top-0 left-[-100%] w-1/2 h-full bg-white/20 skew-x-[-20deg] group-hover:left-[150%] transition-all duration-700"></span>
-       </span>
+    class="inline-flex items-center justify-center
+            bg-gradient-to-r from-skin-primary to-skin-primary/90
+            hover:from-skin-primary/90 hover:to-skin-primary
+            text-white font-semibold py-2 px-4 rounded-[12px]  <!-- Padding réduit -->
+            shadow-md hover:shadow-lg  <!-- Ombre légèrement réduite -->
+            border border-white/10  <!-- Bordure plus fine -->
+            backdrop-blur-sm  <!-- Flou légèrement réduit -->
+            hover:scale-[1.02]  <!-- Scale au survol légèrement réduit -->
+            transition-all duration-300
+            ml-3  <!-- Marge gauche réduite -->
+            mt-3 md:mt-0  <!-- Marges top réduites -->
+            group relative overflow-hidden">
+    
+    <!-- Animation de fond au survol (version plus subtile) -->
+    <span class="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></span>
+    
+    <!-- Icône avec animation ajustée -->
+    <i class="fas fa-shopping-cart mr-2 text-base animate-bounce group-hover:animate-[bounce_0.4s_ease-in-out_infinite]"></i>
+    
+    <!-- Texte avec décalage plus subtil -->
+    <span class="relative transform group-hover:-translate-y-0.3 transition-transform duration-200">
+        Commander
+    </span>
+    
+    <!-- Effet "shine" plus discret -->
+    <span class="absolute inset-0 overflow-hidden">
+        <span class="absolute top-0 left-[-80%] w-1/3 h-full bg-white/15 skew-x-[-20deg] group-hover:left-[120%] transition-all duration-500"></span>
+    </span>
     </a>
 </div>
 
