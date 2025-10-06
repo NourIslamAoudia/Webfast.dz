@@ -1653,6 +1653,25 @@
 
                 <div class="mb-4">
                   <label
+                    for="phone"
+                    class="block text-skin-base text-sm font-medium mb-2"
+                    >Numéro de téléphone</label
+                  >
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    class="w-full p-3 rounded-md bg-skin-card border border-skin-base text-skin-base focus:outline-none focus:ring-2 focus:ring-skin-primary"
+                    placeholder="Ex: 06 98 55 36 62"
+                    required
+                  />
+                  <span id="phone-error" class="text-red-500 text-sm hidden"
+                    >Veuillez entrer un numéro de téléphone valide.</span
+                  >
+                </div>
+
+                <div class="mb-4">
+                  <label
                     for="type"
                     class="block text-skin-base text-sm font-medium mb-2"
                     >Type de site</label
@@ -1778,7 +1797,7 @@
         <p>&copy; 2024 Votre Agence <b>WebFast DZ</b>. Tous droits réservés.</p>
 
         <a
-          href="https://islamaoudia.me"
+          href="https://islamaoudia.dev"
           target="_blank"
           rel="noopener noreferrer"
           class="inline-flex items-center justify-center gap-2 text-skin-primary font-semibold hover:underline hover:scale-105 transition-all duration-300"
