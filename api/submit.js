@@ -19,7 +19,7 @@ export default async function handler(req, res) {
 
     // REMPLACEZ PAR VOTRE NOUVELLE URL APPS SCRIPT
     const scriptUrl =
-      "https://script.google.com/macros/s/AKfycbwoZQsShvtu3-WFdAZnA9nBlGu1lZRylNXCV65SnVj1ODA8kD2i-2aW1QHYZxl7_22w/exec";
+      "https://script.google.com/macros/s/AKfycbzF7f_FCMHbBKKRchyg7hv-HiuY8jQTsstMGsojEtbCK4fihU__ZJzMoPtgyJEZg9ip/exec";
 
     console.log("Calling Apps Script at:", scriptUrl);
 
