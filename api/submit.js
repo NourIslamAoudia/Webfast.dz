@@ -1,27 +1,26 @@
-// pages/api/submit.js - Version Production Sécurisée
+// api/submit.js - API Vercel Sécurisée
 
 const ALLOWED_ORIGINS = [
   "https://webfast-dz.vercel.app",
   "http://localhost:3000",
-  "http://127.0.0.1:3000",
-  "http://127.0.0.1:5500", // Live Server
+  "http://127.0.0.1:5500",
 ];
 
-// Rate limiting en mémoire
 const rateLimitMap = new Map();
 
 function validatePayload(data) {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const phoneRegex = /^[0-9+\s()-]+$/;
 
-  if (!data || typeof data !== "object")
+  if (!data || typeof data !== "object") {
     return { valid: false, error: "Données invalides" };
+  }
   
-  if (!data.name || typeof data.name !== "string" || data.name.trim().length === 0 || data.name.length > 100) {
+  if (!data.name || data.name.trim().length === 0 || data.name.length > 100) {
     return { valid: false, error: "Nom invalide" };
   }
   
-  if (!data.email || !emailRegex.test(data.email) || data.email.length > 255) {
+  if (!data.email || !emailRegex.test(data.email)) {
     return { valid: false, error: "Email invalide" };
   }
   
@@ -31,10 +30,6 @@ function validatePayload(data) {
   
   if (!data.type || !data.budget || !data.deadline || !data.message) {
     return { valid: false, error: "Tous les champs sont requis" };
-  }
-  
-  if (data.message.length > 2000) {
-    return { valid: false, error: "Message trop long" };
   }
 
   return { valid: true };
@@ -68,18 +63,16 @@ function sanitizeString(str) {
 export default async function handler(req, res) {
   const origin = req.headers.origin;
 
-  // CORS preflight
+  // CORS
   if (req.method === "OPTIONS") {
     if (origin && ALLOWED_ORIGINS.includes(origin)) {
       res.setHeader("Access-Control-Allow-Origin", origin);
     }
     res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
     res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-    res.setHeader("Access-Control-Max-Age", "86400");
     return res.status(204).end();
   }
 
-  // Vérifier la méthode
   if (req.method !== "POST") {
     return res.status(405).json({
       status: "error",
@@ -94,6 +87,9 @@ export default async function handler(req, res) {
     "unknown";
 
   if (!checkRateLimit(clientIP)) {
+    if (origin && ALLOWED_ORIGINS.includes(origin)) {
+      res.setHeader("Access-Control-Allow-Origin", origin);
+    }
     return res.status(429).json({
       status: "error",
       error: "Trop de requêtes. Attendez une minute.",
@@ -106,6 +102,9 @@ export default async function handler(req, res) {
     // Validation
     const validation = validatePayload(payload);
     if (!validation.valid) {
+      if (origin && ALLOWED_ORIGINS.includes(origin)) {
+        res.setHeader("Access-Control-Allow-Origin", origin);
+      }
       return res.status(400).json({
         status: "error",
         error: validation.error,
@@ -123,13 +122,23 @@ export default async function handler(req, res) {
       message: sanitizeString(payload.message),
     };
 
-    // ⚠️ METTEZ VOTRE URL APPS SCRIPT ICI
-    const scriptUrl = process.env.GOOGLE_APPS_SCRIPT_URL || 
-      "https://script.google.com/macros/s/VOTRE_URL_ICI/exec";
+    // URL Apps Script depuis variable d'environnement
+    const scriptUrl = process.env.GOOGLE_APPS_SCRIPT_URL;
+
+    if (!scriptUrl) {
+      console.error("GOOGLE_APPS_SCRIPT_URL not configured");
+      if (origin && ALLOWED_ORIGINS.includes(origin)) {
+        res.setHeader("Access-Control-Allow-Origin", origin);
+      }
+      return res.status(503).json({
+        status: "error",
+        error: "Service temporairement indisponible",
+      });
+    }
 
     console.log("Calling Apps Script...");
 
-    // Appel à Apps Script avec timeout
+    // Appel à Apps Script
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 25000);
 
@@ -137,6 +146,7 @@ export default async function handler(req, res) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "Accept": "application/json",
       },
       body: JSON.stringify(sanitizedPayload),
       signal: controller.signal,
@@ -145,8 +155,9 @@ export default async function handler(req, res) {
     console.log("Apps Script status:", upstream.status);
 
     const responseText = await upstream.text();
+    console.log("Raw response:", responseText.substring(0, 200));
 
-    // Parser la réponse
+    // Parser JSON
     let data;
     try {
       data = JSON.parse(responseText);
@@ -154,10 +165,10 @@ export default async function handler(req, res) {
       console.error("Parse error:", parseError);
       
       if (responseText.includes("<!DOCTYPE") || responseText.includes("<html")) {
-        throw new Error("Apps Script configuration error");
+        throw new Error("Apps Script permission error");
       }
       
-      throw new Error("Invalid response from server");
+      throw new Error("Invalid JSON response");
     }
 
     // Headers de sécurité
@@ -165,8 +176,8 @@ export default async function handler(req, res) {
       res.setHeader("Access-Control-Allow-Origin", origin);
     }
     res.setHeader("X-Content-Type-Options", "nosniff");
-    res.setHeader("X-Frame-Options", "DENY");
 
+    console.log("Success!");
     return res.status(200).json(data);
 
   } catch (err) {
@@ -180,10 +191,10 @@ export default async function handler(req, res) {
     let statusCode = 500;
 
     if (err.name === "AbortError") {
-      errorMessage = "Le serveur met trop de temps à répondre";
+      errorMessage = "Timeout: le serveur met trop de temps";
       statusCode = 504;
-    } else if (err.message.includes("configuration")) {
-      errorMessage = "Erreur de configuration du serveur";
+    } else if (err.message.includes("permission")) {
+      errorMessage = "Erreur de configuration serveur";
       statusCode = 503;
     }
 
