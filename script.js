@@ -291,7 +291,7 @@ if (orderForm && formMessage) {
     };
 
     // Envoi via fetch
-    fetch("https://webfast-dz.vercel.app/api/submit", {
+    fetch("https://webfast-dz.vercel.app/pages/api/submit", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
