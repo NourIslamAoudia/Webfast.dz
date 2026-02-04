@@ -500,21 +500,23 @@
             </p>
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6 px-4 sm:px-0"
+          >
             <!-- Card 1: Expertise Technique -->
             <div
-              class="bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 p-6 border border-gray-100 dark:border-gray-700 relative overflow-hidden group"
+              class="bg-white dark:bg-gray-800 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 active:scale-95 p-5 sm:p-6 border border-gray-100 dark:border-gray-700 relative overflow-hidden group"
             >
               <div
                 class="absolute inset-0 bg-gradient-to-br from-blue-500 to-indigo-600 opacity-0 group-hover:opacity-5 transition-opacity duration-300"
               ></div>
               <div class="relative z-10">
                 <div
-                  class="w-14 h-14 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center mb-5 transition-all duration-300 transform group-hover:scale-105 group-hover:rotate-3"
+                  class="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-5 transition-all duration-300 transform group-hover:scale-105 group-hover:rotate-3 shadow-lg shadow-blue-500/20"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    class="h-7 w-7 text-white"
+                    class="h-6 w-6 sm:h-7 sm:w-7 text-white"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -528,33 +530,37 @@
                   </svg>
                 </div>
                 <h3
-                  class="text-lg font-bold mb-2 text-gray-900 dark:text-gray-100"
+                  class="text-base sm:text-lg font-bold mb-2 text-gray-900 dark:text-gray-100"
                 >
                   Expertise Technique
                 </h3>
                 <p
-                  class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+                  class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
                 >
                   Nous maîtrisons les dernières technologies pour concevoir des
                   solutions web robustes, performantes et évolutives.
                 </p>
               </div>
+              <!-- Indicateur visuel -->
+              <div
+                class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-blue-500/10 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              ></div>
             </div>
 
             <!-- Card 2: Approche Personnalisée -->
             <div
-              class="bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 p-6 border border-gray-100 dark:border-gray-700 relative overflow-hidden group"
+              class="bg-white dark:bg-gray-800 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 active:scale-95 p-5 sm:p-6 border border-gray-100 dark:border-gray-700 relative overflow-hidden group"
             >
               <div
                 class="absolute inset-0 bg-gradient-to-br from-purple-500 to-fuchsia-600 opacity-0 group-hover:opacity-5 transition-opacity duration-300"
               ></div>
               <div class="relative z-10">
                 <div
-                  class="w-14 h-14 bg-gradient-to-br from-purple-500 to-fuchsia-600 rounded-xl flex items-center justify-center mb-5 transition-all duration-300 transform group-hover:scale-105 group-hover:rotate-3"
+                  class="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-purple-500 to-fuchsia-600 rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-5 transition-all duration-300 transform group-hover:scale-105 group-hover:rotate-3 shadow-lg shadow-purple-500/20"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    class="h-7 w-7 text-white"
+                    class="h-6 w-6 sm:h-7 sm:w-7 text-white"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -568,34 +574,37 @@
                   </svg>
                 </div>
                 <h3
-                  class="text-lg font-bold mb-2 text-gray-900 dark:text-gray-100"
+                  class="text-base sm:text-lg font-bold mb-2 text-gray-900 dark:text-gray-100"
                 >
                   Approche Personnalisée
                 </h3>
                 <p
-                  class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+                  class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
                 >
                   Chaque projet est unique. Nous collaborons étroitement avec
                   vous pour concevoir une solution sur mesure qui répond
                   parfaitement à vos besoins spécifiques.
                 </p>
               </div>
+              <div
+                class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-purple-500/10 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              ></div>
             </div>
 
             <!-- Card 3: Support et Accompagnement -->
             <div
-              class="bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 p-6 border border-gray-100 dark:border-gray-700 relative overflow-hidden group"
+              class="bg-white dark:bg-gray-800 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 active:scale-95 p-5 sm:p-6 border border-gray-100 dark:border-gray-700 relative overflow-hidden group"
             >
               <div
                 class="absolute inset-0 bg-gradient-to-br from-emerald-500 to-green-600 opacity-0 group-hover:opacity-5 transition-opacity duration-300"
               ></div>
               <div class="relative z-10">
                 <div
-                  class="w-14 h-14 bg-gradient-to-br from-emerald-500 to-green-600 rounded-xl flex items-center justify-center mb-5 transition-all duration-300 transform group-hover:scale-105 group-hover:rotate-3"
+                  class="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-emerald-500 to-green-600 rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-5 transition-all duration-300 transform group-hover:scale-105 group-hover:rotate-3 shadow-lg shadow-emerald-500/20"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    class="h-7 w-7 text-white"
+                    class="h-6 w-6 sm:h-7 sm:w-7 text-white"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -609,34 +618,37 @@
                   </svg>
                 </div>
                 <h3
-                  class="text-lg font-bold mb-2 text-gray-900 dark:text-gray-100"
+                  class="text-base sm:text-lg font-bold mb-2 text-gray-900 dark:text-gray-100"
                 >
                   Support et Accompagnement
                 </h3>
                 <p
-                  class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+                  class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
                 >
                   Notre équipe est toujours disponible pour vous, avec un
                   accompagnement continu et un support réactif pour garantir
                   votre succès.
                 </p>
               </div>
+              <div
+                class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-emerald-500/10 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              ></div>
             </div>
 
             <!-- Card 4: Design Créatif -->
             <div
-              class="bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 p-6 border border-gray-100 dark:border-gray-700 relative overflow-hidden group"
+              class="bg-white dark:bg-gray-800 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 active:scale-95 p-5 sm:p-6 border border-gray-100 dark:border-gray-700 relative overflow-hidden group"
             >
               <div
                 class="absolute inset-0 bg-gradient-to-br from-yellow-500 to-orange-600 opacity-0 group-hover:opacity-5 transition-opacity duration-300"
               ></div>
               <div class="relative z-10">
                 <div
-                  class="w-14 h-14 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-xl flex items-center justify-center mb-5 transition-all duration-300 transform group-hover:scale-105 group-hover:rotate-3"
+                  class="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-5 transition-all duration-300 transform group-hover:scale-105 group-hover:rotate-3 shadow-lg shadow-orange-500/20"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    class="h-7 w-7 text-white"
+                    class="h-6 w-6 sm:h-7 sm:w-7 text-white"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -650,18 +662,21 @@
                   </svg>
                 </div>
                 <h3
-                  class="text-lg font-bold mb-2 text-gray-900 dark:text-gray-100"
+                  class="text-base sm:text-lg font-bold mb-2 text-gray-900 dark:text-gray-100"
                 >
                   Design Créatif
                 </h3>
                 <p
-                  class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+                  class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
                 >
                   Nous concevons des interfaces modernes, intuitives et
                   visuellement époustouflantes pour donner vie à votre marque en
                   ligne.
                 </p>
               </div>
+              <div
+                class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-orange-500/10 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              ></div>
             </div>
           </div>
 
