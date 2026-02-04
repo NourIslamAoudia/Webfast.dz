@@ -2,10 +2,13 @@
    INITIALIZATION & CONFIGURATION
 ======================================== */
 
-// Initialize AOS (Animate On Scroll)
+// Initialize AOS (Animate On Scroll) with optimized settings
 AOS.init({
   once: true,
-  duration: 800,
+  duration: 700,
+  easing: 'ease-out-cubic',
+  offset: 50,
+  delay: 0,
 });
 
 /* ========================================
@@ -27,16 +30,15 @@ const Questions_Fréquemment_Posées = document.getElementById(
 
 // Appliquer le thème
 function applyTheme(theme) {
-  if (theme === "dark") {
-    bodyElement.classList.add("dark");
-    themeIcon.classList.replace("fa-moon", "fa-sun");
-  } else {
-    bodyElement.classList.remove("dark");
-    themeIcon.classList.replace("fa-sun", "fa-moon");
-    if (Services_Détaillés) Services_Détaillés.style.color = "white";
-    if (Questions_Fréquemment_Posées)
-      Questions_Fréquemment_Posées.style.color = "white";
-  }
+  const isDark = theme === "dark";
+  bodyElement.classList.toggle("dark", isDark);
+  themeIcon.classList.replace(
+    isDark ? "fa-moon" : "fa-sun",
+    isDark ? "fa-sun" : "fa-moon"
+  );
+  
+  // Mise à jour des éléments spécifiques au thème
+  document.documentElement.style.colorScheme = isDark ? "dark" : "light";
 }
 // Ajuster la vitesse de lecture de la vidéo
 const video = document.getElementById("demo-video");

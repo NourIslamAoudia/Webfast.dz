@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
@@ -77,6 +77,7 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/modern-enhancements.css" />
 
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
@@ -259,31 +260,22 @@
 
           <a
             href="#contact"
-            class="inline-flex items-center justify-center bg-gradient-to-r from-skin-primary to-skin-primary/90 hover:from-skin-primary/90 hover:to-skin-primary text-white font-semibold py-2 px-4 rounded-[12px] <!-- Padding réduit --> shadow-md hover:shadow-lg <!-- Ombre légèrement réduite --> border border-white/10 <!-- Bordure plus fine --> backdrop-blur-sm <!-- Flou légèrement réduit --> hover:scale-[1.02] <!-- Scale au survol légèrement réduit --> transition-all duration-300 ml-3 <!-- Marge gauche réduite --> mt-3 md:mt-0 <!-- Marges top réduites --> group relative overflow-hidden"
+            class="inline-flex items-center justify-center bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white font-semibold py-2.5 px-5 rounded-full shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 transition-all duration-300 ml-4 group"
           >
-            <!-- Animation de fond au survol (version plus subtile) -->
-            <span
-              class="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-            ></span>
-
-            <!-- Icône avec animation ajustée -->
-            <i
-              class="fas fa-shopping-cart mr-2 text-base animate-bounce group-hover:animate-[bounce_0.4s_ease-in-out_infinite]"
-            ></i>
-
-            <!-- Texte avec décalage plus subtil -->
-            <span
-              class="relative transform group-hover:-translate-y-0.3 transition-transform duration-200"
+            <span>Devis gratuit</span>
+            <svg
+              class="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
             >
-              Commander
-            </span>
-
-            <!-- Effet "shine" plus discret -->
-            <span class="absolute inset-0 overflow-hidden">
-              <span
-                class="absolute top-0 left-[-80%] w-1/3 h-full bg-white/15 skew-x-[-20deg] group-hover:left-[120%] transition-all duration-500"
-              ></span>
-            </span>
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              />
+            </svg>
           </a>
         </div>
 
@@ -304,9 +296,28 @@
             <i class="fas fa-question-circle mr-3 text-skin-primary"></i>
             FAQ
           </a>
-          <a href="#Coordonnées" class="transition-all duration-300">
+          <a href="#contact" class="transition-all duration-300">
             <i class="fas fa-envelope mr-3 text-skin-primary"></i>
             Contact
+          </a>
+          <a
+            href="#contact"
+            class="mt-4 mx-4 flex items-center justify-center bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-semibold py-3 px-6 rounded-full shadow-lg"
+          >
+            <span>Demander un devis</span>
+            <svg
+              class="w-4 h-4 ml-2"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              />
+            </svg>
           </a>
         </div>
 
@@ -341,100 +352,112 @@
       <!-- Hero Section -->
       <section
         id="hero"
-        class="relative h-screen px-4 overflow-hidden pt-20 md:pt-0"
+        class="relative min-h-screen px-4 overflow-hidden pt-20 md:pt-0 flex items-center"
       >
         <!-- Fond animé avec particles.js -->
         <div
           id="particles-js"
-          class="absolute inset-0 bg-gradient-to-br from-blue-900 to-indigo-900"
+          class="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-950"
         ></div>
-        <div class="overlay absolute inset-0 bg-black/30"></div>
-
         <div
-          class="relative z-10 h-full flex items-center justify-center text-center"
-        >
+          class="overlay absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/40"
+        ></div>
+
+        <!-- Éléments décoratifs géométriques -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
           <div
-            class="text-white max-w-2xl mx-auto px-5 py-10"
+            class="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl"
+          ></div>
+          <div
+            class="absolute bottom-20 right-10 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"
+          ></div>
+        </div>
+
+        <div class="container mx-auto relative z-10">
+          <div
+            class="text-white max-w-4xl mx-auto text-center px-5 py-16"
             data-aos="fade-up"
             data-aos-duration="1000"
           >
-            <div class="mb-4 md:mb-6">
-              <span
-                class="text-blue-300 font-medium text-sm md:text-base tracking-wider"
-                >AGENCE WEB ALGÉRIENNE</span
-              >
-            </div>
+            <!-- Badge Premium -->
+            <div class="mb-8 inline-flex items-center gap-2 px-4 py-2"></div>
 
+            <!-- Titre Principal -->
             <h1
-              class="text-3xl sm:text-4xl md:text-5xl font-bold mb-5 md:mb-6 leading-tight"
+              class="text-4xl sm:text-5xl lg:text-7xl font-extrabold mb-6 leading-tight"
             >
+              <span class="block text-white mb-2">Transformez Votre</span>
               <span
-                class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300"
-                >Élévation Digitale</span
-              ><br />
-              Pour Votre Excellence
+                class="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-teal-400 animate-gradient"
+                >Vision Digitale</span
+              >
+              <span class="block text-white mb-4 mt-4 text-5xl"
+                >en Réalité</span
+              >
             </h1>
 
+            <!-- Description -->
             <p
-              class="text-base sm:text-lg md:text-xl mb-6 md:mb-8 font-light max-w-3xl mx-auto"
+              class="text-lg sm:text-xl lg:text-2xl mb-10 font-light text-white/80 max-w-3xl mx-auto leading-relaxed"
             >
-              Nous sculptons l'ADN numérique des marques ambitieuses. Sites web
-              sur mesure, architectures WordPress performantes et stratégies SEO
-              intelligentes.
+              Nous créons des expériences web exceptionnelles avec des
+              <span class="text-cyan-300 font-medium">sites sur mesure</span>,
+              du
+              <span class="text-blue-300 font-medium"
+                >WordPress performant</span
+              >
+              et des
+              <span class="text-teal-300 font-medium">stratégies SEO</span>
+              gagnantes.
             </p>
 
+            <!-- Boutons d'action -->
             <div
-              class="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center"
+              class="flex flex-col sm:flex-row gap-4 justify-center items-center"
             >
               <a
                 href="#contact"
-                class="inline-flex items-center justify-center bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 py-2 md:py-3 px-5 md:px-6 rounded-full text-sm md:text-base font-semibold transition-all duration-300 shadow hover:shadow-md transform hover:-translate-y-0.5"
+                class="group inline-flex items-center justify-center bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 py-4 px-8 rounded-2xl text-base font-semibold transition-all duration-300 shadow-lg shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-500/40 transform hover:scale-105"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="w-5 h-5 mr-2"
+                  class="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
+                  stroke-width="2"
                 >
                   <path
                     stroke-linecap="round"
                     stroke-linejoin="round"
-                    stroke-width="2"
                     d="M13 10V3L4 14h7v7l9-11h-7z"
                   />
                 </svg>
-                Propulser mon projet
+                Démarrer Mon Projet
               </a>
               <a
                 href="#services"
-                class="inline-flex items-center justify-center border border-white/30 hover:border-white/50 py-2 md:py-3 px-5 md:px-6 rounded-full text-sm md:text-base font-medium transition-all duration-300 hover:bg-white/10"
+                class="inline-flex items-center justify-center bg-white/10 backdrop-blur-sm border-2 border-white/30 hover:bg-white/20 hover:border-white/50 py-4 px-8 rounded-2xl text-base font-medium transition-all duration-300"
               >
-                Explorer nos solutions
+                Découvrir Nos Services
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-5 h-5 ml-2"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
               </a>
             </div>
           </div>
         </div>
-        <!-- Flèche indicateur scroll - Version fonctionnelle -->
-        <button
-          onclick="scrollToNextSection()"
-          class="hidden md:block absolute bottom-8 md:bottom-10 left-1/2 transform -translate-x-1/2 z-10 animate-bounce cursor-pointer focus:outline-none"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-8 w-8 text-white/80 hover:text-white"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M19 14l-7 7m0 0l-7-7m7 7V3"
-            />
-          </svg>
-        </button>
       </section>
 
       <section
@@ -456,20 +479,21 @@
             </p>
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Card 1: Expertise Technique -->
             <div
-              class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 p-8 border border-gray-200 dark:border-gray-700 relative overflow-hidden group"
+              class="bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 p-6 border border-gray-100 dark:border-gray-700 relative overflow-hidden group"
             >
               <div
-                class="absolute inset-0 bg-gradient-to-br from-blue-500 to-indigo-600 opacity-5 group-hover:opacity-10 transition-opacity duration-500"
+                class="absolute inset-0 bg-gradient-to-br from-blue-500 to-indigo-600 opacity-0 group-hover:opacity-5 transition-opacity duration-300"
               ></div>
               <div class="relative z-10">
                 <div
-                  class="w-16 h-16 bg-blue-500 dark:bg-blue-400 bg-opacity-10 dark:bg-opacity-20 rounded-full flex items-center justify-center mb-6 mx-auto transition-all duration-300 transform group-hover:scale-110"
+                  class="w-14 h-14 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center mb-5 transition-all duration-300 transform group-hover:scale-105 group-hover:rotate-3"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    class="h-8 w-8 text-blue-600 dark:text-blue-400"
+                    class="h-7 w-7 text-white"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -483,30 +507,33 @@
                   </svg>
                 </div>
                 <h3
-                  class="text-xl font-bold mb-3 text-gray-900 dark:text-gray-100 text-center"
+                  class="text-lg font-bold mb-2 text-gray-900 dark:text-gray-100"
                 >
                   Expertise Technique
                 </h3>
-                <p class="text-gray-600 dark:text-gray-400 text-center">
+                <p
+                  class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+                >
                   Nous maîtrisons les dernières technologies pour concevoir des
                   solutions web robustes, performantes et évolutives.
                 </p>
               </div>
             </div>
 
+            <!-- Card 2: Approche Personnalisée -->
             <div
-              class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 p-8 border border-gray-200 dark:border-gray-700 relative overflow-hidden group"
+              class="bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 p-6 border border-gray-100 dark:border-gray-700 relative overflow-hidden group"
             >
               <div
-                class="absolute inset-0 bg-gradient-to-br from-purple-500 to-fuchsia-600 opacity-5 group-hover:opacity-10 transition-opacity duration-500"
+                class="absolute inset-0 bg-gradient-to-br from-purple-500 to-fuchsia-600 opacity-0 group-hover:opacity-5 transition-opacity duration-300"
               ></div>
               <div class="relative z-10">
                 <div
-                  class="w-16 h-16 bg-purple-500 dark:bg-purple-400 bg-opacity-10 dark:bg-opacity-20 rounded-full flex items-center justify-center mb-6 mx-auto transition-all duration-300 transform group-hover:scale-110"
+                  class="w-14 h-14 bg-gradient-to-br from-purple-500 to-fuchsia-600 rounded-xl flex items-center justify-center mb-5 transition-all duration-300 transform group-hover:scale-105 group-hover:rotate-3"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    class="h-8 w-8 text-purple-600 dark:text-purple-400"
+                    class="h-7 w-7 text-white"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -520,11 +547,13 @@
                   </svg>
                 </div>
                 <h3
-                  class="text-xl font-bold mb-3 text-gray-900 dark:text-gray-100 text-center"
+                  class="text-lg font-bold mb-2 text-gray-900 dark:text-gray-100"
                 >
                   Approche Personnalisée
                 </h3>
-                <p class="text-gray-600 dark:text-gray-400 text-center">
+                <p
+                  class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+                >
                   Chaque projet est unique. Nous collaborons étroitement avec
                   vous pour concevoir une solution sur mesure qui répond
                   parfaitement à vos besoins spécifiques.
@@ -532,19 +561,20 @@
               </div>
             </div>
 
+            <!-- Card 3: Support et Accompagnement -->
             <div
-              class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 p-8 border border-gray-200 dark:border-gray-700 relative overflow-hidden group"
+              class="bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 p-6 border border-gray-100 dark:border-gray-700 relative overflow-hidden group"
             >
               <div
-                class="absolute inset-0 bg-gradient-to-br from-emerald-500 to-green-600 opacity-5 group-hover:opacity-10 transition-opacity duration-500"
+                class="absolute inset-0 bg-gradient-to-br from-emerald-500 to-green-600 opacity-0 group-hover:opacity-5 transition-opacity duration-300"
               ></div>
               <div class="relative z-10">
                 <div
-                  class="w-16 h-16 bg-emerald-500 dark:bg-emerald-400 bg-opacity-10 dark:bg-opacity-20 rounded-full flex items-center justify-center mb-6 mx-auto transition-all duration-300 transform group-hover:scale-110"
+                  class="w-14 h-14 bg-gradient-to-br from-emerald-500 to-green-600 rounded-xl flex items-center justify-center mb-5 transition-all duration-300 transform group-hover:scale-105 group-hover:rotate-3"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    class="h-8 w-8 text-emerald-600 dark:text-emerald-400"
+                    class="h-7 w-7 text-white"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -553,16 +583,18 @@
                     <path
                       stroke-linecap="round"
                       stroke-linejoin="round"
-                      d="M18.364 5.636l-3.536 3.536m3.536-3.536a7 7 0 11-9.9 9.9l-3.535 3.536a1 1 0 01-1.414 0l-1.414-1.414a1 1 0 010-1.414l3.536-3.536a7 7 0 019.9-9.9z"
+                      d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                     />
                   </svg>
                 </div>
                 <h3
-                  class="text-xl font-bold mb-3 text-gray-900 dark:text-gray-100 text-center"
+                  class="text-lg font-bold mb-2 text-gray-900 dark:text-gray-100"
                 >
                   Support et Accompagnement
                 </h3>
-                <p class="text-gray-600 dark:text-gray-400 text-center">
+                <p
+                  class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+                >
                   Notre équipe est toujours disponible pour vous, avec un
                   accompagnement continu et un support réactif pour garantir
                   votre succès.
@@ -570,19 +602,20 @@
               </div>
             </div>
 
+            <!-- Card 4: Design Créatif -->
             <div
-              class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 p-8 border border-gray-200 dark:border-gray-700 relative overflow-hidden group"
+              class="bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 p-6 border border-gray-100 dark:border-gray-700 relative overflow-hidden group"
             >
               <div
-                class="absolute inset-0 bg-gradient-to-br from-yellow-500 to-orange-600 opacity-5 group-hover:opacity-10 transition-opacity duration-500"
+                class="absolute inset-0 bg-gradient-to-br from-yellow-500 to-orange-600 opacity-0 group-hover:opacity-5 transition-opacity duration-300"
               ></div>
               <div class="relative z-10">
                 <div
-                  class="w-16 h-16 bg-yellow-500 dark:bg-yellow-400 bg-opacity-10 dark:bg-opacity-20 rounded-full flex items-center justify-center mb-6 mx-auto transition-all duration-300 transform group-hover:scale-110"
+                  class="w-14 h-14 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-xl flex items-center justify-center mb-5 transition-all duration-300 transform group-hover:scale-105 group-hover:rotate-3"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    class="h-8 w-8 text-yellow-600 dark:text-yellow-400"
+                    class="h-7 w-7 text-white"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -591,16 +624,18 @@
                     <path
                       stroke-linecap="round"
                       stroke-linejoin="round"
-                      d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12m-9 0a2 2 0 01-2-2m2 2a2 2 0 002-2m-2-4h8m-2-4h.01M21 21a2 2 0 01-2-2v-5.5m0-9.5a2 2 0 012-2h2.5a2.5 2.5 0 012.5 2.5V9.5m0 0a2.5 2.5 0 00-2.5-2.5m2.5 2.5a2.5 2.5 0 012.5 2.5v1.5a2.5 2.5 0 01-2.5 2.5m-5 0h8"
+                      d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
                     />
                   </svg>
                 </div>
                 <h3
-                  class="text-xl font-bold mb-3 text-gray-900 dark:text-gray-100 text-center"
+                  class="text-lg font-bold mb-2 text-gray-900 dark:text-gray-100"
                 >
                   Design Créatif
                 </h3>
-                <p class="text-gray-600 dark:text-gray-400 text-center">
+                <p
+                  class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+                >
                   Nous concevons des interfaces modernes, intuitives et
                   visuellement époustouflantes pour donner vie à votre marque en
                   ligne.
@@ -658,226 +693,658 @@
       </section>
 
       <!-- Detailed Services Section -->
-      <section id="services" class="py-16 transition-colors duration-300">
-        <div class="container mx-auto px-4">
-          <h2
-            id="Services_Détaillés"
-            class="text-3xl sm:text-4xl font-bold text-center mb-12 text-skin-base"
-            data-aos="fade-up"
-            data-aos-duration="800"
-          >
-            Nos Services Détaillés
-          </h2>
+      <section
+        id="services"
+        class="py-24 md:py-32 transition-colors duration-300"
+      >
+        <div class="container mx-auto px-4 max-w-6xl">
+          <!-- Section Header -->
+          <div class="text-center mb-16 md:mb-20" data-aos="fade-up">
+            <span
+              class="inline-block text-blue-600 dark:text-blue-400 font-semibold text-sm uppercase tracking-widest mb-4"
+              >Nos expertises</span
+            >
+            <h2
+              id="Services_Détaillés"
+              class="text-3xl sm:text-4xl md:text-5xl font-bold text-skin-base mb-6"
+            >
+              Des services
+              <span
+                class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500"
+                >adaptés</span
+              >
+              à vos besoins
+            </h2>
+            <p
+              class="text-lg md:text-xl text-skin-secondary max-w-2xl mx-auto leading-relaxed"
+            >
+              Des solutions complètes pour votre présence digitale, de la
+              conception à la mise en ligne.
+            </p>
+          </div>
 
-          <!-- Static Sites -->
-          <div
-            id="static-sites"
-            class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-16 p-8 bg-skin-card rounded-lg shadow-md border border-skin-base transition-colors duration-300"
-            data-aos="fade-up"
-          >
-            <div class="md:order-2">
-              <img
-                src="images/static.jpg"
-                alt="Illustration de site statique rapide"
-                class="rounded-lg shadow-lg w-full h-auto object-cover"
-              />
-            </div>
-            <div class="md:order-1">
-              <h3 class="text-2xl font-semibold mb-4 text-skin-base">
-                Création de Sites Statiques
-              </h3>
-              <p class="text-skin-secondary mb-4">
-                Profitez de la vitesse, de la sécurité renforcée et des coûts
-                d'hébergement réduits avec nos sites statiques. Idéaux pour les
-                portfolios, les sites vitrines et les landing pages, ils
-                garantissent des performances exceptionnelles.
-              </p>
-              <div class="grid grid-cols-2 gap-4">
-                <div class="flex items-center space-x-2 text-skin-base">
-                  <i class="fas fa-arrow-up text-skin-primary"></i>
-                  <span>Vitesse Maximale</span>
+          <!-- Service Cards Container -->
+          <div class="space-y-8 md:space-y-12">
+            <!-- Static Sites -->
+            <div
+              id="static-sites"
+              class="group grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center p-6 md:p-10 bg-gradient-to-br from-white to-slate-50 dark:from-gray-800 dark:to-gray-800/50 rounded-3xl border border-gray-100 dark:border-gray-700/50 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/5"
+              data-aos="fade-up"
+            >
+              <div class="lg:order-2">
+                <div class="relative overflow-hidden rounded-2xl">
+                  <img
+                    src="images/static.jpg"
+                    alt="Illustration de site statique rapide"
+                    class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div
+                    class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"
+                  ></div>
                 </div>
-                <div class="flex items-center space-x-2 text-skin-base">
-                  <i class="fas fa-lock text-skin-primary"></i>
-                  <span>Sécurité Renforcée</span>
+              </div>
+              <div class="lg:order-1">
+                <div
+                  class="inline-flex items-center gap-2 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-sm font-semibold px-4 py-1.5 rounded-full mb-6"
+                >
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                      fill-rule="evenodd"
+                      d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  Performance maximale
                 </div>
-                <div class="flex items-center space-x-2 text-skin-base">
-                  <i class="fas fa-dollar-sign text-skin-primary"></i>
-                  <span>Coût Réduit</span>
-                </div>
-                <div class="flex items-center space-x-2 text-skin-base">
-                  <i class="fas fa-tachometer-alt text-skin-primary"></i>
-                  <span>Haute Performance</span>
+                <h3 class="text-2xl md:text-3xl font-bold mb-4 text-skin-base">
+                  Sites Statiques Ultra-Rapides
+                </h3>
+                <p class="text-skin-secondary mb-6 text-lg leading-relaxed">
+                  Des sites web légers, sécurisés et extrêmement rapides. Idéaux
+                  pour les portfolios, sites vitrines et landing pages avec un
+                  coût d'hébergement minimal.
+                </p>
+                <div class="grid grid-cols-2 gap-4">
+                  <div class="flex items-center gap-3 text-skin-base">
+                    <div
+                      class="w-10 h-10 rounded-lg bg-green-100 dark:bg-green-900/30 flex items-center justify-center"
+                    >
+                      <svg
+                        class="w-5 h-5 text-green-600 dark:text-green-400"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M13 10V3L4 14h7v7l9-11h-7z"
+                        />
+                      </svg>
+                    </div>
+                    <span class="font-medium">Chargement instantané</span>
+                  </div>
+                  <div class="flex items-center gap-3 text-skin-base">
+                    <div
+                      class="w-10 h-10 rounded-lg bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center"
+                    >
+                      <svg
+                        class="w-5 h-5 text-blue-600 dark:text-blue-400"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                        />
+                      </svg>
+                    </div>
+                    <span class="font-medium">Sécurité renforcée</span>
+                  </div>
+                  <div class="flex items-center gap-3 text-skin-base">
+                    <div
+                      class="w-10 h-10 rounded-lg bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center"
+                    >
+                      <svg
+                        class="w-5 h-5 text-amber-600 dark:text-amber-400"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
+                    </div>
+                    <span class="font-medium">Coût réduit</span>
+                  </div>
+                  <div class="flex items-center gap-3 text-skin-base">
+                    <div
+                      class="w-10 h-10 rounded-lg bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center"
+                    >
+                      <svg
+                        class="w-5 h-5 text-purple-600 dark:text-purple-400"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                        />
+                      </svg>
+                    </div>
+                    <span class="font-medium">SEO optimisé</span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <!-- WordPress Sites -->
-          <div
-            id="wordpress-sites"
-            class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-16 p-8 bg-skin-card rounded-lg shadow-md border border-skin-base transition-colors duration-300"
-            data-aos="fade-up"
-          >
-            <div class="md:order-1">
-              <img
-                src="images/cms.jpg"
-                alt="Illustration de site WordPress flexible"
-                class="rounded-lg shadow-lg w-full h-auto object-cover"
-              />
-            </div>
-            <div class="md:order-2">
-              <h3 class="text-2xl font-semibold mb-4 text-skin-base">
-                Solutions WordPress Sur Mesure
-              </h3>
-              <p class="text-skin-secondary mb-4">
-                Développez une présence en ligne flexible et évolutive grâce à
-                nos solutions WordPress personnalisées. Gérez facilement votre
-                contenu et adaptez votre site à vos besoins futurs.
-              </p>
-              <div class="grid grid-cols-2 gap-4">
-                <div class="flex items-center space-x-2 text-skin-base">
-                  <i class="fas fa-cogs text-skin-primary"></i>
-                  <span>Grande Flexibilité</span>
+            <!-- WordPress Sites -->
+            <div
+              id="wordpress-sites"
+              class="group grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center p-6 md:p-10 bg-gradient-to-br from-white to-slate-50 dark:from-gray-800 dark:to-gray-800/50 rounded-3xl border border-gray-100 dark:border-gray-700/50 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/5"
+              data-aos="fade-up"
+            >
+              <div class="lg:order-1">
+                <div class="relative overflow-hidden rounded-2xl">
+                  <img
+                    src="images/cms.jpg"
+                    alt="Illustration de site WordPress flexible"
+                    class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div
+                    class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"
+                  ></div>
                 </div>
-                <div class="flex items-center space-x-2 text-skin-base">
-                  <i class="fas fa-edit text-skin-primary"></i>
-                  <span>Gestion Facile du CMS</span>
+              </div>
+              <div class="lg:order-2">
+                <div
+                  class="inline-flex items-center gap-2 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-sm font-semibold px-4 py-1.5 rounded-full mb-6"
+                >
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                      d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"
+                    />
+                  </svg>
+                  Gestion flexible
                 </div>
-                <div class="flex items-center space-x-2 text-skin-base">
-                  <i class="fas fa-expand-alt text-skin-primary"></i>
-                  <span>Possibilité d'Évolution</span>
+                <h3 class="text-2xl md:text-3xl font-bold mb-4 text-skin-base">
+                  Solutions WordPress Sur Mesure
+                </h3>
+                <p class="text-skin-secondary mb-6 text-lg leading-relaxed">
+                  Une présence en ligne flexible et évolutive. Gérez facilement
+                  votre contenu et adaptez votre site à vos besoins grâce à
+                  WordPress.
+                </p>
+                <div class="grid grid-cols-2 gap-4">
+                  <div class="flex items-center gap-3 text-skin-base">
+                    <div
+                      class="w-10 h-10 rounded-lg bg-indigo-100 dark:bg-indigo-900/30 flex items-center justify-center"
+                    >
+                      <svg
+                        class="w-5 h-5 text-indigo-600 dark:text-indigo-400"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+                        />
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                        />
+                      </svg>
+                    </div>
+                    <span class="font-medium">Grande flexibilité</span>
+                  </div>
+                  <div class="flex items-center gap-3 text-skin-base">
+                    <div
+                      class="w-10 h-10 rounded-lg bg-pink-100 dark:bg-pink-900/30 flex items-center justify-center"
+                    >
+                      <svg
+                        class="w-5 h-5 text-pink-600 dark:text-pink-400"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                        />
+                      </svg>
+                    </div>
+                    <span class="font-medium">Gestion facile</span>
+                  </div>
+                  <div class="flex items-center gap-3 text-skin-base">
+                    <div
+                      class="w-10 h-10 rounded-lg bg-teal-100 dark:bg-teal-900/30 flex items-center justify-center"
+                    >
+                      <svg
+                        class="w-5 h-5 text-teal-600 dark:text-teal-400"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"
+                        />
+                      </svg>
+                    </div>
+                    <span class="font-medium">Évolutif</span>
+                  </div>
+                  <div class="flex items-center gap-3 text-skin-base">
+                    <div
+                      class="w-10 h-10 rounded-lg bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center"
+                    >
+                      <svg
+                        class="w-5 h-5 text-orange-600 dark:text-orange-400"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"
+                        />
+                      </svg>
+                    </div>
+                    <span class="font-medium">Extensible</span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <!-- SEO Optimization -->
-          <div
-            id="seo-optimization"
-            class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-16 p-8 bg-skin-card rounded-lg shadow-md border border-skin-base transition-colors duration-300"
-            data-aos="fade-up"
-          >
-            <div class="md:order-2">
-              <img
-                src="images/Search-Engine-Optimization.jpg"
-                alt="Illustration d'optimisation SEO"
-                class="rounded-lg shadow-lg w-full h-auto object-cover"
-              />
-            </div>
-            <div class="md:order-1">
-              <h3 class="text-2xl font-semibold mb-4 text-skin-base">
-                Stratégies d'Optimisation SEO
-              </h3>
-              <p class="text-skin-secondary mb-4">
-                Augmentez votre visibilité et attirez un trafic qualifié avec
-                nos services d'optimisation SEO. Nous utilisons les meilleures
-                pratiques pour positionner votre site en tête des résultats de
-                recherche.
-              </p>
-              <div class="grid grid-cols-2 gap-4">
-                <div class="flex items-center space-x-2 text-skin-base">
-                  <i class="fas fa-search text-skin-primary"></i>
-                  <span>Audit SEO Complet</span>
+            <!-- SEO Optimization -->
+            <div
+              id="seo-optimization"
+              class="group grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center p-6 md:p-10 bg-gradient-to-br from-white to-slate-50 dark:from-gray-800 dark:to-gray-800/50 rounded-3xl border border-gray-100 dark:border-gray-700/50 transition-all duration-500 hover:shadow-2xl hover:shadow-green-500/5"
+              data-aos="fade-up"
+            >
+              <div class="lg:order-2">
+                <div class="relative overflow-hidden rounded-2xl">
+                  <img
+                    src="images/Search-Engine-Optimization.jpg"
+                    alt="Illustration d'optimisation SEO"
+                    class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div
+                    class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"
+                  ></div>
                 </div>
-                <div class="flex items-center space-x-2 text-skin-base">
-                  <i class="fas fa-key text-skin-primary"></i>
-                  <span>Recherche Mots-clés</span>
+              </div>
+              <div class="lg:order-1">
+                <div
+                  class="inline-flex items-center gap-2 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 text-sm font-semibold px-4 py-1.5 rounded-full mb-6"
+                >
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                      fill-rule="evenodd"
+                      d="M12 7a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0V8.414l-4.293 4.293a1 1 0 01-1.414 0L8 10.414l-4.293 4.293a1 1 0 01-1.414-1.414l5-5a1 1 0 011.414 0L11 10.586 14.586 7H12z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  Visibilité accrue
                 </div>
-                <div class="flex items-center space-x-2 text-skin-base">
-                  <i class="fas fa-file-alt text-skin-primary"></i>
-                  <span>Optimisation On-page/Off-page</span>
-                </div>
-                <div class="flex items-center space-x-2 text-skin-base">
-                  <i class="fas fa-chart-pie text-skin-primary"></i>
-                  <span>Suivi & Rapports</span>
+                <h3 class="text-2xl md:text-3xl font-bold mb-4 text-skin-base">
+                  Stratégies SEO Performantes
+                </h3>
+                <p class="text-skin-secondary mb-6 text-lg leading-relaxed">
+                  Augmentez votre visibilité et attirez un trafic qualifié. Nous
+                  utilisons les meilleures pratiques pour positionner votre site
+                  en tête des résultats.
+                </p>
+                <div class="grid grid-cols-2 gap-4">
+                  <div class="flex items-center gap-3 text-skin-base">
+                    <div
+                      class="w-10 h-10 rounded-lg bg-cyan-100 dark:bg-cyan-900/30 flex items-center justify-center"
+                    >
+                      <svg
+                        class="w-5 h-5 text-cyan-600 dark:text-cyan-400"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                        />
+                      </svg>
+                    </div>
+                    <span class="font-medium">Audit SEO complet</span>
+                  </div>
+                  <div class="flex items-center gap-3 text-skin-base">
+                    <div
+                      class="w-10 h-10 rounded-lg bg-lime-100 dark:bg-lime-900/30 flex items-center justify-center"
+                    >
+                      <svg
+                        class="w-5 h-5 text-lime-600 dark:text-lime-400"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"
+                        />
+                      </svg>
+                    </div>
+                    <span class="font-medium">Mots-clés ciblés</span>
+                  </div>
+                  <div class="flex items-center gap-3 text-skin-base">
+                    <div
+                      class="w-10 h-10 rounded-lg bg-rose-100 dark:bg-rose-900/30 flex items-center justify-center"
+                    >
+                      <svg
+                        class="w-5 h-5 text-rose-600 dark:text-rose-400"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                        />
+                      </svg>
+                    </div>
+                    <span class="font-medium">On-page / Off-page</span>
+                  </div>
+                  <div class="flex items-center gap-3 text-skin-base">
+                    <div
+                      class="w-10 h-10 rounded-lg bg-violet-100 dark:bg-violet-900/30 flex items-center justify-center"
+                    >
+                      <svg
+                        class="w-5 h-5 text-violet-600 dark:text-violet-400"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                        />
+                      </svg>
+                    </div>
+                    <span class="font-medium">Suivi & rapports</span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <!-- Maintenance & Support -->
-          <div
-            id="maintenance-support"
-            class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-16 p-8 bg-skin-card rounded-lg shadow-md border border-skin-base transition-colors duration-300"
-            data-aos="fade-up"
-          >
-            <div class="md:order-1">
-              <img
-                src="images/tech_suppprt.jpg"
-                alt="Illustration d'équipe support"
-                class="rounded-lg shadow-lg w-full h-auto object-cover"
-              />
-            </div>
-            <div class="md:order-2">
-              <h3 class="text-2xl font-semibold mb-4 text-skin-base">
-                Maintenance et Support Dédié
-              </h3>
-              <p class="text-skin-secondary mb-4">
-                Assurez la pérennité et la sécurité de votre site avec nos
-                forfaits de maintenance complets. Mises à jour régulières,
-                sauvegardes proactives et assistance technique rapide vous
-                garantissent une tranquillité d'esprit.
-              </p>
-              <div class="grid grid-cols-2 gap-4">
-                <div class="flex items-center space-x-2 text-skin-base">
-                  <i class="fas fa-sync-alt text-skin-primary"></i>
-                  <span>Mises à Jour Régulières</span>
+            <!-- Maintenance & Support -->
+            <div
+              id="maintenance-support"
+              class="group grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center p-6 md:p-10 bg-gradient-to-br from-white to-slate-50 dark:from-gray-800 dark:to-gray-800/50 rounded-3xl border border-gray-100 dark:border-gray-700/50 transition-all duration-500 hover:shadow-2xl hover:shadow-orange-500/5"
+              data-aos="fade-up"
+            >
+              <div class="lg:order-1">
+                <div class="relative overflow-hidden rounded-2xl">
+                  <img
+                    src="images/tech_suppprt.jpg"
+                    alt="Illustration d'équipe support"
+                    class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div
+                    class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"
+                  ></div>
                 </div>
-                <div class="flex items-center space-x-2 text-skin-base">
-                  <i class="fas fa-database text-skin-primary"></i>
-                  <span>Sauvegardes Proactives</span>
+              </div>
+              <div class="lg:order-2">
+                <div
+                  class="inline-flex items-center gap-2 bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 text-sm font-semibold px-4 py-1.5 rounded-full mb-6"
+                >
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                      fill-rule="evenodd"
+                      d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-2 0c0 .993-.241 1.929-.668 2.754l-1.524-1.525a3.997 3.997 0 00.078-2.183l1.562-1.562C15.802 8.249 16 9.1 16 10zm-5.165 3.913l1.58 1.58A5.98 5.98 0 0110 16a5.976 5.976 0 01-2.516-.552l1.562-1.562a4.006 4.006 0 001.789.027zm-4.677-2.796a4.002 4.002 0 01-.041-2.08l-.08.08-1.53-1.533A5.98 5.98 0 004 10c0 .954.223 1.856.619 2.657l1.54-1.54zm1.088-6.45A5.974 5.974 0 0110 4c.954 0 1.856.223 2.657.619l-1.54 1.54a4.002 4.002 0 00-2.346.033L7.246 4.668zM12 10a2 2 0 11-4 0 2 2 0 014 0z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  Tranquillité d'esprit
                 </div>
-                <div class="flex items-center space-x-2 text-skin-base">
-                  <i class="fas fa-user-shield text-skin-primary"></i>
-                  <span>Sécurité Avancée</span>
-                </div>
-                <div class="flex items-center space-x-2 text-skin-base">
-                  <i class="fas fa-headset text-skin-primary"></i>
-                  <span>Support Réactif</span>
+                <h3 class="text-2xl md:text-3xl font-bold mb-4 text-skin-base">
+                  Maintenance & Support Dédié
+                </h3>
+                <p class="text-skin-secondary mb-6 text-lg leading-relaxed">
+                  Assurez la pérennité de votre site avec nos forfaits de
+                  maintenance complets : mises à jour, sauvegardes et assistance
+                  technique rapide.
+                </p>
+                <div class="grid grid-cols-2 gap-4">
+                  <div class="flex items-center gap-3 text-skin-base">
+                    <div
+                      class="w-10 h-10 rounded-lg bg-sky-100 dark:bg-sky-900/30 flex items-center justify-center"
+                    >
+                      <svg
+                        class="w-5 h-5 text-sky-600 dark:text-sky-400"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                        />
+                      </svg>
+                    </div>
+                    <span class="font-medium">Mises à jour</span>
+                  </div>
+                  <div class="flex items-center gap-3 text-skin-base">
+                    <div
+                      class="w-10 h-10 rounded-lg bg-fuchsia-100 dark:bg-fuchsia-900/30 flex items-center justify-center"
+                    >
+                      <svg
+                        class="w-5 h-5 text-fuchsia-600 dark:text-fuchsia-400"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"
+                        />
+                      </svg>
+                    </div>
+                    <span class="font-medium">Sauvegardes auto</span>
+                  </div>
+                  <div class="flex items-center gap-3 text-skin-base">
+                    <div
+                      class="w-10 h-10 rounded-lg bg-red-100 dark:bg-red-900/30 flex items-center justify-center"
+                    >
+                      <svg
+                        class="w-5 h-5 text-red-600 dark:text-red-400"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                        />
+                      </svg>
+                    </div>
+                    <span class="font-medium">Sécurité avancée</span>
+                  </div>
+                  <div class="flex items-center gap-3 text-skin-base">
+                    <div
+                      class="w-10 h-10 rounded-lg bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center"
+                    >
+                      <svg
+                        class="w-5 h-5 text-emerald-600 dark:text-emerald-400"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"
+                        />
+                      </svg>
+                    </div>
+                    <span class="font-medium">Support réactif</span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <!-- Web Hosting -->
-          <div
-            id="web-hosting"
-            class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center p-8 bg-skin-card rounded-lg shadow-md border border-skin-base transition-colors duration-300"
-            data-aos="fade-up"
-          >
-            <div class="md:order-2">
-              <img
-                src="images/what-is-web-hosting-1.jpg"
-                alt="Illustration de serveur web"
-                class="rounded-lg shadow-lg w-full h-auto object-cover"
-              />
-            </div>
-            <div class="md:order-1">
-              <h3 class="text-2xl font-semibold mb-4 text-skin-base">
-                Solutions d'Hébergement Web
-              </h3>
-              <p class="text-skin-secondary mb-4">
-                Bénéficiez d'un hébergement web rapide, sécurisé et fiable. Nos
-                solutions incluent des certificats SSL et une infrastructure
-                optimisée pour garantir la disponibilité de votre site.
-              </p>
-              <div class="grid grid-cols-2 gap-4">
-                <div class="flex items-center space-x-2 text-skin-base">
-                  <i class="fas fa-bolt text-skin-primary"></i>
-                  <span>Vitesse d'Accès</span>
+            <!-- Web Hosting -->
+            <div
+              id="web-hosting"
+              class="group grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center p-6 md:p-10 bg-gradient-to-br from-white to-slate-50 dark:from-gray-800 dark:to-gray-800/50 rounded-3xl border border-gray-100 dark:border-gray-700/50 transition-all duration-500 hover:shadow-2xl hover:shadow-cyan-500/5"
+              data-aos="fade-up"
+            >
+              <div class="lg:order-2">
+                <div class="relative overflow-hidden rounded-2xl">
+                  <img
+                    src="images/what-is-web-hosting-1.jpg"
+                    alt="Illustration de serveur web"
+                    class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div
+                    class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"
+                  ></div>
                 </div>
-                <div class="flex items-center space-x-2 text-skin-base">
-                  <i class="fas fa-shield-alt text-skin-primary"></i>
-                  <span>Sécurité des Données</span>
+              </div>
+              <div class="lg:order-1">
+                <div
+                  class="inline-flex items-center gap-2 bg-cyan-100 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-300 text-sm font-semibold px-4 py-1.5 rounded-full mb-6"
+                >
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                      fill-rule="evenodd"
+                      d="M2 5a2 2 0 012-2h12a2 2 0 012 2v2a2 2 0 01-2 2H4a2 2 0 01-2-2V5zm14 1a1 1 0 11-2 0 1 1 0 012 0zM2 13a2 2 0 012-2h12a2 2 0 012 2v2a2 2 0 01-2 2H4a2 2 0 01-2-2v-2zm14 1a1 1 0 11-2 0 1 1 0 012 0z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  Infrastructure fiable
                 </div>
-                <div class="flex items-center space-x-2 text-skin-base">
-                  <i class="fas fa-certificate text-skin-primary"></i>
-                  <span>Certificats SSL</span>
-                </div>
-                <div class="flex items-center space-x-2 text-skin-base">
-                  <i class="fas fa-network-wired text-skin-primary"></i>
-                  <span>Infrastructure Optimisée</span>
+                <h3 class="text-2xl md:text-3xl font-bold mb-4 text-skin-base">
+                  Hébergement Web Premium
+                </h3>
+                <p class="text-skin-secondary mb-6 text-lg leading-relaxed">
+                  Un hébergement rapide, sécurisé et fiable avec certificats SSL
+                  inclus et infrastructure optimisée pour une disponibilité
+                  maximale.
+                </p>
+                <div class="grid grid-cols-2 gap-4">
+                  <div class="flex items-center gap-3 text-skin-base">
+                    <div
+                      class="w-10 h-10 rounded-lg bg-yellow-100 dark:bg-yellow-900/30 flex items-center justify-center"
+                    >
+                      <svg
+                        class="w-5 h-5 text-yellow-600 dark:text-yellow-400"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M13 10V3L4 14h7v7l9-11h-7z"
+                        />
+                      </svg>
+                    </div>
+                    <span class="font-medium">Ultra rapide</span>
+                  </div>
+                  <div class="flex items-center gap-3 text-skin-base">
+                    <div
+                      class="w-10 h-10 rounded-lg bg-green-100 dark:bg-green-900/30 flex items-center justify-center"
+                    >
+                      <svg
+                        class="w-5 h-5 text-green-600 dark:text-green-400"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                        />
+                      </svg>
+                    </div>
+                    <span class="font-medium">Sécurisé SSL</span>
+                  </div>
+                  <div class="flex items-center gap-3 text-skin-base">
+                    <div
+                      class="w-10 h-10 rounded-lg bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center"
+                    >
+                      <svg
+                        class="w-5 h-5 text-blue-600 dark:text-blue-400"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+                        />
+                      </svg>
+                    </div>
+                    <span class="font-medium">99.9% uptime</span>
+                  </div>
+                  <div class="flex items-center gap-3 text-skin-base">
+                    <div
+                      class="w-10 h-10 rounded-lg bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center"
+                    >
+                      <svg
+                        class="w-5 h-5 text-purple-600 dark:text-purple-400"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
+                    </div>
+                    <span class="font-medium">CDN global</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -888,23 +1355,30 @@
       <!-- Portfolio Section -->
       <section
         id="portfolio"
-        class="py-20 bg-skin-card transition-colors duration-300 border-t border-skin-base"
+        class="py-24 md:py-32 bg-gradient-to-b from-slate-50 to-white dark:from-gray-900 dark:to-gray-800 transition-colors duration-300"
       >
         <div class="container mx-auto px-4 max-w-7xl">
           <!-- Section Header -->
-          <div class="text-center mb-16" data-aos="fade-up">
+          <div class="text-center mb-16 md:mb-20" data-aos="fade-up">
             <span
-              class="inline-block text-skin-primary font-semibold text-sm uppercase tracking-wider mb-3"
-              >Nos Réalisations</span
+              class="inline-block text-blue-600 dark:text-blue-400 font-semibold text-sm uppercase tracking-widest mb-4"
+              >Nos réalisations</span
             >
-            <h2 class="text-4xl md:text-4xl font-bold text-skin-base mb-4">
-              Portfolio d'Excellence
+            <h2
+              class="text-3xl sm:text-4xl md:text-5xl font-bold text-skin-base mb-6"
+            >
+              Projets qui
+              <span
+                class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500"
+                >inspirent</span
+              >
             </h2>
-            <p class="text-lg text-skin-secondary max-w-2xl mx-auto mb-6">
-              Spécialisé dans la création de sites WordPress professionnels et
-              le développement web moderne avec HTML5, CSS3 et JavaScript.
+            <p
+              class="text-lg md:text-xl text-skin-secondary max-w-2xl mx-auto leading-relaxed"
+            >
+              Découvrez une sélection de nos projets WordPress et sites
+              statiques modernes.
             </p>
-            <div class="mx-auto h-1.5 w-24 bg-skin-primary rounded-full"></div>
           </div>
 
           <div
@@ -1353,20 +1827,33 @@
       </section>
 
       <!-- FAQ Section -->
-      <section
-        id="faq"
-        class="py-16 transition-colors duration-300 border-t border-skin-base"
-      >
-        <div class="container mx-auto px-4">
-          <h2
-            id="Questions_Fréquemment_Posées"
-            class="text-3xl sm:text-4xl font-bold text-center mb-12 text-skin-base"
-            data-aos="fade-up"
-            data-aos-duration="800"
-          >
-            Questions Fréquemment Posées
-          </h2>
-          <div class="max-w-3xl mx-auto">
+      <section id="faq" class="py-24 md:py-32 transition-colors duration-300">
+        <div class="container mx-auto px-4 max-w-4xl">
+          <!-- Section Header -->
+          <div class="text-center mb-16" data-aos="fade-up">
+            <span
+              class="inline-block text-blue-600 dark:text-blue-400 font-semibold text-sm uppercase tracking-widest mb-4"
+              >FAQ</span
+            >
+            <h2
+              id="Questions_Fréquemment_Posées"
+              class="text-3xl sm:text-4xl md:text-5xl font-bold text-skin-base mb-6"
+            >
+              Questions
+              <span
+                class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500"
+                >fréquentes</span
+              >
+            </h2>
+            <p
+              class="text-lg md:text-xl text-skin-secondary max-w-2xl mx-auto leading-relaxed"
+            >
+              Tout ce que vous devez savoir pour démarrer votre projet web avec
+              nous.
+            </p>
+          </div>
+
+          <div class="space-y-4">
             <!-- FAQ Item 1 -->
             <div
               class="bg-skin-card rounded-lg shadow-md border border-skin-base mb-4 overflow-hidden transition-colors duration-300 accordion-item"
@@ -1472,16 +1959,32 @@
       <!-- Section Contact -->
       <section
         id="contact"
-        class="py-16 bg-skin-card transition-colors duration-300 border-t border-skin-base"
+        class="py-24 md:py-32 bg-gradient-to-b from-slate-50 to-white dark:from-gray-900 dark:to-gray-800 transition-colors duration-300"
       >
-        <div class="container mx-auto px-4">
-          <h2
-            class="text-3xl sm:text-4xl font-bold text-center mb-12 text-skin-base"
-            data-aos="fade-up"
-            data-aos-duration="800"
-          >
-            Contactez-Nous
-          </h2>
+        <div class="container mx-auto px-4 max-w-6xl">
+          <!-- Section Header -->
+          <div class="text-center mb-16" data-aos="fade-up">
+            <span
+              class="inline-block text-blue-600 dark:text-blue-400 font-semibold text-sm uppercase tracking-widest mb-4"
+              >Contactez-nous</span
+            >
+            <h2
+              class="text-3xl sm:text-4xl md:text-5xl font-bold text-skin-base mb-6"
+            >
+              Lançons votre
+              <span
+                class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500"
+                >projet</span
+              >
+              ensemble
+            </h2>
+            <p
+              class="text-lg md:text-xl text-skin-secondary max-w-2xl mx-auto leading-relaxed"
+            >
+              Prêt à transformer vos idées en réalité digitale ? Contactez-nous
+              dès maintenant.
+            </p>
+          </div>
 
           <div
             class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto items-start"
@@ -1769,42 +2272,107 @@
       </section>
     </main>
 
-    <!-- Bouton Instagram fixe -->
-    <a
-      href="https://instagram.com/webfast.dz"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="fixed bottom-20 right-6 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 text-white p-3 rounded-full shadow-lg hover:opacity-90 hover:scale-110 transition-all duration-300 z-40"
-      aria-label="Suivez-nous sur Instagram"
-    >
-      <i class="fab fa-instagram text-xl"></i>
-    </a>
-
-    <!-- Bouton Retour en haut -->
+    <!-- Bouton Retour en haut - design amélioré -->
     <button
       id="back-to-top"
-      class="fixed bottom-6 right-6 btn-primary p-3 rounded-full shadow-lg hover:opacity-90 transition-opacity duration-300 hidden"
+      class="fixed bottom-6 right-6 w-12 h-12 bg-gradient-to-r from-blue-600 to-cyan-500 text-white rounded-full shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 hover:scale-110 transition-all duration-300 hidden z-40 flex items-center justify-center"
+      aria-label="Retour en haut"
     >
-      <i class="fas fa-arrow-up text-xl"></i>
+      <svg
+        class="w-5 h-5"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M5 10l7-7m0 0l7 7m-7-7v18"
+        />
+      </svg>
     </button>
 
     <footer
-      class="bg-skin-card py-8 border-t border-skin-base transition-colors duration-300"
+      class="bg-gray-900 dark:bg-gray-950 py-12 border-t border-gray-800 transition-colors duration-300"
     >
-      <div
-        class="container mx-auto px-4 text-center text-skin-secondary space-y-2"
-      >
-        <p>&copy; 2024 Votre Agence <b>WebFast DZ</b>. Tous droits réservés.</p>
-
-        <a
-          href="https://islamaoudia.dev"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center justify-center gap-2 text-skin-primary font-semibold hover:underline hover:scale-105 transition-all duration-300"
+      <div class="container mx-auto px-4">
+        <div
+          class="flex flex-col md:flex-row justify-between items-center gap-6"
         >
-          <i class="fas fa-user-tie text-lg"></i>
-          Aoudia Nour Islam
-        </a>
+          <!-- Logo et Copyright -->
+          <div class="text-center md:text-left">
+            <a href="#" class="text-2xl font-bold text-white mb-2 inline-block"
+              >WebFast DZ</a
+            >
+            <p class="text-gray-400 text-sm">
+              &copy; 2024 WebFast DZ. Tous droits réservés.
+            </p>
+          </div>
+
+          <!-- Liens rapides -->
+          <div class="flex items-center gap-6">
+            <a
+              href="#services"
+              class="text-gray-400 hover:text-white text-sm transition-colors"
+              >Services</a
+            >
+            <a
+              href="#portfolio"
+              class="text-gray-400 hover:text-white text-sm transition-colors"
+              >Portfolio</a
+            >
+            <a
+              href="#faq"
+              class="text-gray-400 hover:text-white text-sm transition-colors"
+              >FAQ</a
+            >
+            <a
+              href="#contact"
+              class="text-gray-400 hover:text-white text-sm transition-colors"
+              >Contact</a
+            >
+          </div>
+
+          <!-- Réseaux sociaux -->
+          <div class="flex items-center gap-4">
+            <a
+              href="https://www.instagram.com/webfast.dz"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-10 h-10 rounded-full bg-gray-800 hover:bg-gradient-to-r hover:from-purple-500 hover:via-pink-500 hover:to-orange-400 flex items-center justify-center text-gray-400 hover:text-white transition-all duration-300"
+              aria-label="Instagram"
+            >
+              <i class="fab fa-instagram"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Crédits -->
+        <div class="mt-8 pt-8 border-t border-gray-800 text-center">
+          <a
+            href="https://islamaoudia.dev"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 text-gray-400 hover:text-blue-400 text-sm transition-colors"
+          >
+            <span>Développé par</span>
+            <span class="font-semibold">Aoudia Nour Islam</span>
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+              />
+            </svg>
+          </a>
+        </div>
       </div>
     </footer>
 
@@ -1812,5 +2380,6 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="script.js"></script>
+    <script src="js/ux-enhancements.js"></script>
   </body>
 </html>
